@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SInteriorOrderData>
+    <startFrom value="2000" />
+    <filePathHash value="0" />
+    <proxies>
+        <Item>bs_distantlights</Item>
+        <Item>bs_int</Item>
+        <Item>bs_extprops</Item>
+        <Item>bs_streetlights</Item>
+        <Item>hei_sm_19</Item>
+        <Item>hei_vb_03_strm_0</Item>
+        <Item>bs_lodlights</Item>
+        <Item>hei_vb_rd_strm_0</Item>
+        <Item>bs_int_lod1</Item>
+        <Item>vb_03_strm_0</Item>
+        <Item>vw_distlodlights_small024</Item>
+        <Item>vb_occl_01</Item>
+        <Item>vw_lodlights_small024</Item>
+        <Item>hei_vb_03</Item>
+        <Item>int_vesp_01_1_milo_</Item>
+        <Item>int_vesp_01_2_milo_</Item>
+        <Item>int_vesp_1_1_milo_</Item>
+        <Item>int_vesp_1_2_milo_</Item>
+        <Item>int_vesp_02_1_milo_</Item>
+        <Item>int_vesp_02_2_milo_</Item>
+        <Item>int_vesp_03_1_milo_</Item>
+        <Item>int_vesp_3_1_milo_</Item>
+        <Item>int_vesp_3_2_milo_</Item>
+        <Item>int_vesp_4_2_milo_</Item>
+        <Item>int_vesp_5_2_milo_</Item>
+        <Item>int_vesp_big_lift_milo_</Item>
+        <Item>int_vesp_big_stair_milo_</Item>
+        <Item>int_vesp_slift_milo_</Item>
+        <Item>int_vesp_smole_stair_milo_</Item>
+    </proxies>
+</SInteriorOrderData>
+
+<SInteriorOrderData>
+    <startFrom value="5000" />
+    <filePathHash value="0" />
+    <proxies>
+        <Item>shmann_justice_mlo</Item>
+    </proxies>
+</SInteriorOrderData>

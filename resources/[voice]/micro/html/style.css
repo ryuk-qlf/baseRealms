@@ -1,0 +1,48 @@
+html {
+    overflow: hidden;
+}
+
+#chuchotement {
+    position: absolute;
+    top: 93%;
+    bottom: -100%;
+    right: -24px;
+    width: 100px;
+    height: 100px;
+    display: none;
+    flex-direction: column;
+    opacity: 70%;
+}
+
+#normal {
+    position: absolute;
+    top: 93%;
+    bottom: -100%;
+    right: -24px;
+    width: 100px;
+    height: 100px;
+    display: none;
+    flex-direction: column;
+}
+
+#crie {
+    position: absolute;
+    top: 93%;
+    bottom: -100%;
+    right: -24px;
+    width: 100px;
+    height: 100px;
+    display: none;
+    flex-direction: column;
+    opacity: 90%;
+}
+
+header {
+    width: 55px;
+    height: 55px;
+}
+
+header img {
+    width: 55px;
+    height: 55px;
+}

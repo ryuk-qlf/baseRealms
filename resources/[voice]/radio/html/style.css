@@ -1,0 +1,114 @@
+.voiceIndicator {
+	display: none;
+	position: fixed;
+	top: 880px;
+	bottom: 2%;
+	/* background-image: ; */
+	background-size: cover;
+	width: 40px;
+	height: 40px;
+	right: 1%;
+}
+
+.radioUI {
+    display: block;
+	position: absolute;
+	min-width: 250px;
+	min-height: 665px;
+	background-image: url("img/radio.png");
+	background-size: cover;
+	font-family: 'DS-Digital', sans-serif;
+	right: 40px;
+	top: 50px;
+	user-select: none;
+}
+
+.radioState {
+	position: absolute;
+	color: white;
+	top: 335px;
+	left: 50px;
+	font-size: 42px;
+	min-width: 150px;
+	text-align: center;
+}
+
+.radioPanel {
+	position: relative;
+	display: block;
+	top: 340px;
+	left: 108px;
+	width: 34px;
+	z-index: 1;
+}
+
+.buttonRadio {
+	display: inline-block;
+	opacity: .0;
+	width: 34px;
+	height: 28px;
+}
+
+.radioSmallPanel {
+	position: relative;
+	display: block;
+	top: 290px;
+	left: 78px;
+	width: 200px;
+	height: 26px;
+}
+
+.buttonSmallRadio {
+	display: inline-block;
+	opacity: .0;
+	width: 20px;
+	height: 20px;
+	margin-right: 50px;
+}
+
+.radioScreen {
+	position: relative;
+	display: block;
+	width: 130px;
+	height: 70px;
+	top: 320px;
+	left: 60px;
+}
+
+.radioRec {
+	display: none;
+	width: 10px;
+	height: 10px;
+}
+
+@font-face{
+	font-family: 'DS-Digital';
+	src: url(id/DS-DIGIB.ttf);
+}
+
+#container {
+    position: absolute;
+    top: 86.8%;
+    bottom: -100%;
+    right: 0.3%;
+    width: 65px;
+    height: 45px;
+    display: none;
+    flex-direction: column;
+	user-select: none;
+}
+
+header {
+    width: 45px;
+    height: 45px;
+    opacity: 1;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+header img {
+    width: 45px;
+    height: 45px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}

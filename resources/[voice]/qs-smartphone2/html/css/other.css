@@ -1,0 +1,571 @@
+.camera-app,
+.insta-addstory {
+    display: none;
+    margin-top: 65px;
+    height: 100%;
+    width: 100%;
+    background: rgb(0 0 0);
+    overflow: hidden;
+}
+
+.camera-header,
+.insta-addstory-header {
+    position: absolute;
+    width: 100%;
+    height: 9vh;
+    background-color: #000000;
+    top: 0;
+    color: white;
+    font-family: 'Samsung Sans Medium';
+    font-size: 1.8vh;
+}
+
+.camera-header>p,
+.insta-addstory-header>p {
+    line-height: 12vh;
+    text-indent: 2vh;
+}
+
+.camera-header>span,
+.insta-addstory-header>span {
+    position: absolute;
+    top: 9vh;
+    left: 2vh;
+    font-size: 1.2vh;
+    height: 2vh;
+    color: rgba(255, 255, 255, 0.842);
+}
+
+.camera-list {
+    position: absolute;
+    background-color: #00000033;
+    width: 90%;
+    height: 73%;
+
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 3%;
+
+    border-radius: .5vh;
+
+    overflow-y: scroll;
+}
+
+.camera-list::-webkit-scrollbar {
+    display: none;
+}
+
+.camera-list {
+    position: relative;
+    width: 95%;
+    height: 6vh;
+    background-color: rgba(31, 31, 31, 0.89);
+    margin: 2.5%;
+
+    border-radius: .5vh;
+}
+
+.camera-list-firstletter {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5vh;
+    height: 3.5vh;
+    background-color: rgb(42, 137, 214);
+    text-align: center;
+    left: 1vh;
+    line-height: 3.5vh;
+    border-radius: 50%;
+    font-family: 'Samsung Sans Medium';
+    font-size: 1.8vh;
+
+    color: rgb(255, 255, 255);
+}
+
+.camera-list-fullname {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5.5vh;
+    font-family: 'Samsung Sans Medium';
+    font-size: 1.5vh;
+
+    max-width: 14vh;
+
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+
+    color: rgb(255, 255, 255);
+}
+
+.no-camera {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Samsung Sans Medium';
+    font-size: 1.3vh;
+
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    max-width: 14vh;
+
+    color: rgb(255, 255, 255);
+}
+
+.camera-list-call {
+    color: white;
+    position: absolute;
+    top: 25%;
+    transform: translateY(-50%);
+
+    right: 2vh;
+    font-size: 2vh;
+    transform: rotate(90deg);
+
+    transition: .08s ease-in-out;
+}
+
+.camera-list-call:hover {
+    color: rgb(66, 161, 11);
+    opacity: .8;
+
+    transform: rotate(0deg);
+
+    cursor: pointer;
+}
+
+.camera-app h1 {
+    text-align: center;
+    color: white;
+    font-family: ios;
+    font-size: 14px;
+    position: relative;
+    top: 16vh;
+}
+
+
+.cekilen_foto {
+    display: none;
+    width: -webkit-fill-available;
+    height: 651px;
+    top: 1vh;
+    margin-left: 5px;
+    overflow: hidden;
+    margin-right: 5px;
+    background: #ffffff;
+    z-index: 100;
+    position: absolute;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 7px black;
+}
+
+
+.foto {
+    background: url(#);
+    width: -webkit-fill-available;
+    height: 300px;
+    margin-top: 15vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.alt_footer a {
+    border-radius: 30px;
+    margin-left: -3vh;
+    padding: 20px 20px 20px 100px;
+    width: 190px;
+    position: relative;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'ios';
+    top: 14vh;
+    height: 10px;
+}
+
+.photoShow {
+    top: 0;
+    right: -110%;
+    width: 100%;
+    height: 61vh;
+    background: black;
+    position: absolute;
+    transition: 0.7s;
+    z-index: 0;
+}
+
+.imgS {
+    width: 100%;
+    height: 300px;
+    background: gray;
+
+    position: relative;
+    top: 70px;
+}
+
+.grid4-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-left: 2px;
+    margin-right: 2px;
+    position: relative;
+    bottom: -15%;
+}
+
+.grid4-item {
+    padding: 2px;
+    font-size: 20px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.n-header a {
+    text-decoration: none;
+    color: orange;
+}
+
+.n-header a:hover {
+    text-decoration: none;
+    color: orange;
+}
+
+.n-header {
+    width: -webkit-fill-available;
+    background: white;
+    padding-top: 40px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 2px;
+    margin-right: 3px;
+    color: orange;
+}
+
+
+
+
+@media only screen and (min-height: 900px) {
+
+    .grid2-container {
+        display: grid;
+        grid-template-columns: 65px 65px 65px 65px;
+        grid-column-gap: 7px;
+        margin-left: 7px;
+    }
+
+    .img {
+        height: 65px;
+        width: 65px;
+    }
+
+
+    #calculatorframe {
+        height: 660px;
+    }
+
+    .xFrame {
+        margin-top: 13px !important;
+    }
+
+
+    .ust p {
+        top: 2.9vh !important;
+        left: 1.3vw !important;
+    }
+
+    .ustsol {
+        left: -3vw !important;
+    }
+
+
+    .slider2x-vertical {
+        right: 5vw !important;
+        top: 4.5vh !important;
+        zoom: 105%;
+    }
+
+    .sliderx-vertical {
+        right: 1.5vw !important;
+        top: 4.5vh !important;
+        zoom: 105%;
+    }
+
+    .i-aktivite-yok {
+        zoom: 90% !important;
+    }
+
+    .insta-panel {
+        height: 470px !important;
+    }
+
+    .instagram-footer .i {
+        margin-left: 92px !important;
+        margin-top: 45px;
+    }
+
+    .instagram-logo {
+        left: 14vh !important;
+    }
+
+    .gridinsta2-container {
+        grid-template-columns: 65px 65px 65px 65px;
+        grid-column-gap: 7px;
+        margin-left: 11px;
+    }
+
+    #insta-biyo {
+        margin-top: 30px !important;
+    }
+
+    .insta-profil-ust {
+        height: 120px !important;
+    }
+
+    .gridinsta-container {
+        grid-template-columns: 65px 65px 65px 65px !important;
+        grid-column-gap: 7px !important;
+    }
+
+    .grid5-container {
+
+        bottom: -30% !important;
+    }
+
+    .imgSinsta {
+        top: 150px !important;
+    }
+
+    .photoShowinsta {
+        height: -webkit-fill-available !important;
+    }
+
+    .bank-app-account-number {
+        top: 2vh !important;
+    }
+
+    .bank-app-account-balance {
+        top: 3.5vh !important;
+    }
+
+
+
+    .imgS {
+        top: 163px !important;
+    }
+
+    .photoShow {
+        height: 700px !important;
+    }
+
+    .grid4-container {
+        bottom: -30% !important;
+    }
+
+
+    .share_gif {
+        height: 150px !important;
+        width: -webkit-fill-available !important;
+    }
+
+    #gifinput {
+        margin-right: 65px !important;
+    }
+
+    .cart h2 {
+        top: -1vh !important;
+    }
+
+    .cart img {
+        width: 10%;
+        margin-top: 11px !important;
+    }
+
+    .calendar {
+
+        width: 15vw !important;
+        zoom: 47% !important;
+    }
+
+    .yuzde100 {
+        left: -3vh !important;
+    }
+
+
+    #res_hava {
+        right: -26vh !important;
+        top: -5vh !important;
+        zoom: 75% !important;
+    }
+
+    .derece {
+        font-size: 36px !important;
+        left: 3vw !important;
+        top: 6vh !important;
+        color: white !important;
+    }
+
+    .ekrandondur {
+        display: block;
+        top: 46vh;
+        left: -10vh;
+        transform: rotate(-90deg);
+        zoom: 200%;
+    }
+
+    .bildirim img {
+        width: 10%;
+    }
+
+}
+
+
+.ekrandondur {
+    display: block;
+    top: 79vh;
+    left: -2vh;
+    transform: rotate(-90deg);
+    zoom: 200%;
+}
+
+.xFrame::-webkit-scrollbar {
+    display: none;
+}
+
+.paylas {
+    width: -webkit-fill-available;
+    height: 100%;
+    background: #f4f4f4;
+    margin-left: 2px;
+    margin-right: 3px;
+}
+
+.paylas input[type="text"] {
+    background: #f4f4f4;
+    width: -webkit-fill-available;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    font-size: 24px;
+    border: none;
+    font-weight: 600;
+}
+
+textarea {
+    background: #f4f4f4;
+    width: -webkit-fill-available;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 15px;
+    font-size: 12px;
+    border: none;
+    font-weight: 100;
+    height: 200px;
+    resize: none;
+}
+
+.p {
+    display: none;
+}
+
+.gstr {
+    display: none;
+}
+
+.nn {
+    padding-right: 15px;
+    background: #f0f0f0;
+    height: 35px;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.nn p {
+    color: black;
+    margin-left: 15px;
+    position: absolute;
+    margin-top: 8px;
+}
+
+.v {
+    transition: 0.5s;
+    width: -webkit-fill-available;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid red;
+    display: block;
+    text-align: center;
+    color: red;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.v:hover {
+    width: -webkit-fill-available;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid red;
+    background: red;
+    display: block;
+    text-align: center;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+@media only screen and (min-height: 1081px) {
+    .cekilen_foto {
+        height: 880px;
+    }
+    
+    .alt_footer a {
+        margin-left: -30.96px;
+        padding: 20px 90px 20px 100px;
+        width: 190px;
+        font-size: 26px;
+        top: 316.48px;
+        height: 10px;
+    }
+
+    .camera-app,
+    .insta-addstory {
+        display: none;
+        margin-top: 65px;
+        height: 101%;
+        width: 100%;
+        background: rgb(0 0 0);
+        overflow: hidden;
+    }
+}
+
+/* Recio arreglo wether widget solo @media only*/
+
+@media only screen and (min-height: 1080px) {
+
+    #res_hava {
+        right: -24.5vh !important;
+        top: -11vh !important;
+        zoom: 75% !important;
+    }
+
+ .weather-rela {
+        font-size: 14px;
+        color: white;
+        top: 6.5vh;
+        left: 2.5vh;
+        position: relative;
+    }
+
+    .derece {
+        top: 5.5vh !important;
+    }
+
+    .drm {
+        zoom: 90%;
+        top: -11vh !important;
+        left: 8vh;
+        font-size: 12px;
+    }
+}

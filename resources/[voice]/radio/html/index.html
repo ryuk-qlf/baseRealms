@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Radio</title>
+</head>   
+<body>
+	<div id="container">
+        <header>
+			<img src="./img/5.png">
+        </header>
+    </div>
+    <div class="radioUI" style='display:none;'>
+		<div class="radioState" step="any"></div>
+		<div class="radioScreen">
+			<img src="./img/mute.png" class="radioRec" id="radioMute">
+			<img src="./img/network.png" class="radioRec" id="radioNetwork" style="float: right;">
+			<img src="./img/rec.png" class="radioRec" id="radioRec" style="left: 0; bottom: 0; position: absolute;">
+			<img src="./img/hertz.png" class="radioRec" id="radioHZ" style="right: 0; bottom: 0; position: absolute;">
+		</div>
+		<div class="radioPanel">
+			<button class="buttonRadio" id="radioUP"></button>
+			<button class="buttonRadio" id="radioDown"></button>
+		</div>
+		<div class="radioSmallPanel">
+			<button class="buttonSmallRadio" id="radioManual"></button>
+		</div>
+		<div class="radioSmallPanel">
+			<button class="buttonSmallRadio" id="radioButtonMute"></button>
+			<button class="buttonSmallRadio" id="radioToggle"></button>
+		</div>
+	</div>
+    <script src = 'script.js'></script>
+</body>
+</html>

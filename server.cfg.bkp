@@ -1,0 +1,95 @@
+
+set sv_enforceGameBuild 3095
+## [txAdmin CFG validator]: onesync MUST only be set in the txAdmin settings page.
+## [txAdmin CFG validator]: onesync MUST only be set in the txAdmin settings page.
+# set onesync on
+set mysql_connection_string "server=localhost;database=realms;userid=root;password="
+set mysql_ui true
+setr esx:locale "fr"
+
+## Add system admins ##
+add_principal group.admin group.user
+add_ace group.admin command allow # allow all commands
+add_ace group.admin command.quit deny # but don't allow quit
+add_ace resource.es_extended command.add_ace allow
+add_ace resource.es_extended command.add_principal allow
+add_ace resource.es_extended command.remove_principal allow
+add_ace resource.es_extended command.stop allow
+
+
+## Default ## (Pas touche)
+start ox_lib
+#ensure chat
+ensure okokChat
+ensure spawnmanager
+ensure sessionmanager
+ensure hardcap
+ensure pma-voice
+
+
+## libs ## (Ne pas changer de place)
+ensure oxmysql
+
+## es ## (Ne pas changer de place)
+
+ensure es_extended
+
+## ui ## 
+ensure esx_menu_default
+ensure esx_menu_dialog
+ensure esx_menu_list
+
+## ox-inventory ## (Ne pas changer de place)
+ensure ox_target
+ensure ox_inventory
+setr inventory:target true
+
+## esx ##
+ensure esx_status
+ensure esx_compact
+ensure esx_notify
+ensure esx_license
+ensure esx_billing
+ensure esx_society
+ensure esx_context
+ensure esx_basicneeds
+ensure esx_optionalneeds
+ensure illenium-appearance
+ensure dependance_identity
+ensure identity
+ensure esx_banking
+
+## utils ##
+ensure PolyZone
+ensure bob74_ipl
+ensure Wind_loading
+ensure ox_admin
+ensure nox_core
+ensure hud
+ensure speedomeeter
+ensure jsfour-idcard
+
+
+## OX ## 
+ensure ox_doorlock
+ensure ox_fuel
+
+## Job ##
+ensure Ambulance
+
+## Mapping ##
+ensure [mapping]
+
+
+### Config serveur ###
+endpoint_add_tcp "0.0.0.0:30105"
+endpoint_add_udp "0.0.0.0:30105"
+sv_endpointPrivacy true
+sv_hostname "Wind studio"
+sv_maxclients 4
+sets sv_projectName "Wind studio"
+sets sv_projectDesc "Base template par Wind studio"
+sets tags "dev, fr, Template, legacy, roleplay"
+set steam_webApiKey "773C48D314A2BD1959CCF3C46DE483BC"
+sv_licenseKey "cfxk_3iy5BRI1GUdhE36WAbhg_4IiZWD"
+sv_scriptHookAllowed 0

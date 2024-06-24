@@ -1,0 +1,558 @@
+.messages-app {
+    display: none;
+    z-index: 2;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: 110%;
+    background: var(--contentBackground);
+    color: var(--text);
+}
+
+#messages-app-mainHead {
+    position: absolute;
+    left: 20px;
+    top: 50px;
+    font-size: 25px;
+    font-family: 'ios';
+    font-weight: 800;
+}
+
+#messages-app-createMessage {
+    position: absolute;
+    float: right;
+    right: 20px;
+    top: 7%;
+    width: 25px;
+    height: 25px;
+    filter: invert(44%) sepia(56%) saturate(6757%) hue-rotate(196deg) brightness(105%) contrast(103%);
+    cursor: pointer;
+}
+
+#messages-app-searchContainer {
+    display: flex;
+    position: absolute;
+    width: 88%;
+    align-items: center;
+    top: 87px;
+    right: 20px;
+    height: 30px;
+    border-radius: 1vh;
+    background: #EEEEF0;
+}
+
+#messages-settings {
+    position: absolute;
+    color: #48A1D9;
+    font-size: 19px;
+    transition: color .25s;
+    top: 12px;
+    left: 270px;
+    z-index: 99;
+    cursor: pointer
+}
+
+#messages-app-searchContainer img {
+    margin-left: 6px;
+    width: 18px;
+    height: 18px;
+}
+
+#messages-app-searchContainer textarea {
+    position: relative;
+    top: 9px;
+    left: 5px;
+    width: 100%;
+}
+
+#messages-app-body {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    height: 87.5%;
+    overflow-y: auto;
+}
+
+#messages-app-body::-webkit-scrollbar {
+    display: none;
+}
+
+.messages-app-body-message {
+    position: relative;
+    padding: 0 10 0 10;
+    margin-bottom: 3px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.messages-app-body-messagePP {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-left: 20px;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.messages-customLine {
+    position: absolute;
+    width: 100%;
+    right: 1px;
+    border-bottom: 1px solid #aaaaaa;
+    top: 105%;
+}
+
+.messages-app-body-message-content {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-app-body-messageOwner {
+    font-size: 18px;
+}
+
+.message-app-body-lastMessage {
+    font-size: 12px;
+}
+
+#messages-app-content-head {
+    position: absolute;
+    width: 100%;
+    top: 7%;
+    height: 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    border-bottom: 1px solid var(--mainBackground2);
+    z-index: 3;
+    background-color: var(--contentBackground);
+}
+
+#messages-app-content-head-pp {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+#messages-app-content-foot-alternative-camera {
+    /* color: #666 */
+    width: 30px;
+    height: 30px;
+    filter: invert(35%) sepia(3%) saturate(0%) hue-rotate(237deg) brightness(110%) contrast(86%);
+}
+
+#messages-app-content-foot {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 595.5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: rgb(226, 226, 226);
+}
+
+.messages-app-body-message-right {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 5px;
+    bottom: 20px;
+}
+
+.messages-app-body-messageTime {
+    position: absolute;
+    right: 8%;
+    font-size: 13px;
+    color: #666;
+    bottom: 24px;
+}
+
+#messages-app-content-foot-alternativeMessageContainer {
+    position: relative;
+}
+
+.messages-app-content-foot-alternative {
+    width: 28px;
+    height: 28px;
+    margin-left: 5px;
+    margin-top: 7px;
+    filter: invert(35%) sepia(3%) saturate(0%) hue-rotate(237deg) brightness(110%) contrast(86%);
+    cursor: pointer;
+}
+
+#messages-app-content-foot-sendMessageContainer {
+    position: relative;
+    height: 50%;
+    width: 60%;
+    border-radius: 18px;
+    display: flex;
+    padding: 0 4px;
+    align-items: center;
+    align-content: center;
+    border: 1px solid #666;
+    top: 7px;
+}
+
+#messages-app-content-foot-sendMessageContentImg {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    left: 1.5%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#messages-app-content-foot-message {
+    overflow: none;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 500;
+    resize: none;
+}
+
+#messages-app-content-foot-message {
+    height: 100%;
+}
+
+#messages-app-content-foot-message::-webkit-scrollbar {
+    display: none
+}
+
+#messages-app-content-body {
+    position: absolute;
+    top: 13%;
+    left:10px;
+    width: 93%;
+    height: 83.8%;
+
+    /* border: solid 1px #eee; */
+    /* background-image: url("../img/app_details/whatsapp-chat.png"); */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow: auto;
+}
+
+#createNewMessage,
+#messages-app-newMessageContentInput {
+    overflow: none;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 500;
+    resize: none;
+}
+
+#messages-app-content-body::-webkit-scrollbar {
+    display: none;
+}
+
+.messages {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.message_photo {
+    object-fit: cover;
+}
+
+.yours {
+    align-items: flex-start;
+}
+
+.yours .message {
+    margin-right: 25%;
+    background-color: #eee;
+    position: relative;
+}
+
+.yours .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #eee;
+    border-bottom-right-radius: 15px;
+}
+
+.yours .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-right-radius: 10px;
+}
+
+.mine {
+    align-items: flex-end;
+}
+
+.mine .message {
+    color: white;
+    margin-left: 25%;
+    background: rgb(0, 120, 254);
+    position: relative;
+}
+
+.mine .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 18px;
+    width: 20px;
+    background: rgb(0, 120, 254);
+    border-bottom-left-radius: 15px;
+}
+
+.mine .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-left-radius: 10px;
+}
+
+#messages-app-newMessage-container {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 110%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+#messages-app-newMessage {
+    position: absolute;
+    width: 90%;
+    height: 15%;
+    left: 5%;
+    top: 20%;
+    background-color: var(--mainBackground);
+    transition: transform .4s;
+    border-radius: 8px;
+}
+
+#messages-app-newMessageName {
+    position: absolute;
+    left: 50%;
+    top: 5;
+    font-weight: 600;
+    transform: translate(-50%);
+    color: var(--text);
+}
+
+#messages-app-cancel {
+    float: right;
+    margin-right: 8px;
+    margin-top: 7;
+    color: #0066ff;
+    cursor: pointer;
+}
+
+#messages-app-newMessageWho {
+    position: relative;
+    top: 2px;
+    display: flex;
+    width: 90%;
+    height: 25%;
+    left: 5%;
+    background-color: #80808036;
+    text-align: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+#messages-app-newMessageWho a {
+    margin-left: 5px;
+}
+
+#messages-app-newMessageWho input {
+    margin-left: 2px;
+    width: 85%;
+}
+
+#messages-app-newMessageContent {
+    position: relative;
+    top: 20px;
+    display: flex;
+    width: 80%;
+    height: 25%;
+    left: 9%;
+    background-color: #80808036;
+    text-align: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+#messages-app-newMessageContent img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+#messages-app-newMessageContacts {
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    top: 60px;
+    height: 600px;
+    overflow-y: auto;
+    display: flex;
+}
+
+.messages-app-newMessageContact {
+    width: 22.8vh;
+    margin-left: 15px;
+    height: 50px;
+    display: none;
+    align-items: center;
+    background-color: #dbdbdb;
+    color: #0066ff;
+    cursor: pointer;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    transition: all .4s;
+}
+
+#popup-actions {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    z-index: 99999999999;
+    bottom: 5%;
+}
+
+#popup-actions-content-img {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+#popup-actions-content-img-content {
+    margin-left: 70%;
+    transform: translate(-50%);
+}
+
+#back-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    top: 5%;
+    z-index: 99999;
+    color: var(--text);
+}
+
+#popup-actions-choices-container {
+    position: relative;
+    width: 95%;
+    height: 100%;
+    text-align: center;
+    z-index: 4;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.popup-actions-content {
+    padding: 15px 0 10px 0;
+    color: var(--text);
+    cursor: pointer;
+    color: #0066ff;
+}
+
+#popup-actions-background {
+    position: absolute;
+    width: 40vh;
+    height: 170vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: .60;
+    z-index: 3;
+    transition: all .4s;
+}
+
+#popup-actions-cancel,
+#popup-actions-content-img_msg {
+    width: 95%;
+    height: 100%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.932);
+    margin-top: 12px;
+    padding: 14px 0px 10px 0px;
+    cursor: pointer;
+    color: #007cff;
+    font-weight: 800;
+    z-index: 4;
+}
+
+.messages-app-newMessageContact:hover {
+    background-color: #0077ff;
+    color: #ccc;
+    border-radius: 5px;
+}
+
+.messages-app-newMessageContact img {
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+
+}
+
+.messages-app-newMessageContact a {
+    margin-left: 5px;
+}
+
+#messages-app-searchArea {
+    width: 240px !important ;
+    height: 25px;
+    margin-bottom: 16px;
+    background-color: var(--mainBackground);
+    overflow: hidden;
+}

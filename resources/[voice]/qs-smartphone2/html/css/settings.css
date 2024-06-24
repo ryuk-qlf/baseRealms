@@ -1,0 +1,1575 @@
+.settings-app {
+    display: none;
+    height: 120%;
+    width: 100%;
+    background: #f0eff4;
+    border-radius: 20px;
+}
+
+.settings-app-header {
+    position: relative;
+    padding: 53px 0 0 21.74152px;
+    font-family: 'ios';
+    font-weight: 600;
+    font-size: 24px;
+    left: 1px;
+}
+
+.scroll-settings {
+    height: 435px;
+    padding-right: 10px;
+    overflow-y: hidden;
+    border-radius: 10px;
+}
+
+.scroll-settings:hover,
+.scroll-settings:focus,
+.scroll-settings:focus-within {
+    overflow-y: auto;
+    padding-right: unset;
+} 
+
+.settings-app-tab-appereance {
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+}
+
+#profile_tab {
+    width: 268px;
+    height: 90px;
+    left: 4px;
+    margin-bottom: 13px;
+    border-radius: 8px;
+}
+
+#number_tab_top,
+#hidden_tab_top,
+#screen_tab_top,
+#pp_tab_top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#number_tab_bottom,
+#hidden_tab_bottom,
+#screen_tab_bottom,
+#pp_tab_bottom {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#cancel-settings-submenu {
+    position: relative;
+    font-size: 14px;
+    top: 10px;
+}
+
+#settings-submenu {
+    position: relative;
+    font-size: 17px;
+    top: 10px;
+}
+
+.settings-app-tab-information {
+    position: absolute;
+    top: 100px;
+    height: 565px;
+    width: 295px;
+    left: 8px;
+    padding-right: 10px;
+    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.settings-app-tab-information:hover,
+.settings-app-tab-information:focus,
+.settings-app-tab-information:focus-within {
+    overflow-y: auto;
+    padding-right: unset;
+} 
+
+
+.settings-app-tab {
+    position: relative;
+    width: 270px;
+    height: 43px;
+    left: 4px;
+    top: 0px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    transition: all .1s;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0);
+    box-shadow: 0px 0px 1px grey;
+    background: #fff;
+}
+
+.settings-app-tab-password {
+    position: relative;
+    width: 270px;
+    height: 34px;
+    left: 0px;
+    top: 250px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    transition: all .1s;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0);
+    box-shadow: 0px 0px 1px grey;
+    background: #fff;
+}
+
+.settings-app-tab-advert {
+    position: relative;
+    width: 270px;
+    height: 225px;
+    left: 0px;
+    margin: 0 auto;
+    bottom: 80px;
+    border-radius: 7px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0);
+    box-shadow: 0px 0px 1px grey;
+    background: #fff;
+}
+
+.settings-security-advert-title {
+    position: relative;
+    left: 20px;
+    top: 0px;
+    width: 260px;
+}
+
+.settings-security-advert-description {
+    position: relative;
+    right: 35px;
+    top: 30px;
+    width: 250px;
+    border-top: .1vh solid rgba(128, 128, 128, 0.159);
+}
+
+.settings-security-image  {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100px;
+    margin-left: 14px;
+}
+
+.settings-security-image div {
+    height: fit-content;
+    margin: 5px;
+}
+
+.settings-security-image div img {
+    width: 60px;
+    height: 110px;
+    border-radius: 15px;
+}
+
+.settings_tab_1 {
+    margin-bottom: 13px;
+}
+
+.settings_tab_2 {
+    margin-bottom: 13px; 
+}
+
+.settings_tab_4 {
+    margin-bottom: 35px; 
+}
+
+.settings-app-tab-header {
+    position: absolute;
+    top: -23.975px;
+    height:  24.934px;
+    font-family: 'ios';
+    font-size: 1.5vh;
+    width: 100%;
+    margin-left: 3px;
+}
+
+.settings-details-tab .settings-app-tab {
+    height: 57.54px
+}
+
+.call-image {
+    position: absolute;
+    margin: 0 auto;
+    width: 42px;
+    height: 42px;
+    left: -3px;
+    top: -3px;
+    border-radius: 50%;
+    border: .2vh solid #ffffff6c;
+    background: rgba(27, 27, 27, 0.25);
+    box-shadow: 0 0 .5vh 0 rgba(0, 0, 0, 0.5);
+    /* animation: pulse 2s infinite; */
+}
+
+.settings-app-tab-header>p {
+    padding-left: 1vh;
+    color: black;
+}
+
+.settings-tab-icon {
+    position: relative;
+    left: 10px;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+    color: white;
+    border-radius: 7px;
+}
+
+.settings-tab-icon > img {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    box-shadow: 0 0 .5vh 0 rgba(0, 0, 0, 0.05);
+    margin-left: -0.1vh;
+    top: 9px;
+    left: 5px;
+    object-fit: cover;
+}
+
+#settings-player-name {
+    width: 150px;
+    max-width: 150px;
+    left: 80px;
+    top: 25px;
+    font-family: 'ios';
+    font-size: 17px;
+    font-weight: 600;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.settings-player-right {
+    position: relative;
+    font-size: 18px;
+    left: 248px;
+    top: 8px;
+}
+
+#settings-player-description {
+    left: 80px;
+    top: 50px;
+    font-family: 'ios';
+    font-size: 13px;
+}
+
+
+#settingsicon {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 12px;
+    transform: translate(-50%, -50%);
+}
+
+#settingsicon_pp {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 13px;
+    transform: translate(-50%, -50%);
+}
+
+#settingsicon1 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 12px;
+    transform: translate(-50%, -50%);
+}
+
+#settingsicon2 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 12px;
+    transform: translate(-50%, -50%);
+}
+
+.settings-tab-title {
+    position: absolute;
+    left: 45px;
+    top: 13px;
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: 'ios';
+}
+
+.settings-tab-description-right {
+    margin: 0;
+    position: absolute;
+    top: 10px;
+    left: 250px;
+    font-size: 15px;
+}
+
+.settings-tab-description-number {
+    position: absolute;
+    left: 190px;
+    top: 14px;
+    font-size: 13px;
+    font-family: 'ios';
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.clock-add-alarm-settings .settings-tab-title {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'ios';
+    flex: 1;
+}
+
+.clock-add-alarm-settings .settings-tab-description {
+    position: absolute;
+    left: 150px;
+    top: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.settings-tab-description {
+    position: absolute;
+    left: 234px;
+    top: 10px;
+    font-size: 10.508px;
+    font-family: 'ios';
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.settings-background-tab {
+    display: none;
+    position: absolute;
+    right: -100%;
+    height: 109%;
+    width: 100%;
+    top: 0px;
+    background: var(--second-background-color);
+}
+
+.nomargin {
+    position: relative;
+    margin: 0;
+}
+
+.nomargin:after {
+    position: absolute;
+    content: '';
+    border-bottom: 1px solid var(--border-gray);
+    width: 80%;
+    bottom: 0;
+    right: 0;
+}
+
+.nomargin:last-child:after {
+    border-bottom: none;
+}
+
+.phone-add-contact-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    justify-content: center;
+}
+
+.phone-add-contact-image-source {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+}
+
+.settings-profilepicture-tab {
+    display: none;
+    position: absolute;
+    right: -100%;
+    height: 110%;
+    width: 100%;
+    top: 0px;
+    background: var(--second-background-color);
+}
+
+.take-profile-photo {
+    z-index: 100;
+    font-size: 1.8rem;
+    color: black;
+    transition: 100ms all ease-in-out;
+}
+
+.take-profile-photo:hover {
+    transition: 100ms all ease-in-out;
+    color: var(--border-gray);
+}
+
+.background-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 465px;
+    margin-left: 5px;
+}
+
+.background-container-div {
+    margin-top: 76px;
+    width: 303px;
+    padding-right: 10px;
+    overflow-y: hidden;
+}
+
+
+.background-container-div:hover,
+.background-container-div:focus,
+.background-container-div:focus-within {
+    overflow-y: auto;
+    padding-right: unset;
+} 
+
+.background-container div {
+    height: fit-content;
+    margin: 11px;
+    width: 120px;
+}
+
+#settingsicon_bg {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 13px;
+    transform: translate(-50%, -50%);
+}
+
+.background-container div img {
+    width: 135px;
+    height: 235px;
+    border-radius: 15px;
+}
+
+.settings-details-tab {
+    display: none;
+    position: absolute;
+    right: -100%;
+    height: 110%;
+    width: 100%;
+    top: 0px;
+    background: var(--second-background-color);
+}
+
+.background-option-icon {
+    position: absolute;
+    height: 100%;
+    width: 6vh;
+    text-align: center;
+    line-height: 7vh;
+    font-size: 2.3vh;
+    color: #fbc531;
+}
+
+.background-option-title {
+    position: absolute;
+    left: 6vh;
+    top: 1.5vh;
+    text-align: center;
+    font-size: 1vh;
+    color: #030303;
+    font-size: 1.3vh;
+    font-family: 'ios';
+}
+
+.background-option-description {
+    position: absolute;
+    left: 6vh;
+    top: 3.6vh;
+    text-align: center;
+    font-size: 1vh;
+    color: #030303b9;
+    font-size: 1.1vh;
+    font-family: 'ios';
+}
+
+.background-option-current {
+    position: absolute;
+    right: 3vh;
+    top: 2.5vh;
+    text-align: center;
+    font-size: 1.6vh;
+    color: #030303b9;
+    font-family: 'ios';
+}
+
+.background-buttons {
+    position: absolute;
+    bottom: 0;
+    height: 5vh;
+    width: 100%;
+}
+
+.background-button {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    line-height: 4.7vh;
+    color: black;
+    font-family: 'ios';
+    font-size: 1.5vh;
+    transition: .05s;
+    border-top: 2px solid #e8421800;
+}
+
+.background-button:hover {
+    background-color: #dadbdb;
+    border-top: 2px solid #e84118;
+}
+
+.background-custom {
+    display: none;
+    background: white;
+    border: 1px solid var(--border-gray);
+    border-radius: 16px;
+    width: 80%;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.background-custom-title {
+    font-family: 'ios';
+    font-size: 1.5vh;
+    text-align: center;
+    font-weight: bold;
+    padding: 16px 0px 8px 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.background-custom-input-fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translate(calc(-50% - 12px), 0px);
+    margin: 12px;
+    height: 3.5vh;
+    font-family: 'ios';
+}
+
+.custom-background-input {
+    width: 100%;
+    margin-right: 8px;
+    border-radius: 12px;
+    border: 1px solid var(--border-gray);
+    outline: none;
+    height: 3.5vh;
+    font-family: 'ios';
+    text-align: center;
+}
+
+.custom-background-input::placeholder {
+    text-align: center;
+}
+
+.background-custom-buttons {
+    width: 100%;
+    height: 4vh;
+}
+
+.custom-background-button {
+    position: relative;
+    float: left;
+    display: flex;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    line-height: 4.1vh;
+    font-family: 'ios';
+    font-size: 1.5vh;
+    transition: .08s;
+    border-bottom: 2px solid #e8421800;
+    border: 1px solid var(--border-gray);
+    color: var(--main-blue);
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    transition: 100ms all ease-in-out;
+}
+
+.custom-background-button:hover {
+    transition: 100ms all ease-in-out;
+    background-color: var(--border-gray);
+}
+
+
+/* .background-custom {
+    display: none;
+    position: absolute;
+    height: 40%;
+    width: 80%;
+    background-color: rgb(245, 245, 245);
+    box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.247);
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -23vh;
+    border-radius: 2vh;
+    overflow: hidden;
+}
+
+.background-custom-title {
+    font-family: 'ios';
+    padding: 2vh;
+    font-size: 1.5vh;
+    text-align: center;
+}
+
+.custom-background-input {
+    position: absolute;
+    left: 1vh;
+    background: none;
+    border: none;
+    outline: none;
+    height: 3.5vh;
+    width: 21vh;
+    font-family: 'ios';
+    background: rgb(235, 235, 235);
+    border-radius: 2vh;
+    text-align: center;
+}
+
+.custom-background-input::placeholder {
+    text-align: center;
+}
+
+.background-custom-buttons {
+    position: absolute;
+    bottom: 2vh;
+    width: 100%;
+    height: 5vh;
+}
+
+.custom-background-button {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    line-height: 4.1vh;
+    color: black;
+    font-family: 'ios';
+    font-size: 1.5vh;
+    transition: .08s;
+    border-bottom: 2px solid #e8421800;
+}
+
+.custom-background-button:hover {
+    background-color: #dadbdb65;
+    border-bottom: 2px solid #e84118;
+} */
+
+
+.phone-settings-image-source {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#mySerialNumber_ram {
+    left: 230px;
+    font-size: 12px;
+}
+
+.pp_options {
+    position: absolute;
+    width: 270px;
+    height: 34px;
+    top: 260px;
+    left: 22px;
+}
+
+.details_options {
+    position: absolute;
+    width: 270px;
+    height: 34px;
+    top: 90px;
+    left: 22px;
+}
+
+#mySerialNumber {
+    position: absolute;
+    left: 187px;
+    top: 13px;
+    font-size: 12px;
+    font-family: 'ios';
+    color: rgba(0, 0, 0, 0.65);
+}
+
+#myPassword {
+    position: absolute;
+    left: 230px;
+    top: 10px;
+    font-size: 10.508px;
+    font-family: 'ios';
+    color: rgba(0, 0, 0, 0.65);
+}
+
+#mySerialNumber_det {
+    position: absolute;
+    left: 190px;
+    top: 13px;
+    font-size: 12px;
+    font-family: 'ios';
+    color: rgba(0, 0, 0, 0.65);
+}
+
+#details_tab {
+    position: relative;
+    width: 270px;
+    height: 43px;
+    left: 0px;
+    top: 0px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    transition: all .1s;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0);
+    box-shadow: 0px 0px 1px grey;
+    background: #fff;
+}
+
+#details_tab_top {
+    position: relative;
+    width: 270px;
+    height: 43px;
+    left: 0px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: #fff;
+}
+
+#details_tab_bottom {
+    position: relative;
+    width: 270px;
+    height: 43px;
+    left: 0px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: #fff;
+}
+
+#exclamacion_mini {
+    position: relative;
+    left: 248px;
+    top: -14.4px;
+    color: red;
+    font-size: 13px;
+}
+
+.background_options {
+    position: relative;
+    width: 270px;
+    height: 34px;
+    top: 10px;
+    left: 22px;
+}
+
+
+.profilepicture-option {
+    position: relative;
+    width: 270px;
+    height: 43px;
+    left: -1px;
+    background-color: var(--main-background-color);
+} 
+
+.profilepicture-option-icon {
+    position: absolute;
+    height: 100%;
+    width: 6vh;
+    text-align: center;
+    line-height: 7vh;
+    font-size: 2.3vh;
+    color: #fbc531;
+}
+
+.profilepicture-option-title {
+    position: absolute;
+    left: 6vh;
+    top: 1.5vh;
+    text-align: center;
+    font-size: 1vh;
+    color: #030303;
+    font-size: 1.3vh;
+    font-family: 'ios';
+}
+
+.profilepicture-option-description {
+    position: absolute;
+    left: 6vh;
+    top: 3.6vh;
+    text-align: center;
+    font-size: 1vh;
+    color: #030303b9;
+    font-size: 1.1vh;
+    font-family: 'ios';
+}
+
+.profilepicture-option-current {
+    position: absolute;
+    right: 3vh;
+    top: 2.5vh;
+    text-align: center;
+    font-size: 1.6vh;
+    color: #030303b9;
+    font-family: 'ios';
+}
+
+.profilepicture-buttons {
+    position: absolute;
+    bottom: 0;
+    height: 5vh;
+    width: 100%;
+}
+
+.profilepicture-button {
+    position: relative;
+    float: left;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    line-height: 4.7vh;
+    color: black;
+    font-family: 'ios';
+    font-size: 1.5vh;
+    transition: .05s;
+    border-top: 2px solid #e8421800;
+}
+
+.profilepicture-button:hover {
+    background-color: #dadbdb;
+    border-top: 2px solid #e84118;
+}
+
+.profilepicture-custom {
+    display: none;
+    background: white;
+    border: 1px solid var(--border-gray);
+    border-radius: 16px;
+    width: 80%;
+    height: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.profilepicture-custom-title {
+    font-family: 'ios';
+    font-size: 1.5vh;
+    text-align: center;
+    font-weight: bold;
+    padding: 16px 0px 8px 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profilepicture-custom-input-fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translate(calc(-50% - 12px), 0px);
+    margin: 12px;
+    height: 3.5vh;
+    font-family: 'ios';
+}
+
+/* Mini animación al escribir Recio */
+
+.custom-profilepicture-input {
+    width: 100%;
+    margin-right: 8px;
+    border-radius: 12px;
+    border: 1px solid var(--border-gray);
+    outline: none;
+    height: 3.5vh;
+    font-family: 'ios';
+    text-align: center;
+    transition: all .5s;
+}
+
+.custom-profilepicture-input:focus {
+    border: 1px solid #499eff;
+}
+
+/* Mini animación al escribir */
+
+.custom-profilepicture-input::placeholder {
+    text-align: center;
+}
+
+.profilepicture-custom-buttons {
+    width: 100%;
+    height: 4vh;
+}
+
+.custom-profilepicture-button {
+    position: relative;
+    float: left;
+    display: flex;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    line-height: 4.1vh;
+    font-family: 'ios';
+    font-size: 1.5vh;
+    transition: .08s;
+    border-bottom: 2px solid #e8421800;
+    border: 1px solid var(--border-gray);
+    color: var(--main-blue);
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    transition: 100ms all ease-in-out;
+}
+
+.custom-profilepicture-button:hover {
+    transition: 100ms all ease-in-out;
+    background-color: var(--border-gray);
+}
+
+/* The switch_settings - the box around the slider */
+.switch_settings {
+    position: absolute;
+    width: 52.745px;
+    height: 34.921px !important;
+    top: 30px !important;
+    right: 14.77px !important;
+    zoom: 70%;
+    transform: translateY(-50%);
+}
+  
+/* Hide default HTML checkbox */
+.switch_settings input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0px !important;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    margin: 0;
+    height: 29.729px;
+    width: 29.729px;
+    left: 2px !important;
+    bottom: 11%;
+    background-color: white;
+    box-shadow: 0px 2px 3px #8e8e8e;
+    transition: all 0.4s ease 0s;
+}
+  
+input:checked + .slider {
+    background-color: #50df72;
+    box-shadow: inset 0px 0px 20px #ffffff66;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #50df72;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(65%);
+    -ms-transform: translateX(65%);
+    transform: translateX(65%);
+}
+  
+/* Rounded sliders */
+.slider.round {
+    border-radius: 24px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#w1  {
+    width: 90%; 
+    margin-left: 15px;
+}
+
+#w2  {
+    margin-top: 10px; 
+    width: 90%; 
+    margin-left: 15px; 
+    margin-bottom: 10px;
+}
+
+#widget_tab {
+    border-radius: 7px;
+}
+
+.widget_ayarlari {
+    width: 100%;
+    height: 105%;
+    right: -100%;
+    background: white;
+    position: absolute;
+    display: block;
+}
+
+.arkaplan_ayarlari {
+    width: 100%;
+    height: 100%;
+    background: white;
+    position: absolute;
+    display: none;
+    overflow-y: scroll;
+}
+
+
+.weather-widget {
+    display: none;
+    width: 260.34px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: 1px;
+    height: 105.49px;
+    border-radius: 20px;
+    background: url(../img/app_details/wg1.png);
+    background-size: cover;
+    height: 115.08px;
+}
+
+.calendar-widget {
+    display: none;
+    width: 260.34px;
+    margin-left: 18px;
+    margin-right: 10px;
+    margin-bottom: 1px;
+    margin-top: 15px;
+    height: 120px;
+    border-radius: 13px;
+    background: url(../img/app_details/wg2.png) 0% 0% / cover;
+}
+
+.widget-title {
+    font-weight: 600;
+}
+
+
+.ark {
+    width: 90px;
+    height: 200px;
+    background-size: cover;
+    margin-left: 8px;
+    float: left;
+    border-radius: 10px;
+    margin-right: 3px;
+    margin-top: 10px;
+}
+
+
+.arkaplan_ayarlari::-webkit-scrollbar {
+    display: none;
+}
+
+/* The switch_settings - the box around the slider */
+.switch_settings {
+    position: absolute;
+    width: 45.745px;
+    height: 28.921px !important;
+    top: 30px;
+    right: 13.77px !important;
+    zoom: 70%;
+    transform: translateY(-50%);
+}
+  
+/* Hide default HTML checkbox */
+.switch_settings input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 1px;
+    right: 0;
+    bottom: 1px;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    margin: 0;
+    height: 24px;
+    width: 24px;
+    left: 5px;
+    bottom: 11%;
+    background-color: white;
+    box-shadow: 0px 2px 3px #8e8e8e;
+    transition: all 0.4s ease 0s;
+}
+  
+input:checked + .slider {
+    background-color: #50df72;
+    box-shadow: inset 0px 0px 20px #ffffff66;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #50df72;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(65%);
+    -ms-transform: translateX(65%);
+    transform: translateX(65%);
+}
+  
+/* Rounded sliders */
+.slider.round {
+    border-radius: 24px;
+    
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* OPTIMIZE GAME */
+
+.flex-center,
+.container-wrapper .container-status .status-wrapper .status,
+.container-wrapper .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-wrapper {
+    position: relative;
+    padding: 30px 0;
+    background: #f2f2f2;
+    width: 100%;
+    height: 110%;
+}
+
+.container-wrapper .container-wrapper-container {
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.container-wrapper .container-wrapper-container .results {
+    margin-left: 40px;
+    width: 50%;
+}
+
+.container-wrapper .container-wrapper-container .results h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.container-wrapper .container-wrapper-container .progress {
+    position: absolute;
+    width: 35px;
+    top: 3%;
+    height: 25%;
+    border-radius: 50px;
+    overflow: hidden;
+    left: 75%;
+    background: #e5e5e5;
+}
+
+.status .progress {
+    overflow: inherit;
+}
+
+.container-wrapper .container-wrapper-container .progress .rates {
+    position: absolute;
+    bottom: 0;
+    background: #3281ea;
+    width: 100%;
+}
+
+.container-wrapper .container-status {
+    position: absolute;
+    width: 100%;
+    top: 15%;
+    margin: 100px 0;
+    padding: 0 30px;
+    border-radius: 10px;
+}
+
+.container-wrapper .container-status .status-wrapper {
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    align-items: center;
+    padding: 1px 10px 10px 0;
+}
+
+.container-wrapper .container-status .status-wrapper .icon {
+    font-size: 1.5rem;
+}
+
+.container-wrapper .container-status .status-wrapper .icon i {
+    color: #999999;
+}
+
+.container-wrapper .container-status .status-wrapper .status {
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+    border-bottom: 1px solid #3333;
+}
+
+.container-wrapper .container-status .status-wrapper .status .title h1 {
+    font-size: 1.1rem;
+}
+
+.container-wrapper .container-status .status-wrapper .status .progress .progress-status {
+    width: 100px;
+    height: 13px;
+    border-radius: 50px;
+    overflow: hidden;
+    background: #e5e5e5;
+    margin-bottom: 10px;
+}
+
+.container-wrapper .container-status .status-wrapper .status .progress .progress-status .status-bar {
+    height: 100%;
+    width: 50%;
+    background: #3281ea;
+}
+
+.settings-optimization-tab {
+    display: none;
+    position: absolute;
+    right: -100%;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    background: var(--second-background-color);
+}
+
+.container-wrapper .container-status .status-wrapper .status .progress h1 {
+    font-size: 1.1rem;
+}
+
+.container-wrapper .btn-optimise {
+    position: absolute;
+    bottom: 125px;
+    left: 150px;
+    transform: translateX(-50%);
+    background: #3281ea;
+    padding: 12px 35px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ffffff;
+} 
+
+.settings-app-tab.security {
+    height: 7vh;
+}
+
+.settings-security-password {
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 15px;
+    margin-left: -5px;
+}
+
+#reset-password {
+    position: absolute;
+    left: 2px;
+    top: -3px;
+}
+
+.fa-times-circle:hover {
+    color: #e84118
+}
+
+.settings-security-tab {
+    display: none;
+    position: absolute;
+    right: -100%;
+    height: 110%;
+    width: 100%;
+    top: 0px;
+    background: var(--second-background-color);
+    overflow: auto;
+}
+
+@media only screen and (min-height: 1081px) {
+    .settings-app-tab {
+        width: 370px;
+        height: 48px;
+        right: 7px;
+    
+    }
+    
+    .settings-app-tab-information {
+        height: 655px;
+    }
+    
+    .settings-tab-description-right {
+        left: 347px;
+        top: 15px;
+        font-size: 15px;
+    }
+    
+    .settings-tab-description-number {
+        left: 280px;
+        font-size: 14px;
+        top: 14px;
+    }
+    
+    .settings-player-right {
+        left: 345px;
+        font-size: 18px;
+        top:  5px;
+    }
+    
+    .settings-tab-description {
+        left: 320px;
+        font-size: 14px;
+        top: 15px;
+    }
+    
+    .settings-tab-icon {
+        top: 13px;
+        height: 25px;
+        width: 25px;
+    }
+    
+    .settings-tab-title {
+        top: 15px;
+        left: 50px;
+        font-size: 14px;
+    }
+    
+    #details_tab,
+    #details_tab_bottom,
+    #details_tab_top {
+        width: 370px;
+        height: 50px;
+        left: 5px;
+    }
+    
+    #mySerialNumber {
+        left: 270px;
+        font-size: 15px;
+    }
+    
+    #mySerialNumber_det {
+        left: 275px;
+        font-size: 15px;
+    }
+    
+#mySerialNumber_ram {
+        left: 325px;
+        font-size: 15px;
+    }
+
+    #exclamacion_mini {
+        left: 345px;
+        top: -13px;
+        font-size: 15px;
+    
+    }
+    
+    .pp_options {
+        height: 50px;
+        left: 30px;
+    }
+    
+    .background-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        background: white;
+        height: 665px;
+        overflow: auto;
+        background: var(--second-background-color);
+    }
+    
+    .background-container-div {
+        margin-top: 88px;
+    }
+    
+    .background-container div {
+        height: fit-content;
+        margin: 35px;
+        width: 120px;
+    }
+    
+    .background-container div img {
+        width: 165px;
+        height: 315px;
+        border-radius: 15px;
+    }
+    
+    .weather-widget {
+        width: 360.34px;
+        height: 170px;
+    }
+    
+    .calendar-widget {
+        width: 360.34px;
+        height: 170px;
+    }
+    
+    .container-wrapper .container-wrapper-container .progress {
+        width: 40px;
+        height: 30%;
+    }
+    
+    .container-wrapper .container-status {
+        top: 25%;
+    }
+    
+    .container-wrapper .btn-optimise {
+        position: absolute;
+        bottom: 185px;
+        left: 210px;
+        transform: translateX(-50%);
+        background: #3281ea;
+        padding: 12px 35px;
+        cursor: pointer;
+        border-radius: 50px;
+        font-weight: 500;
+        font-size: 18px;
+        color: #ffffff;
+    } 
+
+    #widget_tab {
+        margin-top: 20px;
+    }
+
+   .call-image {
+    width: 58.5px;
+    height: 58.5px;
+   }
+
+   .switch_settings {
+    top: 34px !important;
+}
+
+#settings-player-description {
+    left: 75px;
+    top: 43px;
+    font-family: 'ios';
+    font-size: 13px;
+}
+
+}
+
+/* QS-recio */
+
+@media screen and (min-height: 1200px) {
+
+    .settings-app-tab-information {
+        position: absolute;
+        top: 100px;
+        height: 751px;
+        width: 404px;
+        left: 8px;
+        padding-right: 10px;
+        overflow: auto;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    #profile_tab {
+        width: 373px;
+        height: 90px;
+        left: 4px;
+        margin-bottom: 13px;
+        border-radius: 8px;
+    }
+
+    .settings-app-tab-information:hover {
+        position: absolute;
+        top: 100px;
+        height: 751px;
+        width: 404px;
+        left: 8px;
+        padding-right: 10px;
+        overflow: auto;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    #profile_tab:hover {
+        width: 373px;
+        height: 90px;
+        left: 4px;
+        margin-bottom: 13px;
+        border-radius: 8px;
+    }
+
+    .profilepicture-custom {
+        display: none;
+        background: white;
+        border: 1px solid var(--border-gray);
+        border-radius: 16px;
+        width: 80%;
+        height: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 49%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+    }
+
+    p {
+        margin: 0 0 0px;
+    }
+
+}

@@ -1,0 +1,884 @@
+.clock-app *::selection {
+    background-color: transparent;
+}
+
+.clock-app-header {
+    position: absolute;
+    width: 100%;
+    height: 58.8px;
+    top: 420px;
+    z-index: 99;
+}
+
+.clock-app-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    color: black;
+    background: white
+}
+
+.clock-app {
+    font-family: 'ios';
+    display: none;
+    height: 108%;
+    width: 100%;
+    color: black;
+    background: white;
+    overflow: hidden;
+}
+
+.clock-app-tab {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 12px;
+    flex: 1;
+}
+
+.clock-app-alarm-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.clock-app-alarm-page::-webkit-scrollbar {
+    display: none
+}
+
+
+.clock-app-alarm-add,
+.clock-app-alarm-add-label {
+    left: 100%;
+}
+
+.clock-add-alarm-settings p {
+    margin: 0 !important;
+}
+
+#clock-alarm-repeat-option {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#clock-alarm-label-option {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#alarm_text {
+   left: 163px;
+}
+    
+#repeat_text {
+   left: 145px;
+} 
+
+.clock-add-alarm-settings .settings-tab-description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-left: 60px;
+}
+
+#clock-alarm-label-option-input::placeholder {
+    font-family: 'ios';
+}
+
+#clock-alarm-label-option,
+#clock-alarm-repeat-option {
+    position: relative;
+    width: 270px;
+    height: 34px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    transition: all .1s;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.0);
+    box-shadow: 0px 0px 1px grey;
+    background: #fff;
+}
+
+#clock-alarm-label-option-input {
+    width: 100%;
+    font-size: 22px;
+    text-indent: 12px;
+    border: 1px solid var(--border-gray);
+    font-family: 'ios';
+}
+
+.clock-app-alarm-add-label-container {
+    width: 100%;
+    height: 93%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock-app-tab .global-app-header {
+    height: unset;
+    top: unset;
+    margin-bottom: unset;
+    padding-top: 40px;
+    font-size: 16px;
+    background: rgb(230, 230, 230);
+    border-bottom: .1vh solid #c9c9c9;
+}
+
+.clock-app-tab .global-app-header .blue-text:last-child {
+    place-self: flex-end;
+    position: unset;
+}
+
+.clock-app-tab-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 40px;
+    background: rgb(230, 230, 230);
+    border-bottom: .1vh solid #c9c9c9;
+}
+
+.clock-app-active {
+    display: flex !important;
+}
+
+.clock-app-footer {
+    margin-bottom: -40px;
+    height: 88px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    text-align: center;
+    padding: 8px 16px;
+    background: rgb(230, 230, 230);
+    border-top: .1vh solid #c9c9c9;
+}
+
+.clock-app-footer i {
+    font-size: 26px;
+}
+
+.clock-app-footer p {
+    font-size: 12px;
+}
+
+.clock-app-header-button {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 80%;
+    text-align: center;
+    line-height: 6vh;
+    background: #0f0f0f;
+    border-bottom: .1vh solid #c9c9c9;
+    font-family: 'ios';
+    color: white;
+    transition: .08s;
+}
+
+.clock-app-header-button:hover {
+    background: #252525;
+}
+
+.clock-app-footer-selected p {
+    color: #ff7c14;
+}
+
+.clock-app-footer-selected i {
+    color: #ff7c14;
+}
+
+.clock-app-loaded {
+    display: none;
+    padding-left: 284.1px;
+    height: 625px;
+}
+
+.clock-app-loading {
+    position: absolute;
+    top: 0;
+    left: 0vh;
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.stopwatch-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 64px;
+    font-size: 64px;
+    background: var(--main-background-color);
+    font-family: 'ios';
+}
+
+.clock-buttons {
+    display: flex;
+    align-items: center;
+    background: var(--main-background-color);
+    padding: 0 26px 16px 26px;
+    justify-content: space-between;
+    font-size: 14px;
+    border-bottom: .1vh solid #c9c9c9;
+}
+
+.clock-button {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-radius: 50%;
+    color: var(--main-background-color);
+}
+
+.clock-button p {
+    font-size: 16px;
+    margin: 0 !important;
+}
+
+.clock-button[data-type="lap"] {
+    background: var(--main-dark-gray);
+    border: 2px solid var(--main-darker-gray);
+}
+
+.clock-button[data-type="clear"] {
+    background: #000000;
+    border: 2px solid #313131;
+}
+
+.clock-button[data-type="start"] {
+    background: var(--main-green);
+    border: 2px solid var(--main-darker-green);
+}
+
+.clock-button[data-type="stop"] {
+    background: var(--main-red);
+    border: 2px solid var(--main-darker-red);
+}
+
+.stopwatch-lap-list {
+    overflow: auto;
+    max-height: 25.7vh;
+}
+
+.stopwatch-lap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    padding: 0 16px;
+    border-bottom: .1vh solid #c9c9c9;
+    background: var(--main-background-color);
+}
+
+.stopwatch-lap:last-child {
+    border-bottom: none;
+}
+
+.stopwatch-lap p {
+    margin: 8px;
+}
+
+.stopwatch-lap-list::-webkit-scrollbar {
+    position: absolute;
+    width: .6vh;
+}
+
+.stopwatch-lap-list::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.stopwatch-lap-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 1vh 0 0 1vh;
+}
+
+.world-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    background: var(--main-background-color);
+}
+
+.world-time:last-child {
+    border-bottom: .1vh solid #c9c9c9;
+}
+
+.world-time::after {
+    content: "";
+    width: 100%;
+    margin-top: 22%;
+    margin-left: -30px;
+    background: var(--border-gray);
+    position: absolute;
+    color: black;
+    height: 1px;
+}
+
+.world-time:last-child::after {
+    display: none;
+}
+
+.world-time p {
+    margin: 0;
+}
+
+.world-time-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.world-time-info p:first-child {
+    font-size: 20px;
+}
+
+.world-time-info p:last-child {
+    color: var(--main-dark-gray);
+    font-family: 'ios';
+    font-size: 12px;
+}
+
+.world-time-clock {
+    display: flex;
+    align-items: flex-end;
+}
+
+.world-time-clock p:first-child {
+    font-size: 46px;
+}
+
+.world-time-clock p:last-child {
+    font-size: 19px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+.clock-timer-setup-container {
+    display: flex;
+    border-bottom: 1px solid var(--border-gray);
+    margin-bottom: 32px;
+}
+
+.clock-app-timer-setup {
+    position: absolute;
+    width: 100%;
+}
+
+.clock-timer-container #clock-timer-minute-picker {
+    text-align: right;
+    direction: rtl;
+    text-indent: 8px;
+}
+
+.clock-timer-container #clock-timer-second-picker {
+    text-align: left;
+    text-indent: 8px;
+}
+
+.clone-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.clock-app-timer-show {
+    position: absolute;
+    width: 100%;
+    left: 100%;
+    display: none;
+}
+
+.clock-app-timer-show-container-texts {
+    display: flex;
+    background: var(--main-background-color);
+    padding-top: 64px;
+    font-size: 64px;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock-app-alarm-list-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0 22px 4px 22px;
+    background: var(--main-background-color);
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.clock-app-alarm-list-item-description {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.clock-app-alarm-list-item-description span {
+    font-size: 52px;
+    font-family: 'ios';
+    margin: 0 0 -12px 0;
+}
+
+.clock-app-alarm-cycle-text {
+    font-size: 16px;
+    font-family: 'ios';
+}
+
+.switch__container {
+    width: 60px;
+}
+
+.switch {
+    position: absolute;
+    left: -9999px;
+}
+
+.switch+label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+.switch--shadow+label {
+    padding: 2px;
+    width: 60px;
+    height: 30px;
+    background-color: #dddddd;
+    border-radius: 60px;
+}
+
+.switch--shadow+label:before,
+.switch--shadow+label:after {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: "";
+}
+
+.switch--shadow+label:before {
+    right: 1px;
+    background-color: #f1f1f1;
+    border-radius: 60px;
+    transition: background 0.4s;
+}
+
+.switch--shadow+label:after {
+    width: 26px;
+    height: 26px;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s;
+}
+
+.switch--shadow:checked+label:before {
+    background-color: #8ce196;
+}
+
+.switch--shadow:checked+label:after {
+    transform: translateX(32px);
+}
+
+/* Estilo Flat */
+.switch--flat+label {
+    padding: 2px;
+    width: 60px;
+    height: 30px;
+    background-color: #dddddd;
+    border-radius: 60px;
+    transition: background 0.4s;
+}
+
+.switch--flat+label:before,
+.switch--flat+label:after {
+    display: block;
+    position: absolute;
+    content: "";
+}
+
+.switch--flat+label:before {
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    right: 2px;
+    background-color: #fff;
+    border-radius: 60px;
+    transition: background 0.4s;
+}
+
+.switch--flat+label:after {
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
+    width: 56px;
+    background-color: #dddddd;
+    border-radius: 52px;
+    transition: margin 0.4s, background 0.4s;
+}
+
+.switch--flat:checked+label {
+    background-color: #8ce196;
+}
+
+.switch--flat:checked+label:after {
+    margin-left: 60px;
+    background-color: #8ce196;
+}
+
+.global-app-header {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    white-space: nowrap;
+    top: 3.2vh;
+    position: relative;
+    padding: 0px 24px;
+    font-size: 1.5vh;
+    text-align: center;
+    font-family: 'ios';
+    margin-bottom: 48px;
+}
+
+.global-app-header p:nth-child(2) {
+    font-weight: bold;
+}
+
+.global-app-header .blue-text {
+    color: #087FFF;
+}
+
+.global-app-header .blue-text:last-child {
+    position: absolute;
+    right: 22px;
+}
+
+.global-app-header .red-text {
+    color: red;
+    position: absolute;
+    right: 24px;
+}
+
+/* Bottom Selector START */
+
+.phone-bottom-selector {
+    position: absolute;
+    height: fit-content;
+    width: 90%;
+    left: 5%;
+    bottom: -100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    color: cornflowerblue;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'ios';
+    z-index: 5100;
+}
+
+.phone-bottom-selector div {
+    text-align: center;
+    background: var(--main-background-color);
+}
+
+.phone-bottom-selector-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0;
+    border-radius: 12px / 16px;
+    transition: all 100ms ease-in-out;
+}
+
+.phone-bottom-selector-item:hover,
+.phone-bottom-selector-close-button:hover {
+    background: var(--second-background-color);
+    transition: all 100ms ease-in-out;
+}
+
+.phone-bottom-selector-title {
+    color: darkslategray;
+    font-size: 12px;
+    padding: 8px;
+}
+
+.phone-bottom-selector-item {
+    padding: 12px;
+    width: 100%;
+    border-top: 1px solid var(--second-background-color);
+}
+
+.phone-bottom-selector-item:last-child {
+    border-radius: 0 0 16px 16px;
+}
+
+.phone-bottom-selector-close-button {
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px / 16px;
+    transition: all 100ms ease-in-out;
+}
+
+.gray-background {
+    display: none;
+    position: absolute;
+    background: black;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 5000;
+}
+
+/* Bottom Selector END */
+
+
+/* Icon */
+
+.icon-clock {
+    overflow: hidden;
+    background: #000;
+    border-radius: 12px;
+    transform: scale(1.05);
+}
+
+.clock {
+    width: 192px;
+    height: 192px;
+    border-radius: 50%;
+    background: #f1f1f1;
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    transform: translate(-50%, -50%) scale(0.22);
+    margin-left: 5px;
+}
+
+.clock ol {
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.clock ol li {
+    counter-increment: labelCounter;
+    position: absolute;
+    font-size: 1.25em;
+}
+
+.clock ol li:before {
+    font-family: "Helvetica";
+    content: counter(labelCounter) "";
+}
+
+.clock ol li:nth-child(1) {
+    right: 55px;
+    top: 20px;
+}
+
+.clock ol li:nth-child(2) {
+    right: 25px;
+    top: 50px;
+}
+
+.clock ol li:nth-child(3) {
+    right: 12px;
+    top: 85px;
+}
+
+.clock ol li:nth-child(4) {
+    right: 25px;
+    top: 125px;
+}
+
+.clock ol li:nth-child(5) {
+    right: 55px;
+    top: 150px;
+}
+
+.clock ol li:nth-child(6) {
+    right: 90px;
+    top: 160px;
+}
+
+.clock ol li:nth-child(7) {
+    right: 125px;
+    top: 150px;
+}
+
+.clock ol li:nth-child(8) {
+    right: 155px;
+    top: 125px;
+}
+
+.clock ol li:nth-child(9) {
+    right: 165px;
+    top: 85px;
+}
+
+.clock ol li:nth-child(10) {
+    right: 150px;
+    top: 50px;
+}
+
+.clock ol li:nth-child(11) {
+    right: 120px;
+    top: 20px;
+}
+
+.clock ol li:nth-child(12) {
+    right: 85px;
+    top: 10px;
+}
+
+@-webkit-keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#hour {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #303030;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -7px;
+    margin-left: -7px;
+}
+
+#hour:before,
+#hour:after {
+    content: "";
+    display: block;
+    position: absolute;
+}
+
+#hour:before {
+    width: 8px;
+    height: 65px;
+    border-radius: 4px;
+    background: #303030;
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#min {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #303030;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+#min:before,
+#min:after {
+    content: "";
+    display: block;
+    position: absolute;
+}
+
+#min:before {
+    width: 6px;
+    height: 90px;
+    border-radius: 4px;
+    background: #303030;
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#sec {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #dd3e1c;
+    border: 2px solid #e13e1b;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -4px;
+    margin-left: -4px;
+}
+
+#sec:before,
+#sec:after {
+    content: "";
+    display: block;
+    position: absolute;
+}
+
+#sec:before {
+    width: 2px;
+    height: 105px;
+    border-radius: 4px;
+    background: #e13e1b;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+@media only screen and (min-height: 1081px) {
+    .clock {
+        top: 36px;
+        transform: translate(-50%, -50%) scale(0.33);
+        margin-left: 17px;
+    }
+
+    #clock-alarm-label-option,
+    #clock-alarm-repeat-option {
+        width: 370px;
+        height: 45px;
+    
+    }
+
+    .clock-app-footer {
+        margin-bottom: -260px;
+        height: 88px;
+        gap: 60px;
+    }
+    
+    #alarm_text {
+        left: 260px;
+    }
+    
+    #repeat_text {
+         left: 240px;
+    } 
+    
+    #alarm_title {
+        top: 12px;
+    } 
+    
+    .world-time::after {
+        margin-top: 15%;
+    }
+}

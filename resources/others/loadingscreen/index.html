@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>connexion</title>
+    <style type="text/css">
+        body {
+            color: #ffffff;
+            background: #000000;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <header>
+        <script src="js/jquery-1.11.0.min.js"></script>
+        <script src="js/jquery.backstretch.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.ajaxchimp.js"></script>
+        <script src="js/lj-safety-first.js"></script>
+
+        <html>
+
+        <head>
+            <link href="css/style.css" rel="stylesheet" type="text/css" />
+        </head>
+
+        </script>
+
+        <h1 class="enable_music">Appuyez sur <strong>ESPACE</strong> pour mettre en pause la musique</h1>
+        <audio id="leson" src="music/load.mp3" autoplay="true" hidden="true" loop="true" />
+        <script>
+            var play = false;
+            var myAudio = document.getElementById("leson");
+
+            myAudio.volume = 0.05;
+
+            function onKeyDown(event) {
+                switch (event.keyCode) {
+                    case 32: //SpaceBar                    
+                        if (play) {
+                            myAudio.pause();
+                            play = false;
+                        } else {
+                            myAudio.play();
+                            play = true;
+                        }
+                        break;
+                }
+                return false;
+            }
+
+            window.addEventListener("keydown", onKeyDown, false);
+        </script>
+
+</body>
+
+</html>

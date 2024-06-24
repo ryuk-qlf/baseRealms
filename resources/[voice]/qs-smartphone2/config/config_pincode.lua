@@ -1,0 +1,17 @@
+-- Config.ResetPassword = {
+--     coords = vec3(1000.32, -103.89, 73.95),
+--     money = 500,
+--     text = "[E] - Changer le mot de passe",
+--     ped = {
+--         coords = vec3(1000.32, -103.89, 73.95),
+--         h = 121.65,
+--         model = `a_m_m_afriamer_01`
+--     },
+--     blip = {
+--         coords = vec3(1000.32, -103.89, 73.95),
+--         name = 'Téchnicien',
+--         sprite = 89,
+--         color = 1,
+--         scale = 0.7
+--     },
+-- }

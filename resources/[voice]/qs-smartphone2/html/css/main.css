@@ -1,0 +1,2582 @@
+:root {
+  --main-background-color: #ffffff;
+  --second-background-color: rgb(230, 230, 230);
+  --main-darker-background-color: #DFDFDF;
+  --main-color: #000000;
+  --main-black: #000000;
+  --main-yellow: #FFCE00;
+  --main-orange: #FFC14E;
+  --main-dark-gray: #808080;
+  --main-darker-gray: #797979c2;
+  --main-light-gray: #E5E5E5;
+  --main-blue: #087FFF;
+  --main-light-green: #1FC93C;
+  ;
+  --main-green: #3ea54f;
+  --main-dark-green: #3e7a489f;
+  --main-paper: #FFF8CC;
+  --main-red: #FD3B2F;
+  --main-darker-red: #9b3f3aaf;
+  --main-full-red: #ff0000;
+
+  --border-gray: #d3d3d3;
+
+  --calculator-button: #333333;
+  --calculator-button-hover: #464646;
+  --calculator-operator: #FF9E0A;
+  --calculator-operator-hover: #FFBB00;
+
+  --text: #000;
+  --mainBackground: #ecebeb;
+  --contentBackground: #fff;
+  --content2Background: #6666;
+  --mainIcon: #000;
+  --batteryBorder: #000;
+  --mainBackground2: #e6e6e6;
+
+  --batteryBorder-black: rgba(255, 255, 255, 0.5);
+
+
+
+
+/* QS */
+--qs-white: #ffffff;
+
+ --qs-input-background: #eeeeee;
+ --qs-footer-background: #f6f6f6;
+
+ --qs-fonts-grey: #959595;
+ --qs-fonts-blue: #078ffd;
+
+ --qs-font-awesome-blue: #0a78f3;
+
+ --qs-whatsapp-chat-background: #dcfbcf;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+	background: transparent;
+	cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	border-color: transparent;
+	border-style: solid;
+	border-width: calc(10px/3);
+	background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:active {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+	background-color: rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.container {
+  display: none;
+  position: absolute;
+  bottom: -93%;
+  right: 5vh;
+  user-select: none;
+  overflow: hidden;
+}
+
+.clear{
+  clear:both;
+}
+
+.left{
+  float:left;
+}
+
+
+.right{
+  float:right;
+}
+
+.w-50{
+  width:50%;
+}
+
+#lockScreen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-50%);
+}
+
+.sliders-custom {
+  width: 45%;
+  margin-top: -130px;
+  margin-left: 155px;
+  transform: rotate(-90deg);
+}
+
+.altx {
+  height: 120px;
+  width: 41%;
+  margin-left: 20px;
+  margin-top: 60px;
+  background-color: rgba(0, 0, 0, 0.568);
+  border-radius: 15px;
+}
+
+.altx img {
+  margin: 4px;
+  width: 47px;
+  border-radius: 50px;
+  padding: 10px;
+  background: #888888ad;
+}
+
+.buttons-inside {
+  padding: 15px;
+}
+
+.altx2 {
+  height: 120px;
+  width: 41%;
+  margin-left: 160px;
+  margin-top: -120px;
+  background-color: rgba(0, 0, 0, 0.568);
+  border-radius: 15px;
+}
+
+.altx3 {
+  height: 120px;
+  width: 41%;
+  margin-left: 21px;
+  margin-top: 18px;
+  background-color: transparent;
+  border-radius: 15px;
+}
+
+.altx3 img {
+  margin: 4px;
+  width: 52px;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.568);
+}
+
+.ustbar {
+  z-index: 150;
+  pointer-events: all;
+  position: absolute;
+  width: -webkit-fill-available;
+  transition: .4s;
+  padding: 5px; 
+  height: -webkit-fill-available;
+  margin-top: -6vh;
+  /* display: none; */
+  backdrop-filter: blur(10px);
+  /*   background-image: url(https://source.unsplash.com/Q7PclNhVRI0);  */ 
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  /* left: 15px; */
+}
+
+#ustbar-icons {
+  font-family: Font-1;
+  position: absolute;
+  margin: 0;
+  top: 3%;
+  transform: translateX(153px);
+  float: right;
+}
+
+#ustbar-battery-count {
+  font-size: 1vh;
+  left: 6.9vh;
+  top: 1.83vh;
+  position: absolute;
+}
+
+#ustbar-battery {
+  font-size: 1.3vh;
+  left: 9.4vh;
+  top: 1.83vh;
+  position: absolute;
+}
+
+#ustbar-5g {
+  font-size: 0.9vh;
+  left: -10vh;
+  top: 1.83vh;
+  position: absolute;
+}
+
+#ustbar-signal {
+  font-size: 0.9vh;
+  left: -11.5vh;
+  top: 1.83vh;
+  position: absolute;
+}
+
+.phone-applications-icons {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+#phone-tops {
+  position: absolute;
+  top: 15px;
+  width: 100%;
+  height: 6vh;
+  z-index: 999999;
+}
+
+#specifiedustbar {
+  position: absolute;
+  width: 100%;
+  height: 6vh;
+  z-index: 99999;
+}
+
+.ustsol {
+  height: 100px;
+  width: 100px;
+  backdrop-filter: blur(1px);
+  border-radius: 10px;
+  position: relative;
+  top: 6vh;
+
+  overflow: hidden;
+
+  padding-top: 7px;
+  padding-left: 5px;
+  left: -47px;
+}
+
+.ust {
+  margin-top: 30px;
+  position: relative;
+}
+
+.ust img {
+  width: 5%;
+  position: relative;
+  top: 3vh;
+  left: 2vh;
+  float: left;
+}
+
+.ust p {
+  float: left;
+  color: white;
+  font-family: ios;
+  font-size: 9px;
+  position: relative;
+  top: 19px;
+  left: 20px;
+}
+
+.ustbar .xblur {}
+
+.phone-currentcall-container {
+  display: none;
+  position: absolute;
+  margin: 0px auto;
+  left: 0px;
+  right: 0px;
+  height: 5vh;
+  width: 90%;
+  background-color: rgba(179, 179, 182, 0.8);
+  top: 5vh;
+  z-index: 9999999;
+  transition: background-color 0.1s linear 0s;
+  border-radius: 10px;
+  /* animation: 2s ease 0s infinite normal none running pulse; */
+}
+
+.phone-currentcall-container:hover {
+  background-color: rgba(179, 179, 182, 0.85);
+}
+
+.phone-currentcall-icon {
+  position: absolute;
+  top: 1.15vh;
+  left: 1.3vh;
+  font-size: 1.9vh;
+  color: green;
+  transform: rotate(90deg);
+}
+
+.phone-currentcall-cancel {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  color: #ff2a1b;
+}
+
+.phone-currentcall-cancel:hover {
+  color: rgb(126, 0, 0);
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 0px;
+  }
+
+  70% {
+    box-shadow: rgba(255, 255, 255, 0) 0px 0px 0px 10px;
+  }
+
+  100% {
+    box-shadow: rgba(255, 255, 255, 0) 0px 0px 0px 0px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 0px;
+  }
+
+  70% {
+    box-shadow: rgba(255, 255, 255, 0) 0px 0px 0px 10px;
+  }
+
+  100% {
+    box-shadow: rgba(255, 255, 255, 0) 0px 0px 0px 0px;
+  }
+}
+
+.phone-currentcall-title {
+  position: absolute;
+  top: 1vh;
+  left: 4vh;
+  font-size: 1.1vh;
+  font-weight: 600;
+  color: black;
+  font-family: "Samsung Sans Regular";
+}
+
+.phone-currentcall-contact {
+  position: absolute;
+  bottom: 0.7vh;
+  left: 4vh;
+  font-size: 1vh;
+  font-weight: 600;
+  color: black;
+  font-family: "Samsung Sans Regular";
+}
+
+.phone-frame {
+  position: absolute;
+  width: 345px;
+  height: 680px;
+  bottom: 0px;
+  right: 0px;
+  margin: 16.62px;
+  z-index: 200;
+  pointer-events: none;
+  transition: all 0.7s;
+}
+
+.phone-container {
+  height: 665px;
+  width: 314px;
+  bottom: 8.31px;
+  border-radius: 30px;
+  right: 14.127px;
+  margin: 16.62px;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.7s;
+}
+
+.initAnimation {
+  opacity: 1;
+}
+
+.phone-background {
+  /* background-image: url("https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"); */
+  background-size: cover;
+  background-position: -2.493px 4.155px;
+  background-repeat: no-repeat;
+}
+
+.phone-header {
+  width: 100%;
+  height: 41.55px;
+  top: 1.6621px;
+  z-index: 141;
+  position: absolute;
+  color: white;
+}
+
+#phone-time {
+  margin-left: 5px;
+  padding: 15px 0px 0px 25px;
+  float: left;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#phone-line {
+  margin-left: 5px;
+  padding: 15px 0px 0px 18px;
+  float: left;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#phone-icons-white {
+  padding: 9px 76.048px 0px 0px;
+  float: right;
+}
+
+#phone-icons-black {
+  padding: 9px 76.048px 0px 0px;
+  float: right;
+}
+
+#phone-signal {
+  width: 15px;
+  height: auto;
+  left: 59px;
+  top:  0.9591px;
+  position: relative;
+}
+
+#phone-5g {
+  width: 15px;
+  height: auto;
+  left: 57px;
+  top:  1px;
+  position: relative;
+}
+
+#phone-battery {
+  width: 20px;
+  height: 12px;
+  left: 54px;
+  top:  1.918px;
+  position: relative;
+}
+
+
+.phone-application-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 92%;
+  width: 100%;
+  background-color: rgb(65, 65, 65);
+  z-index: 100;
+  transform: scale(0);
+  transition: ease-in-out all .13s;
+}
+
+.phone-footer {
+  position: absolute;
+  top: 97%;
+  bottom: 0;
+  height: 5vh;
+  width: 100%;
+}
+
+.phone-home-container {
+  position: relative;
+  height: 2.3vh;
+  background-color: rgb(0, 0, 0);
+  margin: 0px auto;
+  transform: translateY(-50%);
+  border-radius: 0.8vh;
+  transition: all 0.15s ease 0s;
+  z-index: 500;
+}
+
+
+#phone-applications-container2 {
+  position: absolute;
+  width: 100%;
+  display: none;
+  margin-left:5px;
+}
+
+#lock-screen {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+  transition-property: transform, opacity;
+  transition-duration: 400ms;
+  z-index: 999;
+  cursor: grab;
+  transition: ease all 0.4s;
+}
+
+#lock-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-50%);
+}
+
+#lock-screen-specified {
+  position: absolute;
+  width: 100%;
+  height: 265px;
+  top: 70%;
+  bottom: 5;
+  cursor: grab;
+}
+
+#lock-screen-top {
+  color: #fff;
+  text-align: center;
+}
+
+#lock-screen-middle {
+  position: absolute;
+  width: 97%;
+  top: 30%;
+  height: 40%;
+  overflow-x: auto;
+}
+
+#lock-screen-middle::-webkit-scrollbar {
+  display: none;
+}
+
+.lockIcon {
+  width: 22px;
+  height: 19px;
+  margin: 40px auto 5px auto;
+  border-radius: 3px;
+  background-color: #fff;
+  position: relative;
+}
+
+.lockIcon:before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 14px;
+  height: 23px;
+  border-radius: 10px;
+  border: 3px solid #fff;
+}
+
+.lock-screen-notification {
+  width: 92%;
+  height: 30%;
+  padding: 10px 5px;
+  margin-top: 1%;
+  margin-left: 4.6%;
+  background-color: rgba(225, 225, 250, 0.6);
+  border-radius: 10px;
+  transition: all 0.5s;
+  cursor: grab;
+}
+
+.lock-screen-notification-head {
+  display: flex;
+  position: relative;
+  top: 0;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  float: left;
+  left: 5.04px;
+}
+
+.lock-screen-notification-body {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  float: left;
+  top: 0.2vh;
+  left: 1vh;
+}
+
+.lock-screen-notification-app_name {
+  font-size: 13px;
+  margin-left: 0.5vh;
+  font-family: 'ios';
+  color: rgb(105, 104, 104);
+}
+
+.lock-screen-notification-msg_sender {
+  font-weight: 600;
+  font-family: 'ios';
+}
+
+.lock-screen-notification-time {
+  display: flex;
+  margin-left: 52%;
+  margin-top: -9%;
+  height: 0;
+  justify-content: right;
+  width: 85%;
+  font-size: 13px;
+  font-family: 'ios';
+}
+
+.lock-screen-notification-app_img {
+  width: 20px;
+  height: 20px;
+}
+
+#lock-screen-top .time {
+  color: rgb(255, 255, 255);
+  font-size: 65px;
+}
+
+
+#lock-screen-top #date {
+  position: absolute;
+  top: 126px;
+  right: 16px;
+  align-items: center;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  width: 280px;
+  font-size: 15px;
+  background: transparent;
+  color: #ffffff;
+}
+
+.down_padding {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffff;
+  cursor: pointer;
+}
+
+.down_padding:hover {
+  transition: background-color 0.8s;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.hide,
+.app_notify.hide {
+  display: none;
+  visibility: hidden;
+}
+
+/* .phone-home-button:hover {
+  background-color: rgba(214, 214, 214, 0.7);
+} */
+
+.phone-home-button {
+  cursor: pointer;
+  width: 110px;
+  height: 5px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 2.21%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999999;
+  transition: all .4s;
+}
+
+.phone-home-button-text:hover {
+  color: rgba(214, 214, 214, 0.7);
+}
+
+.interactionDiv{
+  position: absolute;
+  width: 100%;
+  bottom: -8%;
+  height: 3%;
+  transition: bottom 800ms ease-in 0s;
+}
+
+.interactionDiv::after{
+  content: '';
+  position: absolute;
+  width: 110px;
+  height: 5px;
+  right: 96px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  top: 0;
+  margin-left: 36%;
+}
+
+.lockScreen .interactionDiv {
+   bottom: 0;
+}
+
+#inAppBar{
+  cursor: pointer;
+}
+
+.lockScreen .interactionDiv::after {
+  animation: interactionAnim 4000ms ease-in infinite;
+}
+
+.lockScreen .interactionDiv::before {
+  content: 'Swipe up to unlock';
+  position: absolute;
+  width: 100%;
+  top: -220%;
+  text-align: center;
+  line-height: 33px;
+  left: 5px;
+  color: #ffffff8a;
+  font-size: 14px;
+  font-family: 'ios';
+  font-weight: 200;
+  animation: interTextAnim 4000ms ease-in infinite;
+}
+
+@keyframes interTextAnim {
+  0% {
+    opacity: 0;
+     top: -140%;
+   }
+   40% {
+      opacity: 0;
+     top: -140%;
+   }
+   60% {
+      opacity: 1;
+     top: -220%;
+   }
+   82% {
+      opacity: 1;
+     top: -200%;
+   }
+   100% {
+      opacity: 0;
+     top: -200%;
+   }
+ }
+ 
+ @keyframes interactionAnim {
+   0% {
+     top: 0;
+   }
+   40% {
+     top: 0;
+   }
+   60% {
+     top: -50%;
+   }
+   82% {
+     top: 0;
+   }
+   100% {
+     top: 0;
+   }
+ }
+
+.dockWrapper{
+  width: 100%;
+  background-color: red;
+  z-index: 999;
+  bottom: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: bottom 400ms ease-in-out 0s;
+}
+
+#home-button-container {
+  position: absolute;
+  width: 100%;
+  top: -220%;
+  text-align: center;
+  color: #ffffff8a;
+  font-size: calc(var(--size) / 46);
+  font-family: "Work Sans", sans-serif;
+  font-weight: 200;
+  animation: interTextAnim 4000ms ease-in infinite;
+  cursor: pointer;
+  width: 200px;
+  height: 5px;
+  background: var(--mainIcon);
+  border-radius: 4px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 21600s;
+  z-index: 999999999;
+}
+
+#popup-confirm-container {
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+#popup-confirm {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  top: 50%;
+  width: 70%;
+  height: 15%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  z-index: 9999;
+  border-radius: 10px;
+}
+
+#popup-actions-modal {
+  position: absolute;
+  text-align: center;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+  padding-top: 0px;
+  height: 85px;
+  width: 270px;
+  border-radius: 10px;
+  background: #e8e8e8;
+  animation-duration: 0.5s;
+  animation-name: popin;
+  margin: 50px auto auto;
+  opacity: 1;
+  z-index: 99999;
+}
+
+#popup-actions-modal h4 {
+  margin-top: 5;
+}
+
+@keyframes popin {
+  from {
+    margin: 100px auto auto;
+    opacity: 0;
+  }
+
+  to {
+    margin: 50px auto auto;
+  }
+}
+
+.popup-actions-button {
+  border-top: 1px solid gray;
+  display: inline-block;
+  margin-top: 12px;
+  width: 50%;
+  padding: 15px 0;
+  color: #007aff;
+  font-family: arial;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.popup-actions-button.left {
+  float: left;
+  border-right: 1px solid gray;
+  border-bottom-left-radius: 10px;
+  font-weight: 600;
+}
+
+.popup-actions-button.right {
+  cursor: pointer;
+  float: right;
+  border-bottom-right-radius: 10px;
+  border-right: 1px solid gray;
+}
+
+.showImage {
+  z-index: 99999;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, .5);
+}
+
+#showImage-container {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.showImage-image {
+  height: 600px;
+  width: 1000px;
+  border-radius: 10px;
+}
+
+
+#home-button-container:before{
+  height: calc(50% - 10px);
+}
+
+.phone-applications {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: ease all 0.4s !important;
+  transform: scale(1.5);
+}
+
+#exitShake {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  top: 17px;
+  right: 25px;
+  width: 40px;
+  height: 17px;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: scale(0);
+  overflow: hidden;
+  cursor: pointer;
+  transition: ease all 0.2s;
+  z-index: 9999;
+}
+
+
+/* HERE MOVEMENT */
+#phone-home-applications-specified {
+  position: absolute;
+  bottom: 84px;
+  width: 100%;
+  height: 26%;
+  z-index: 999999;
+  cursor: grab;
+  /* background-color: white; */
+}
+
+.BTT {
+  width: -webkit-fill-available;
+  height: 345px;
+  border-radius: 9px;
+  background: white;
+  position: absolute;
+  top: 8vh;
+  margin-left: 18px;
+  margin-right: 13px;
+  box-shadow: 0px 0px 20px 0px white;
+  overflow: hidden;
+}
+
+
+.hdr {
+  width: -webkit-fill-available;
+  text-align: center;
+  position: absolute;
+  top: 0vh;
+  height: auto;
+}
+
+.hdr h4 {
+  font-size: 12px
+}
+
+.altyk {
+  position: absolute;
+  /* background: #e8e8e8; */
+  width: -webkit-fill-available;
+  height: 40px;
+  bottom: 0;
+}
+
+.yakindakiler {
+  position: relative;
+  top: 5vh;
+}
+
+.oyuncu input {
+  font-size: 11px;
+  width: 100px;
+  font-family: 'ios';
+  margin-left: 5px;
+  border: none;
+  background: none;
+}
+
+.oyuncu tr {
+  margin-top: 5px;
+  display: block;
+  margin-left: 3px;
+}
+
+.phone-applications-appname {
+  position: absolute;
+  color: #fff;
+  height: 13px;
+  font-size: 10px; 
+  top: 52px;
+  left: -4px;
+  width: 60px;
+  z-index: -1;
+  text-align: center;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.phone-footer-applications .phone-applications-appname {
+  display: none;
+}
+
+.s4SHRGELD {
+  display: none;
+  width: -webkit-fill-available;
+  height: 170px;
+  position: absolute;
+  margin: auto;
+  background: white;
+  border-radius: 10px;
+  z-index: 1800;
+  margin-left: 15px;
+  margin-right: 13px;
+  top: 15vh;
+  box-shadow: 0px 0px 20px #adadad;
+}
+
+.paylasbtn {
+  padding: 20px 48px 20px;
+  top: 5.1vh;
+  left: 0vh;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: rgb(231, 231, 231);
+  font-family: 'ios';
+  font-size: 600;
+}
+
+.paylasbtn:hover {
+  color: rgb(214, 214, 214);
+}
+
+#lock-screen-down {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  margin-left: 1.5%;
+  width: 100%;
+  bottom: -395px;
+  z-index: 999;
+}
+
+.down_padding {
+  width: 38px;
+  height: 38px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffff;
+  cursor: pointer;
+}
+
+.down_padding:hover {
+  transition: background-color 0.8s;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.oyuncu .takipbtn {
+  margin-right: 2px;
+}
+
+.gridwhatsapp-container {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 110%;
+  z-index: 9999;
+  background-color: white;
+  top: 0;
+}
+
+.gridwhatsapp-contents {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  top: 45px;
+  flex-wrap: wrap;
+  flex-grow: inherit;
+  place-content: flex-start;
+  flex-direction: row;
+  overflow: auto;
+  position: absolute;
+}
+
+#whatsapp-galeri-back {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  z-index: 999999;
+  cursor: pointer;
+  color: #0090ff;
+}
+
+.wrapperApps {
+  max-height: 500px;
+  transition: ease all 0.2s;
+  padding-left: 8px;
+  padding-top:25px;
+  width: 670px;
+  overflow: none;
+}
+
+.gridinsta2-item {
+  position: relative;
+   left: 35px;
+}
+
+.phone-applications.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.5);
+}
+
+.phone-application {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  text-align: center;
+  opacity: 0.9;
+  transition: all 0.05s ease 0s;
+  /* background: #0000004b; */
+  /* background: linear-gradient(45deg, rgba(0, 0, 0, 0.089), transparent); */
+  border-radius: 11px;
+  list-style: none;
+  
+}
+
+.applicationBlock{
+  display: inline;
+}
+
+.phone-application.shake {
+  animation: shake_xxx 0.2s linear alternate infinite;
+}
+
+@keyframes shake_xxx {
+  0% {
+    transform: rotate(-2deg);
+  }
+
+  100% {
+    transform: rotate(2deg);
+  }
+}
+.applicationBlock{
+  display: inline;
+}
+
+.phone-application.shake {
+  animation: shake_xxx 0.2s linear alternate infinite;
+}
+
+@keyframes shake_xxx {
+  0% {
+    transform: rotate(-2deg);
+  }
+
+  100% {
+    transform: rotate(2deg);
+  }
+}
+
+#bottom-apps-container {
+  position: absolute;
+  /*display: flex;*/
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  bottom: 3%;
+  width: 91%;
+  padding: 5px 5px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.bottom-apps img {
+  height: 60px;
+  width: 60px;
+}
+
+.phone-application:hover {
+  opacity: 1;
+  border-radius: 30%;
+  transition: 1s;
+}
+
+#bottom-apps {
+  position: relative;
+  border-radius: 20px;
+  left: -4px;
+  margin-top:20px;
+}
+
+.phone-footer-applications {
+  position: absolute;
+  padding-top:3px;
+  width: 90%;
+  height: 75px;
+  left: 5.3%;
+  bottom: 5px;
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.phone-footer-applications2 {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  bottom: 5px;
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.phone-footer-applications .phone-application {
+  margin-bottom: 20px;
+  margin-right: -3px;
+}
+
+.phone-footer-applications .phone-application
+.phone-home-applications {
+  position: relative;
+  width: 100%;
+  /* top: 8vh; */
+  /* display: flex; */
+  /*flex-direction: row;*/
+  /*align-items: flex-start;*/
+  /*justify-content: flex-start;*/
+  min-width: 100%;
+  padding-left:5px;
+  padding-top: 5px;
+  /* max-width: 100%; */
+}
+
+#phone-home-applications2 {
+  /*top: 8vh;*/
+  /*left: 0.2vh;*/
+  
+}
+
+  #phone-footer-applications,
+  #phone-footer-applications2 {
+    float:left;
+    width:50%;
+    height:580px;
+    display: inline-block;
+  }
+
+
+
+  body .phone-home-applications,
+  .phone-footer-applications,
+  .phone-footer-applications2 {
+    margin-bottom: 1px;
+    border-radius: 23px;
+  }
+
+
+.phone-application>i {
+  line-height: 4.6vh;
+  font-size: 2vh;
+}
+
+.ApplicationIcon {
+  color: white;
+}
+
+.phone-notification-container{
+  position:absolute;
+  height: 50px;
+  width: 280px;
+  background-color:rgba(255, 255, 255, 0.7);
+  margin:0 auto;
+  left:0;
+  right:0;
+  top:-45px;
+  border-radius: 8px;
+  overflow:hidden;
+  box-shadow:inset 0 0 10px 0 rgba(0,0,0,.11);
+  z-index:140
+}
+
+.notification-icon {
+	position: absolute;
+	height: 100%;
+	width: 47.95px;
+	text-align: center;
+	line-height: 54.6634px;
+	margin-top: -11.508px;
+	margin-left: -2.852px;
+	font-size: 14.385px;
+}
+
+.notification-icon img {
+  height: 42px;
+  width: 42px;
+  margin-top: 34%;
+  margin-left: 15%;
+}
+
+.notification-title {
+	position: absolute;
+	top: 7.6721px;
+	left: 55px;
+	font-weight: 700;
+	font-size: 15px;
+	font-family: "ios";
+	color: rgb(0, 0, 0);
+}
+
+.notification-text {
+	position: absolute;
+	top: 27px;
+	left: 55px;
+	font-size: 12px;
+	font-weight: 500;
+	font-family: "ios";
+	color: rgb(0, 0, 0);
+	text-align: left;
+	width: 215px;
+	overflow: hidden;
+	white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.call-notifications {
+  display: none;
+  position: absolute;
+  background: rgba(230, 125, 34, 0.918);
+  height: 9vh;
+  width: 34vh;
+  bottom: 16vh;
+  right: -35vh;
+  border-radius: 1.7vh;
+  z-index: -5;
+}
+
+.call-notifications-shake {
+  animation: 0.5s ease 0s infinite normal none running shake;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.screen-notifications-container {
+  display: none;
+  position: absolute;
+  background: rgba(46, 111, 199, 0.9);
+  height: 9vh;
+  width: 34vh;
+  bottom: 5vh;
+  right: -35vh;
+  border-radius: 0.7vh;
+  z-index: -5;
+}
+
+.screen-notification-icon {
+  position: absolute;
+  line-height: 9.3vh;
+  left: 2vh;
+  font-size: 3.75vh;
+  color: white;
+}
+
+.screen-notification-title {
+  position: absolute;
+  line-height: 5.5vh;
+  left: 7.5vh;
+  color: white;
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+}
+
+.screen-notification-content {
+  position: absolute;
+  top: 4.2vh;
+  left: 7.5vh;
+  font-size: 1.2vh;
+  color: white;
+  font-family: "ios";
+  height: 3.5vh;
+  width: 26vh;
+  overflow: hidden;
+}
+
+.call-notifications-icon {
+  position: absolute;
+  line-height: 9.3vh;
+  left: 2vh;
+  font-size: 3.75vh;
+  color: white;
+  transform: rotate(90deg);
+}
+
+.call-notifications-title {
+  position: absolute;
+  line-height: 5.5vh;
+  left: 7.5vh;
+  font-size: 1.5vh;
+  color: white;
+  font-family: "Samsung Sans Bold";
+}
+
+.call-notifications-content {
+  position: absolute;
+  top: 4.2vh;
+  left: 7.5vh;
+  font-size: 1.2vh;
+  color: white;
+  font-family: "ios";
+  height: 3.5vh;
+  width: 26vh;
+  overflow: hidden;
+}
+
+.app-unread-alerts {
+  position: absolute;
+  width: 19.18px;
+  height: 19.18px;
+  top: -4.795px;
+  left: 36.442px;
+  color: white;
+  text-align: center;
+  line-height:  19.18px;
+  background: rgb(250, 73, 3);
+  border-radius: 50%;
+  font-family: "ios";
+  font-size:  10.549px;
+}
+
+.emergency-button {
+  position: absolute;
+  right: 3vh;
+  top: 10vh;
+  width: 33vh;
+  height: 20vh;
+  background-color: rgb(0, 70, 130);
+  border-radius: 1vh;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 1px;
+}
+
+.emergency-button-header {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  height: 3.5vh;
+  top: 0px;
+  width: 100%;
+}
+
+.emergency-button-footer {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  height: 2.5vh;
+  bottom: 0px;
+  width: 100%;
+}
+
+.police-logo-2 {
+  position: absolute;
+  width: 6vh;
+  margin: 0px auto;
+  left: 0px;
+  right: 0px;
+  top: 0.5vh;
+}
+
+.police-logo-3 {
+  position: absolute;
+  width: 15vh;
+  margin: 0px auto;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.device {
+  position: relative;
+  border-radius: 16px;
+  margin: 0px auto;
+  display: inline-block;
+  transform: scale(1);
+  width: 100%;
+}
+
+.device .device-bezel {
+  border-radius: inherit;
+  padding: 36px 10px 24px;
+  overflow: hidden;
+  background: linear-gradient(240deg, rgb(141, 164, 195) 0%, rgb(79, 130, 133) 30%, rgb(7, 15, 10) 35%, rgb(10, 6, 6) 100%);
+  position: relative;
+  box-sizing: content-box;
+}
+
+.device .device-viewport {
+  contain: strict;
+  width: 100%;
+  height: 635px;
+  position: absolute;
+  border-radius: inherit;
+  transform: scale(1);
+  z-index: 999;
+  margin-top: 3px;
+}
+@media only screen and (max-height: 900px) {
+  .device .device-viewport {
+    max-height: 750px;
+  }
+}
+
+.containerlock {
+  background: transparent;
+  height: 100%;
+}
+
+.contentlock {
+  background: white;
+}
+
+.contentlock img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.body-contentlock {
+  padding: 16px;
+}
+
+.body-contentlock h3 {
+  margin-bottom: 16px;
+}
+
+.body-contentlock p {
+  line-height: 1.5em;
+  margin-bottom: 8px;
+}
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0px, 0px);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0px, 0px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0px, 0px);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0px, 0px);
+  }
+}
+
+
+
+
+input[type=range][orient=vertical] {
+  writing-mode: bt-lr;
+  /* IE */
+  -webkit-appearance: slider-vertical;
+  /* WebKit */
+  width: 8px;
+  height: 100px;
+  padding: 0 5px;
+}
+
+
+
+
+.sliderx {
+  float: right;
+}
+
+.sliderx-vertical {
+  height: 100px;
+  width: 40px;
+  margin-right: 25px;
+  margin-top: 40px;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 6vh !important;
+  position: absolute !important;
+  right: -1.2vw !important;
+}
+
+.sliderx-track {
+  position: relative;
+  width: 50px;
+  height: 100%;
+  cursor: pointer;
+  background: rgb(0 0 0 / 60%);
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
+}
+
+.sliderx-selection {
+  position: relative;
+  background: #fff;
+
+  height: 50%;
+  top: 50%;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+  width: 40px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.sliderx-handle {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: none;
+  width: 100%;
+  left: 0;
+  margin-left: -5px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  border-radius: 50%;
+
+}
+
+.fa-sun {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  font-size: 18px;
+  left: 11px;
+  color: rgb(113 113 113 / 56%);
+}
+
+
+
+.slider2x .fa-volume-up {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  font-size: 18px;
+  left: 10px;
+  color: rgb(113 113 113 / 56%);
+}
+
+.slider2x {
+  float: right;
+}
+
+.slider2x-vertical {
+  height: 100px;
+  width: 40px;
+  margin-right: 10px;
+  margin-top: 40px;
+  overflow: hidden;
+  border-radius: 8px;
+  top: 6vh !important;
+  position: absolute !important;
+  right: 3.4vw !important;
+}
+
+.slider2x-track {
+  position: relative;
+  width: 50px;
+  height: 100%;
+  cursor: pointer;
+  background: rgb(0 0 0 / 60%);
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
+}
+
+.slider2x-selection {
+  position: relative;
+  background: #fff;
+
+  height: 50%;
+  top: 50%;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+  width: 40px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.slider2x-handle {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: none;
+  width: 100%;
+  left: 0;
+  margin-left: -5px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  border-radius: 50%;
+
+}
+
+.bildirimler {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  top: 1.3vh;
+}
+
+.bildirim {
+  display: none;
+  width: -webkit-fill-available;
+  height: 50px;
+  /* backdrop-filter: blur(5px); */
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 1vh;
+  margin-top: 5px;
+  /* background: rgb(0 0 0 / 35%); */
+}
+
+/* .bildirim img {
+  width: 10%;
+  position: absolute;
+  top: 1vh;
+  border-radius: 100%;
+  left: 1vw;
+} */
+
+#yt_uyg_adi {
+  font-family: 'ios';
+  font-size: 16px;
+  color: white;
+  background: none;
+  border: none;
+  left: 3vh;
+  top: 3px;
+  position: absolute;
+  text-shadow: 0px 0px 8px grey;
+}
+
+#yt_uyg_metni {
+  font-family: 'ios';
+  font-size: 12px;
+  color: white;
+  background: none;
+  border: none;
+  left: 0.9vh;
+  top: 22px;
+  font-family: 'ios';
+  position: absolute;
+  text-shadow: 0px 0px 8px grey;
+  width: 110px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.play-button-yt {
+  font-size: 18px;
+  position: relative;
+  color: white;
+  top: 30px;
+  border-radius: 100%;
+}
+
+.right-button-yt {
+  font-size: 20px;
+  position: relative;
+  top: 3px;
+  color: white;
+  border-radius: 100%;
+  left: 45px;
+}
+
+.left-button-yt {
+  font-size: 20px;
+  position: relative;
+  top: -25px;
+  left: 10.5vw;
+  color: white;
+  border-radius: 100%;
+  left: -45px;
+}
+
+.default-text {
+  font-size: 15px;
+  position: relative;
+  color: white;
+  border-radius: 100%;
+}
+
+
+
+/* rgba(0, 0, 0, 0.568); */
+
+input[type="range"] {
+  margin: auto;
+  -webkit-appearance: none;
+  position: relative;
+  overflow: hidden;
+  height: 4vh;
+  cursor: pointer;
+  width: -webkit-fill-available !important;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 15px;
+  box-shadow: inset 0px 0px 8px black;
+}
+
+::-webkit-slider-runnable-track {
+  background: inset 0px 0px 8px black;
+}
+
+/*
+ * 1. Set to 0 width and remove border for a slider without a thumb
+ */
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  /* 1 */
+  height: 40px;
+  border: 1px solid #fdfdfd;
+  background: #fdfdfd;
+
+  box-shadow: -100vw 0 0 100vw #fdfdfd;
+
+}
+
+
+
+.kilitli {
+  display: none;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  background-image: url(/html/img/backgrounds/wallpaper_default_dark.png);
+  background-size: cover;
+  background-position: -0.3vh 0.5vh;
+  background-repeat: no-repeat;
+  z-index: 500;
+}
+
+
+@keyframes color-change {
+  0% {
+    color: #a9a9a9;
+  }
+
+  10% {
+    color: #2be02b;
+  }
+
+  50% {
+    color: #00ffd0;
+  }
+
+  100% {
+    color: #fff;
+  }
+}
+
+.hh2 {
+  color: white;
+  margin-top: 16vh;
+  font-size: 14px;
+  text-shadow: 0px 0px 20px black;
+  font-family: 'ios';
+}
+
+.fa-fingerprint {
+  font-size: 40px;
+  position: relative;
+  margin: auto;
+  top: 10vh;
+  padding: 0.8rem;
+  animation: color-change 3s infinite;
+  background: #ffffff38;
+  border-radius: 100%;
+}
+
+.state-app {
+  display: none;
+  background: rgb(243, 243, 243);
+  height: 110%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banks-bottom-acts-active {
+  border-bottom: .2vh solid #27ae60;
+  color: #27ae60;
+}
+
+.state-city-text {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  height: 4%;
+  top: 12%;
+  font-weight: 600;
+  font-family: 'ios';
+  color: black;
+  font-size: 23px;
+  text-align: center;
+}
+
+.state-jobs-name {
+  position: relative;
+  top: 90%;
+  width: 18.5%;
+  height: 25px;
+  margin-left: 19px;
+  float: left;
+  color: black;
+  font-size: 16px;
+  font-family: 'ios';
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 100%;
+}
+
+
+.state-jobs-container {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  top: 25%;
+  background-color: rgb(206, 206, 206);
+  border-radius: 3%;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.state-jobs-container::-webkit-scrollbar {
+  width: 3px;
+  padding-right: 2%;
+}
+
+.state-jobs-container-index {
+  position: relative;
+  width: 90%;
+  left: 5%;
+  margin-top: 2%;
+  top: 0;
+  height: 15%;
+  border-radius: 10px;
+  background-color: rgb(20, 127, 165);
+
+}
+
+.state-jobs-container-index-name {
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  top: 30%;
+  font-size: 14px;
+  font-family: 'ios';
+  padding-left: 30px;
+  padding-top: -1%;
+  font-weight: 600;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+.state-active-jobs {
+  position: absolute;
+  width: 90%;
+  height: 10%;
+  top: 21.7%;
+  left: 5%;
+  color: black;
+  font-size: 16px;
+  font-family: 'ios';
+}
+
+.state-jobs-container-index-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 18%;
+  border-radius: 20px;
+  left: 83%;
+}
+
+.state-jobs-container-index-icon i {
+  color: #9cd2f7;
+  font-size: 160%;
+  padding-left: 15%;
+  padding-top: 15%;
+  transition: color 0.5s;
+}
+
+.state-jobs-container-index-icon:hover i {
+  color: #63a7d5;
+}
+
+.state-nonenotify {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  top: 30%;
+  height: 9%;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  z-index: 99;
+
+}
+
+.fadeInOut {
+  animation: inout 2s infinite;
+}
+
+.botonesinutiles {
+	position: absolute;
+	margin-left: 10px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+  top: 80%;
+  left: 35%;
+}
+  
+.boton1 {
+	position: absolute;
+	margin-left: 10px;
+	top: 50%;
+	left: 25%;
+	width: 8px;
+	background-color: rgba(255, 255, 255, 0.50);
+	height: 8px;
+	border-radius: 50%;
+}
+  
+.boton2 {
+	position: absolute;
+	margin-left: 10px;
+	top: 50%;
+	left: 60%;
+	width: 8px;
+	background-color: rgba(255, 255, 255, 0.50);
+	height: 8px;
+	border-radius: 50%;
+}
+
+#phone-app-container img {
+  width: 50px;
+  height: 50px;
+}
+
+#phone-home-applications2 {
+  /*left: 0.7vh;*/
+}
+
+.phone-applications-icons {
+  width: 50px;
+  height: 50px;
+}
+
+.phone-footer-applications,
+.phone-footer-applications2 {
+  bottom: 5px;
+}
+
+#bottom-apps {
+  bottom: 11px;
+}
+
+.buttons-inside {
+  padding: 2px;
+}
+
+
+.phone-keypad-key-call .innerKey{
+    color: white;
+    text-align: left;
+    padding-left:0.8em;
+    margin-top:13%;
+}
+
+/* -- cambio aca  */
+#startScreen {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  z-index: 999999;
+}
+
+
+#startScreen .logo svg path {
+  fill: currentColor;
+}
+
+#startScreen .logo {
+  top: 45%;
+  left: 37%;
+  transition-duration: 0.5s;
+  position: absolute;
+  width: 80px;
+  height: 70px;
+  opacity: 1;
+  transition: ease all 0.3s;
+  z-index: 999999999;
+}
+
+#startScreen .logo svg {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+
+#startScreen.closeAnim .logo {
+  transform: scale(25);
+  transition-duration: 0.5s;
+}
+
+/* -- hasta aca */
+
+
+@media only screen and (min-height: 1081px) {
+
+
+.phone-keypad-key-call .innerKey{
+    color: white;
+    text-align: left;
+    padding-left:1em;
+    margin-top:18%;
+}
+
+
+  .phone-container {
+    height: 897.75px;
+    width: 425px;
+    right: 13.296px;
+    border-radius: 40px;
+  }
+
+  .phone-frame {
+    height: 920px;
+    width: 474px;
+    right: 2px;
+  }
+  
+   .device .device-viewport {
+    height: 897px;
+    width: 423px;
+  }
+ 
+  .phone-footer-applications,
+  .phone-footer-applications2 {
+    bottom: 40px;
+  }
+
+  .phone-footer-applications {
+    width: 90%;
+    height: 100px;
+    border-radius: 25px;
+  }
+ 
+   #lock-screen-down {
+    top: 580px;
+    right: 10px;
+  } 
+
+  #phone-home-applications-specified {
+    bottom: 180px;
+    /* background-color: white;   */
+  }
+
+  .wrapperApps {
+    width: 800px;
+  }
+
+  .phone-application {
+    height: 75px;
+    width: 75px;
+    margin-left: 20px;
+    margin-top: 23px;
+  }
+
+  .phone-applications-icons {
+    width: 75px;
+    height: 75px;
+  }
+
+  .phone-applications-appname {
+    top: 0.1px;
+    font-size: 13px; 
+  }
+
+  .botonesinutiles {
+    top: 77.5%;
+    left: 35%;
+    width: 70px;
+    height: 70px;
+  }
+
+  .boton1 {
+    width: 13px;
+    height: 13px;
+  }
+    
+  .boton2 {
+    width: 13px;
+    height: 13px;
+  }
+
+}
+
+@media only screen and (min-height: 1081px) {
+  .phone-container {
+    height: 895px;
+    width: 434px;
+    bottom: 11.633px;
+    right: 15.788px;
+  }
+  
+  .device .device-viewport {
+    height: 890px;
+  }
+  
+  .wrapperApps {
+    padding-left: 10px;
+    padding-top:35px;
+    width: 850px;
+  }
+  
+  #phone-time {
+    font-size: 15.5490px;
+    padding: 15px 0px 0px 33px;
+  }
+  
+  #phone-5g {
+    font-size: 12.631px;
+  }
+  
+  #phone-signal {
+    font-size: 12.631px;
+  }
+  
+  #phone-battery {
+    font-size: 15.631px;
+  }
+  
+  #phone-icons {
+    padding: 15.344px 90.048px 0px 0px;
+  }
+  
+  .phone-notification-container {
+    height: 50px;
+    width: 380px;
+    right: 10px;
+  }
+ 
+
+.notification-icon img {
+  height: 40px;
+  width: 40px;
+  margin-top: 30%;
+}
+
+.notification-title {
+	top: 6px;
+	left: 55px;
+	font-size: 17px;
+}
+
+.notification-text {
+	top: 26px;
+	left: 55px;
+	font-size: 13px;
+}
+  
+  .phone-home-button {
+    width: 120px;
+    height: 8.6px;
+    bottom: 18px;
+    left: 210px;
+    }
+
+.app-unread-alerts { 
+  width: 28px;
+  height: 28px;
+  top: -4.795px;
+  left: 56.442px;
+  line-height:  27px;
+  font-size:  13.549px;
+}
+
+.interactionDiv::after{
+  width: 120px;
+  height: 8.6px;
+}
+
+.lockScreen .interactionDiv::before {
+  font-size: calc(20px);
+  font-family: 'ios';
+}
+
+  .phone-application {
+    height: 75px;
+    width: 75px;
+  }
+
+.altx {
+  height: 170px;
+  width: 40%;
+  margin-left: 20px;
+  margin-top: 80px;
+}
+
+.altx img {
+  margin: 9px;
+  width: 61px;
+  border-radius: 50px;
+}
+
+.buttons-inside {
+  padding: 1px;
+}
+
+.altx2 {
+  height: 170px;
+  width: 40%;
+  margin-left: 225px;
+  margin-top: -170px;
+}
+
+.altx3 {
+  height: 170px;
+  width: 40%;
+  margin-left: 22px;
+  margin-top: 18px;
+  border-radius: 15px;
+}
+
+.altx3 img {
+  margin: 4px;
+  width: 72px;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.ustbar {
+  padding: 6px; 
+}
+
+.sliders-custom {
+  height: 170px;
+  width: 40%;
+  margin-top: -194px;
+  margin-left: 255px;
+}
+
+#lock-screen-top .time {
+  font-size: 70px;
+}
+
+.lockIcon {
+  width: 23px;
+  height: 20px;
+}
+
+.lockIcon:before {
+  width: 13px;
+  height: 30px;
+}
+
+.play-button-yt {
+  font-size: 30px;
+  top: 53px;
+  left: 5px;
+}
+
+.right-button-yt {
+  font-size: 35px;
+  top: 8px;
+  left: 55px;
+}
+
+.left-button-yt {
+  font-size: 35px;
+  top: -40px;
+  left: -55px;
+}
+
+.default-text {
+  top: 30px;
+  font-size: 24px;
+}
+
+
+#phone-line {
+  font-size: 13px;
+  padding: 20px 0px 0px 30px;
+}
+
+#lock-screen-top #date {
+  top: 150px;
+  right: 125px;
+  align-items: center;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  width: 180px;
+  font-size: 20px;
+}
+
+}
+
+
+/* QS-recio */
+
+
+
+.phone-applications-icons:hover {
+  filter: brightness(50%); 
+}
+
+@media screen and (min-height: 1200px) {
+
+
+  .phone-applications-appname {
+      top: 77.1px;
+      font-size: 13px;
+      left: 7px;
+  }
+
+  #phone-icons-white {
+    padding: 9px 76.048px 0px 0px;
+    float: right;
+    margin-right: 26px;
+  }
+
+  .down_padding {
+    width: 45px;
+    margin: 11px;
+    height: 45px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  } 
+
+
+
+  .interactionDiv {
+    left: -70px;
+    position: absolute;
+    width: 100%;
+    bottom: -8%;
+    height: 3%;
+    transition: bottom 800ms ease-in 0s;
+  }
+
+  #phone-icons-black {
+    padding: 9px 97.048px 0px 0px;
+    float: right;
+}
+
+}
+
+

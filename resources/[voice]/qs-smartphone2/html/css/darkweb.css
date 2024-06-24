@@ -1,0 +1,210 @@
+.darkweb-app {
+    display: none;
+    height: 110%;
+    width: 100%;
+    background-color: #333333;
+    overflow: hidden;
+}
+
+.darkweb-header {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: #171717;
+    top: 0;
+    border-bottom: 1px solid #7c0a98;  
+}
+
+.darkweb-header > p {
+    position: relative;
+    top: 112px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-family: 'ios';
+    font-weight: 600;
+}
+
+.darkweb-header-logo {
+    position: absolute;
+    top: 45px;
+    width: 70px;
+    height: auto;
+    left: 120px;
+    color: rgb(255, 255, 255);
+}
+
+.darkweb2-list {
+    position: absolute;
+    width: 96%;
+    height: 80%;
+    margin: 0 auto;
+    right: 0;
+    top: 140px;
+    right: 8.5px;
+    border-radius: .5vh;
+}
+
+.scroll-darkweb {
+    height: 494px;
+    padding-right: 10px;
+    overflow-y: hidden;
+    border-radius: 10px;
+}
+
+.scroll-darkweb:hover,
+.scroll-darkweb:focus,
+.scroll-darkweb:focus-within {
+    overflow-y: auto;
+    padding-right: unset;
+} 
+
+.darkweb-list {
+    position: relative;
+    width: 97%;
+    height: 8vh;
+    background-color: rgba(31, 31, 31, 0.89);
+    margin: 2.5%;
+    border-radius: 8px;
+}
+
+.darkweb-list-firstletter {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5.5vh;
+    height: 5.5vh;
+    text-align: center;
+    left: 0vh;
+    line-height: 3.5vh;
+    border-radius: 50%;
+    font-family: 'ios';
+    font-size: 1.8vh;
+    color: rgb(255, 255, 255);
+}
+
+.darkweb-list-fullname {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    left: 7.5vh;
+    font-family: 'ios';
+    font-size: 1.5vh;
+    max-width: 12vh;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+
+    color: rgb(255, 255, 255);
+}
+
+.darkweb-list-price {
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+    left: 7.5vh;
+    font-family: 'ios';
+    font-size: 1.5vh;
+    text-align: center;
+    max-width: 14vh;
+    min-width: 6vh;
+    background-color: #7c0a98;
+    border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    color: rgb(255, 255, 255);
+}
+
+.darkweb-list-count {
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+    left: 14.5vh;
+    font-family: 'Samsung Sans Medium';
+    font-size: 1.5vh;
+    text-align: center;
+
+    width: 3vh;
+    height: 2.4vh;
+    background-color: #00000033;
+    border-radius: 5px;
+
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+
+    color: #fff;
+}
+
+.no-darkweb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Samsung Sans Medium';
+    font-size: 1.3vh;
+
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    max-width: 14vh;
+
+    color: rgb(255, 255, 255);
+}
+
+.darkweb-list-call {
+    color: white;
+    position: absolute;
+    top: 35%;
+    /* transform: translateY(-50%); */
+
+    right: 2vh;
+    font-size: 2vh;
+    /* transform: rotate(90deg); */
+
+    /* transition: .08s ease-in-out; */
+}
+
+.darkweb-list-call:hover {
+    color: #27ae60;
+    opacity: .8;
+
+    transform: rotate(0deg);
+
+    cursor: pointer;
+}
+
+.darkweb-app-loading {
+    position: absolute;
+    top: 0;
+    left: 0vh;
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.darkweb-logo {
+    position: absolute;
+    width: 10vh;
+    margin: 0 auto;
+    left: 0vh;
+    right: 0;
+    top: 22vh;
+    z-index: 101;
+}
+
+#darkweb-text {
+    position: absolute;
+    top: 25vh;
+    left: 9vh;
+    font-size: 2.5vh;
+    color: white;
+    font-family: 'Heebo', sans-serif;
+    z-index: 100;
+    opacity: 0;
+}

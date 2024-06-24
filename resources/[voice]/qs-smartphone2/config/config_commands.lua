@@ -1,0 +1,89 @@
+-- RegisterCommand('sendmail', function (source, args)
+--     local src = source
+--     local player = ESX.GetPlayerFromId(src)
+--     if player.getGroup() == 'admin' then
+--         local subject = args[1]
+--         local message = {}
+--         for i = 2, #args do
+--             table.insert(message, args[i])
+--        end
+        
+--         if subject and next(message) then
+--             local mailData = {
+--                 sender = Lang("MAIL_ADMIN_TITLE"),
+--                 subject = subject,
+--                 message = message
+--             }
+        
+--             for k, v in pairs(ESX.GetPlayers()) do
+--                 local Player = ESX.GetPlayerFromId(v)
+--                 if mailData.button == nil then
+--                     MySQL.Async.execute("INSERT INTO `player_mails` (`identifier`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES ('"..Player.identifier.."', '"..mailData.sender.."', '"..mailData.subject.."', '"..table.concat(mailData.message, ' ').."', '"..GenerateMailId().."', '0')", {})
+--                 else
+--                     MySQL.Async.execute("INSERT INTO `player_mails` (`identifier`, `sender`, `subject`, `message`, `mailid`, `read`, `button`) VALUES ('"..Player.identifier.."', '"..mailData.sender.."', '"..mailData.subject.."', '"..table.concat(mailData.message, ' ').."', '"..GenerateMailId().."', '0', '"..json.encode(mailData.button).."')", {})
+--                 end
+--                 TriggerClientEvent('qs-smartphone:client:NewMailNotify', v, mailData)
+            
+--                 SetTimeout(200, function()
+--                     MySQL.Async.fetchAll('SELECT * FROM `player_mails` WHERE `identifier` = "'..Player.identifier..'" ORDER BY `date` DESC', {}, function(mails)
+--                         if mails[1] ~= nil then
+--                             for k, v in pairs(mails) do
+--                                 if mails[k].button ~= nil then
+--                                     mails[k].button = json.decode(mails[k].button)
+--                                 end
+--                             end
+--                         end
+                
+--                         TriggerClientEvent('qs-smartphone:client:UpdateMails', v, mails)
+--                     end)
+--                 end)
+--             end
+--         else
+--             TriggerClientEvent("qs-smartphone:sendMessage", src, Lang("MAIL_ADMIN_ERROR"), 'error')
+--         end
+--     end
+-- end)
+
+-- RegisterCommand('giveverify', function(source, args)
+--     local player = ESX.GetPlayerFromId(source)
+--     if player.getGroup() == 'admin' then
+--         local target = QS.GetPlayerFromId(tonumber(args[1]))
+--         if target then
+--             local result = MySQL.Sync.fetchAll('SELECT * FROM instagram_account WHERE phone = @phone', {['@phone'] = target.PlayerData.charinfo.phone})
+--             if result[1] then
+--                 MySQL.Sync.execute('UPDATE instagram_account SET verify = @verify WHERE username = @user', {
+--                     ['@verify'] = 1,
+--                     ['@user'] = result[1].username
+--                 })
+--             else
+--                 TriggerClientEvent("qs-smartphone:sendMessage", source, Lang("INSTAGRAM_VERIFY_NO_PLAYER"), 'error')
+--             end
+--         else
+--             TriggerClientEvent("qs-smartphone:sendMessage", source, Lang("INSTAGRAM_VERIFY_NO_PLAYER"), 'error')
+--         end
+--     else
+--         TriggerClientEvent("qs-smartphone:sendMessage", source, Lang("INSTAGRAM_VERIFY_ERROR"), 'error')
+--     end
+-- end, false)
+
+-- RegisterCommand('takeverify', function(source, args)
+--     local player = ESX.GetPlayerFromId(source)
+--     if player.getGroup() == 'admin' then
+--         local target = QS.GetPlayerFromId(tonumber(args[1]))
+--         if target then
+--             local result = MySQL.Sync.fetchAll('SELECT * FROM instagram_account WHERE phone = @phone', {['@phone'] = target.PlayerData.charinfo.phone})
+--             if result[1] then
+--                 MySQL.Sync.execute('UPDATE instagram_account SET verify = @verify WHERE username = @user', {
+--                     ['@verify'] = 0,
+--                     ['@user'] = result[1].username
+--                 })
+--             else
+--                 TriggerClientEvent("qs-smartphone:sendMessage", source, Lang("INSTAGRAM_VERIFY_NO_PLAYER"), 'error')
+--             end
+--         else
+--             TriggerClientEvent("qs-smartphone:sendMessage", source, Lang("INSTAGRAM_VERIFY_NO_PLAYER"), 'error')
+--         end
+--     else
+--         TriggerClientEvent("qs-smartphone:sendMessage", source, Lang("INSTAGRAM_VERIFY_ERROR"), 'error')
+--     end
+-- end)
