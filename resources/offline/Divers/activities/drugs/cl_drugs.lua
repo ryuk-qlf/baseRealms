@@ -234,3 +234,40 @@ function selldrugs()
         end
     end
 end
+local notifications = {}
+
+RegisterNetEvent('cvc:notify')
+AddEventHandler('cvc:notify', function(message)
+    -- Afficher la notification au joueur
+    table.insert(notifications, message)
+end)
+
+RegisterNetEvent('cvc:start')
+AddEventHandler('cvc:start', function(crew1, crew2, members1, members2)
+    -- Démarrer le CVC pour les membres des crews concernés
+    local playerSteamId = GetPlayerIdentifier(PlayerId(), 0)
+    if isMemberOfCrew(playerSteamId, members1) or isMemberOfCrew(playerSteamId, members2) then
+        TriggerEvent('esx:showNotification', "Le CVC entre " .. crew1 .. " et " .. crew2 .. " commence maintenant!")
+        -- Logique pour gérer le CVC (par exemple, zones de combat, suivi des scores, etc.)
+    end
+end)
+
+function isMemberOfCrew(playerSteamId, members)
+    for _, id in ipairs(members) do
+        if id == playerSteamId then
+            return true
+        end
+    end
+    return false
+end
+
+-- Afficher les notifications périodiquement
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(5000)  -- Afficher les notifications toutes les 5 secondes
+        for _, message in pairs(notifications) do
+            TriggerEvent('esx:showNotification', message)
+        end
+        notifications = {}
+    end
+end)

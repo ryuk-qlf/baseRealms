@@ -690,28 +690,117 @@ RegisterCommand("bring", function(source, args, rawCommand)
     end
 end, false)
 
+local reports = {}
+local cvc = {}
+
 RegisterCommand("report", function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)
-    local xPlayers 	= ESX.GetPlayers()
+    local xPlayers = ESX.GetPlayers()
 
     if (#args > 0) then
-        TriggerClientEvent("chat:addMessage", xPlayer.source, "Votre rapport a été envoyé")
+        TriggerClientEvent("chat:addMessage", xPlayer.source, { args = {"^1SYSTEM", "Votre rapport a été envoyé"}})
 
-        local reportreason = ""
-        for x=1,#args do
-            reportreason = reportreason .. " " .. args[x]
-        end
+        local reportReason = table.concat(args, " ")
+        local report = {
+            id = #reports + 1,
+            playerName = xPlayer.getName(),
+            playerId = xPlayer.source,
+            reason = reportReason,
+            date = os.date("%Y-%m-%d %H:%M:%S")
+        }
+        table.insert(reports, report)
 
         for i = 1, #xPlayers, 1 do
             local xAdmin = ESX.GetPlayerFromId(xPlayers[i])
             if xAdmin.getGroup() == 'superadmin' or xAdmin.getGroup() == 'admin' or xAdmin.getGroup() == 'moderator' then
-                TriggerClientEvent("chat:addMessage", xAdmin.source,  "[^6REPORT^0] - (^6".. xPlayer.source .."^0) ^6" .. xPlayer.getIdentity() .."^0 : " .. reportreason)
+                TriggerClientEvent("chat:addMessage", xAdmin.source, { args = {"^6REPORT", "(^6".. xPlayer.source .."^0) ^6" .. xPlayer.getName() .."^0 : " .. reportReason}})
             end
         end
     else
-        TriggerClientEvent("chat:addMessage", xPlayer.source, "Assurez-vous de suivre le format d'un report")
+        TriggerClientEvent("chat:addMessage", xPlayer.source, { args = {"^1SYSTEM", "Assurez-vous de suivre le format d'un report"}})
     end
 end)
+
+ESX.RegisterServerCallback('GetReports', function(source, cb)
+    cb(reports)
+end)
+
+RegisterServerEvent('DeleteReport')
+AddEventHandler('DeleteReport', function(reportId)
+    for i = #reports, 1, -1 do
+        if reports[i].id == reportId then
+            table.remove(reports, i)
+            break
+        end
+    end
+end)
+
+
+
+
+RegisterServerEvent('getAllCVC')
+AddEventHandler('getAllCVC', function(cb)
+    cb(cvc)
+end)
+
+RegisterServerEvent('addCVC')
+AddEventHandler('addCVC', function(name, equipe1, equipe2)
+    local newCVC = {
+        id = #cvc + 1,
+        name = name,
+        equipe1 = equipe1,
+        equipe2 = equipe2,
+        date = os.date("%Y-%m-%d %H:%M:%S")
+    }
+    table.insert(cvc, newCVC)
+    TriggerClientEvent('updateCVC', -1, cvc)  -- Met à jour tous les clients avec la nouvelle liste de CVC
+end)
+
+RegisterServerEvent('getPlayerByIdcrew')
+AddEventHandler('getPlayerByIdcrew', function(id_crew)
+    MySQL.Async.fetchAll('SELECT identifier FROM crew_membres WHERE id_crew = @id_crew', {
+		['@id_crew'] = id_crew
+	}, function(result) 
+        local positions = {}
+        
+        -- Boucle à travers chaque membre pour récupérer sa position
+        for _, data in ipairs(result) do
+            local player = ESX.GetPlayerFromIdentifier(data.identifier)
+            if player then
+                local playerPed = GetPlayerPed(player.source)
+                local playerCoords = GetEntityCoords(playerPed)
+                table.insert(positions, playerCoords)
+            end
+        end
+
+        -- Envoyer les positions au client
+        TriggerClientEvent('receivePlayerPositions', -1, positions)
+	end)
+end)
+
+RegisterServerEvent('getPlayerByIdcrew2')
+AddEventHandler('getPlayerByIdcrew2', function(id_crew)
+    MySQL.Async.fetchAll('SELECT identifier FROM crew_membres WHERE id_crew = @id_crew', {
+		['@id_crew'] = id_crew
+	}, function(result) 
+        local positions = {}
+        
+        -- Boucle à travers chaque membre pour récupérer sa position
+        for _, data in ipairs(result) do
+            local player = ESX.GetPlayerFromIdentifier(data.identifier)
+            if player then
+                local playerPed = GetPlayerPed(player.source)
+                local playerCoords = GetEntityCoords(playerPed)
+                table.insert(positions, playerCoords)
+            end
+        end
+
+        -- Envoyer les positions au client
+        TriggerClientEvent('receivePlayerPositions2', -1, positions)
+	end)
+end)
+
+
 
 RegisterCommand("md", function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)

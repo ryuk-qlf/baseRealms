@@ -17,6 +17,55 @@ Citizen.CreateThread(function()
 	end
 end)
 
+local reports = {}
+local listCVC = {}
+local CVCSelected = nil
+local equipe1Positions = {}
+local equipe2Positions = {}
+
+local idReport = {}
+-- Fonction pour récupérer les rapports côté client
+function FetchReportsFromServer()
+    ESX.TriggerServerCallback('GetReports', function(serverReports)
+        reports = serverReports
+    end)
+end
+
+-- Fonction pour supprimer un rapport
+function deleteReport(reportId)
+    TriggerServerEvent('DeleteReport', reportId)
+    ESX.ShowNotification('Report supprimé')
+    -- Recharger les rapports après suppression
+    FetchReportsFromServer()  -- Recharge les rapports depuis le serveur
+end
+
+RegisterNetEvent('updateCVC')
+AddEventHandler('updateCVC', function(newCVCList)
+    listCVC = newCVCList
+end)
+
+function getAllCVC()
+    TriggerServerEvent('getAllCVC', function(cvc)
+        listCVC = cvc
+    end)
+end
+
+function addCVC(name, equipe1, equipe2)
+    TriggerServerEvent('addCVC', name, equipe1, equipe2)
+    ESX.ShowNotification('CVC: ' .. name .. ' a bien été créé.')
+end
+
+-- Fonction pour récupérer un rapport par son ID
+function GetReportById(reportId)
+    for i = 1, #reports do
+        if reports[i].id == reportId then
+            return reports[i]
+        end
+    end
+    return nil
+end
+
+
 RegisterNetEvent('addPermMenuAdmin')
 AddEventHandler('addPermMenuAdmin', function(group)
     Perm.PlyGroup = group
@@ -776,6 +825,11 @@ Administration.subMenu6 = RageUI.CreateSubMenu(Administration.subMenu5, "Liste d
 Administration.subMenu9 = RageUI.CreateSubMenu(Administration.menu, "Véhicules", "Véhicules")
 Administration.subMenu10 = RageUI.CreateSubMenu(Administration.menu, "Monde", "Monde")
 Administration.subMenu11 = RageUI.CreateSubMenu(Administration.menu, "Autres options", "Autres options")
+Administration.report = RageUI.CreateSubMenu(Administration.menu, "Report", "Report")
+Administration.report1 = RageUI.CreateSubMenu(Administration.report, "Report", "Report")
+Administration.cvc = RageUI.CreateSubMenu(Administration.menu, "CVC", "CVC")
+Administration.cvc2 = RageUI.CreateSubMenu(Administration.cvc, "CVC", "CVC")
+Administration.cvc3 = RageUI.CreateSubMenu(Administration.cvc2, "CVC", "CVC")
 Administration.subMenu12 = RageUI.CreateSubMenu(Administration.menu, "Crew", "Crew")
 Administration.subMenu13 = RageUI.CreateSubMenu(Administration.menu, "Crew", "Crew")
 Administration.subMenu14 = RageUI.CreateSubMenu(Administration.menu, "Crew", "Crew")
@@ -797,6 +851,8 @@ Administration.subMenu13:SetRectangleBanner(198, 42, 7, 125)
 Administration.subMenu14:SetRectangleBanner(198, 42, 7, 125)
 Administration.subMenu15:SetRectangleBanner(198, 42, 7, 125)
 Administration.GiveItem:SetRectangleBanner(198, 42, 7, 125)
+Administration.report:SetRectangleBanner(198, 42, 7, 125)
+Administration.report1:SetRectangleBanner(198, 42, 7, 125)
 
 Administration.menu.Closed = function()
     Administration.OpenedMenu = false
@@ -814,8 +870,11 @@ end
 Administration.subMenu:AcceptFilter(true)
 Administration.GiveItem:AcceptFilter(true)
 Administration.subMenu12:AcceptFilter(true)
+Administration.report1:AcceptFilter(true)
+Administration.report:AcceptFilter(true)
 
 function MenuAdministration()
+    FetchReportsFromServer()
     if Perm.PlyGroup == 'superadmin' or Perm.PlyGroup == 'admin' or Perm.PlyGroup == 'moderator' then
         if not RageUI.GetInMenu() then
             return
@@ -853,6 +912,8 @@ function MenuAdministration()
                             })
                         end
                         RageUI.Button("Autres options", nil, {RightLabel = "→"}, true, {}, Administration.subMenu11)
+                        RageUI.Button("Report", nil, {RightLabel = "→"}, true, {}, Administration.report)
+                        RageUI.Button("CVC", nil, {RightLabel = "→"}, true, {}, Administration.cvc)
                     end)
 
                     RageUI.IsVisible(Administration.subMenu12, function()
@@ -1028,6 +1089,190 @@ function MenuAdministration()
                             end
                         })
                     end)
+                    
+                    -- Nouveau sous-menu pour les rapports
+                    RageUI.IsVisible(Administration.report, function()
+                        for i = 1, #reports do
+                            local report = reports[i]
+                            if report then
+                                local reportId = report.id  -- Capturer l'id du rapport localement
+                                RageUI.Button("ID: " .. report.id .. " - " .. report.playerName .. " (" .. report.playerId .. ") : " .. report.reason, nil, {RightLabel = "→"}, true, {
+                                    onSelected = function()
+                                        idReport = report.id  -- Assigner l'id du rapport à la variable globale idReport
+                                        -- RageUI.Visible(Administration.report1, true, {idReport = reportId})  -- Passer l'id du rapport à Administration.report1
+                                    end
+                                }, Administration.report1)
+                            else
+                                print("reports[" .. i .. "] is nil")
+                            end
+                        end
+                    end)
+
+                    -- Sous-menu pour les actions sur le rapport sélectionné
+                    RageUI.IsVisible(Administration.report1, function(data)
+                        
+                        if idReport then
+                            RageUI.Button("Se téléporter sur le joueur", nil, {}, true, {
+                                onSelected = function()
+                                    local selectedReport = GetReportById(idReport)
+                                    if selectedReport then
+                                        TriggerServerEvent('GotoPlayers', selectedReport.playerId)
+                                        -- Ici, 'GotoPlayer' est un événement serveur que vous devez définir
+                                    else
+                                        ESX.ShowNotification("Rapport sélectionné introuvable")
+                                    end
+                                end
+                            })
+                            RageUI.Button("Téléporter le joueur", nil, {}, true, {
+                                onSelected = function()
+                                    local selectedReport = GetReportById(idReport)
+                                    if selectedReport then
+                                        TriggerServerEvent('BringPlayers', selectedReport.playerId)
+                                        -- Ici, 'GotoPlayer' est un événement serveur que vous devez définir
+                                    else
+                                        ESX.ShowNotification("Rapport sélectionné introuvable")
+                                    end
+                                end
+                            })
+                            RageUI.Button("Suprimer le Report", nil, {}, true, {
+                                onSelected = function()
+                                    deleteReport(idReport)
+                                end
+                            })
+                            RageUI.Button("Message au Joueur", nil, {}, true, {
+                                onSelected = function()
+                                    local selectedReport = GetReportById(idReport)
+                                    if selectedReport then
+                                        local message = ESX.KeyboardInput("Entrez votre message",  100)  -- 100 est la longueur maximale du message
+                                        if message then 
+                                            ESX.ShowNotification(message, selectedReport.playerId)
+                                            ESX.ShowNotification("Message envoyé au joueur.")
+                                        else 
+                                            ESX.ShowNotification("Message annulé ou vide.")
+                                        end
+                                    else
+                                        ESX.ShowNotification("Rapport sélectionné introuvable")
+                                    end
+                                end
+                            })
+                            -- Ajoutez d'autres boutons pour d'autres actions sur le rapport ici
+                        else
+                            ESX.ShowNotification("ID du rapport non spécifié")
+                        end
+                    end)
+
+                    -- Menu RageUI pour les CVC
+                    RageUI.IsVisible(Administration.cvc, function()
+                        RageUI.Button("Créer un CVC", nil, {}, true, {
+                            onSelected = function()
+                                local cvcName = ESX.KeyboardInput("Nom du CVC", 30)
+                                local team1Id = ESX.KeyboardInput("ID Crew Equipe 1", 10)
+                                local team2Id = ESX.KeyboardInput("ID Crew Equipe 2", 10)
+                                addCVC(cvcName, team1Id, team2Id)
+                            end
+                        })
+
+                        RageUI.Button("Liste des CVC", nil, {}, true, {
+                            onSelected = function()
+                                getAllCVC()
+                            end
+                        }, Administration.cvc2)
+                    end)
+
+
+                    RageUI.IsVisible(Administration.cvc2, function()
+                        for i = 1, #listCVC do
+                            local cvc = listCVC[i]
+                            if cvc then
+                                RageUI.Button("ID: " .. cvc.id .. " - " .. cvc.name .. " (Equipe 1: " .. cvc.equipe1 .. ", Equipe 2: " .. cvc.equipe2 .. ")", nil, {RightLabel = "→"}, true, {
+                                    onSelected = function()
+                                        -- Actions à effectuer lorsque l'utilisateur sélectionne ce CVC
+                                        CVCSelected = cvc
+                                    end
+                                },Administration.cvc3)
+                            else
+                                print("listCVC[" .. i .. "] is nil")
+                            end
+                        end
+                    end)
+
+                    RageUI.IsVisible(Administration.cvc3, function()
+                        if CVCSelected then
+                            RageUI.Button("Se Téléporter sur l'équipe 1 (ID: " .. CVCSelected.equipe1 .. ")", nil, {}, true, {
+                                onSelected = function()
+                                    TriggerServerEvent('getPlayerByIdcrew', CVCSelected.equipe1)
+                                    -- TriggerServerEvent('GotoPlayers', CVCSelected.equipe1)
+                                    -- Ici, 'GotoPlayers' est un événement serveur que vous devez définir
+                                end
+                            })
+                    
+                            RageUI.Button("Se Téléporter sur l'équipe 2 (ID: " .. CVCSelected.equipe2 .. ")", nil, {}, true, {
+                                onSelected = function()
+                                    TriggerServerEvent('getPlayerByIdcrew2', CVCSelected.equipe2)
+                                    -- Ici, 'GotoPlayers' est un événement serveur que vous devez définir
+                                end
+                            })
+                        else
+                            ESX.ShowNotification("Aucun CVC sélectionné")
+                        end
+                    end)
+
+                    -- Fonction pour calculer la position moyenne
+                    local function calculateAveragePosition(positions)
+                        if #positions == 0 then
+                            return vector3(0.0, 0.0, 0.0)  -- Retourne une position par défaut si aucune position n'est disponible
+                        end
+
+                        local sumX, sumY, sumZ = 0.0, 0.0, 0.0
+
+                        for _, pos in ipairs(positions) do
+                            sumX = sumX + pos.x
+                            sumY = sumY + pos.y
+                            sumZ = sumZ + pos.z
+                        end
+
+                        local avgX = sumX / #positions
+                        local avgY = sumY / #positions
+                        local avgZ = sumZ / #positions
+
+                        return vector3(avgX, avgY, avgZ)
+                    end
+                    
+                    -- Événement client pour recevoir les positions des membres de l'équipe
+                    RegisterNetEvent('receivePlayerPositions')
+                    AddEventHandler('receivePlayerPositions', function(positions)
+                        equipe1Positions = positions
+
+                        -- Calculer la position moyenne
+                        local avgPosition = calculateAveragePosition(equipe1Positions)
+
+                        -- Téléporter le joueur à la position moyenne
+                        if avgPosition then
+                            SetEntityCoords(PlayerPedId(), avgPosition.x, avgPosition.y, avgPosition.z, false, false, false, false)
+                            ESX.ShowNotification("Téléporté à la position moyenne de l'équipe 1.")
+                        else
+                            ESX.ShowNotification("Impossible de calculer la position moyenne.")
+                        end
+                    end)
+
+                    -- Événement client pour recevoir les positions des membres de l'équipe
+                    RegisterNetEvent('receivePlayerPositions2')
+                    AddEventHandler('receivePlayerPositions2', function(positions)
+                        equipe2Positions = positions
+
+                        -- Calculer la position moyenne
+                        local avgPosition = calculateAveragePosition(equipe2Positions)
+
+                        -- Téléporter le joueur à la position moyenne
+                        if avgPosition then
+                            SetEntityCoords(PlayerPedId(), avgPosition.x, avgPosition.y, avgPosition.z, false, false, false, false)
+                            ESX.ShowNotification("Téléporté à la position moyenne de l'équipe 2.")
+                        else
+                            ESX.ShowNotification("Impossible de calculer la position moyenne.")
+                        end
+                    end)
+
+
                     RageUI.IsVisible(Administration.subMenu11, function()
                         if Perm.PlyGroup == 'superadmin' then
                             RageUI.Button("Faire une annonces", nil, {}, true, {

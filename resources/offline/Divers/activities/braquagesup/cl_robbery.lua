@@ -267,7 +267,7 @@ function StartHacking(coords)
     if not hacking then
         hacking = true
         TriggerServerEvent('atmRobbery:useTablet')
-        TriggerServerEvent("call:makeCallSpecial", "police", GetEntityCoords(PlayerPedId()), "Braquage de ATM")
+        TriggerServerEvent("call:makeCallSpecial", "police", GetEntityCoords(PlayerPedId()), "Braquage de superette")
         TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_ATM", 0, true)
         Citizen.Wait(10000)
         ClearPedTasksImmediately(PlayerPedId())
