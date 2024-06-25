@@ -147,6 +147,8 @@ function loadESXPlayer(identifier, playerId)
 
 		table.sort(userData.inventory, function(a, b)
 			return a.label < b.label
+
+			
 		end)
 
 		-- Group
