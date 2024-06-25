@@ -66,33 +66,43 @@ end
 --     TriggerEvent('skinchanger:change', 'skin', TableFace.Peau)
 -- end)
 
--- RegisterCommand("kev1", function()
---     TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 0)
--- end)
+RegisterCommand("kev1", function()
+    TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 0)
+end)
 
--- RegisterCommand("kev2", function()
---     TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 1)
--- end)
+RegisterCommand("kev2", function()
+    TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 1)
+end)
 
--- RegisterCommand("kev3", function()
---     TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 2)
--- end)
+RegisterCommand("kev3", function()
+    TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 2)
+end)
 
--- RegisterCommand("kev4", function()
---     TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 3)
--- end)
+RegisterCommand("kev4", function()
+    TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 3)
+end)
 
--- RegisterCommand("kev5", function()
---     TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 4)
--- end)
+RegisterCommand("kev5", function()
+    TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 4)
+end)
 
--- RegisterCommand("kev6", function()
---     TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 5)
--- end)
+RegisterCommand("kev6", function()
+    TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 5)
+end)
 
--- RegisterCommand("kev7", function()
---     TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 6)
--- end)
+RegisterCommand("kev7", function()
+    TriggerServerEvent("InsertVetement", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 6)
+end)
+
+RegisterCommand("kevlar", function(source, args, rawCommand)
+    -- Vérifie si un ID de joueur a été fourni
+    local playerId = tonumber(args[1])
+
+        TriggerServerEvent("InsertKev", "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 6, playerId)
+
+end)
+
+
 
 local offline = exports["offline"]
 
@@ -100,7 +110,7 @@ local totalWeight = 0
 local NotificationWeight = true
 
 Inv = {}
-Inv.FastWeapons = GetFieldValueFromName('Offline').name and GetFieldValueFromName('Offline').name or {}
+Inv.FastWeapons = GetFieldValueFromName('offline').name and GetFieldValueFromName('offline').name or {}
 
 local open = false
 currentMenu = 'item'
@@ -892,79 +902,80 @@ end)
 RegisterNUICallback("LoadInventaire", function(data, cb)
     loadPlayerInventory(currentMenu)
 end)
-
 RegisterNUICallback("UseItem", function(data, cb)
     if not IsPedRagdoll(PlayerPedId()) or not exports["offline"]:GetPlayerDead() or not exports["offline"]:GetPlayerKnockout() then
         if data.item.type == "item_standard" then 
             TriggerServerEvent("esx:useItem", data.item.name)
-
+        
         elseif data.item.type == "item_haut" then
-
             TriggerEvent('skinchanger:getSkin', function(skin)
-
-            if tonumber(skin.torso_1) ~= tonumber((data.item.skins).torso_1) then
-                TriggerEvent('skinchanger:loadClothes', skin, { 
-                    ["tshirt_1"] = data.item.skins["tshirt_1"], 
-                    ["tshirt_2"] = data.item.skins["tshirt_2"], 
-                    ["torso_1"] = data.item.skins["torso_1"], 
-                    ["torso_2"] = data.item.skins["torso_2"],
-                    ["arms"] = data.item.skins["arms"],
-                    ["arms_2"] = data.item.skins["arms_2"]})
+                if tonumber(skin.torso_1) ~= tonumber((data.item.skins).torso_1) then
+                    TriggerEvent('skinchanger:loadClothes', skin, { 
+                        ["tshirt_1"] = data.item.skins["tshirt_1"], 
+                        ["tshirt_2"] = data.item.skins["tshirt_2"], 
+                        ["torso_1"] = data.item.skins["torso_1"], 
+                        ["torso_2"] = data.item.skins["torso_2"],
+                        ["arms"] = data.item.skins["arms"],
+                        ["arms_2"] = data.item.skins["arms_2"]
+                    })
+                    save()
                 else
-                    TriggerEvent('skinchanger:getSkin', function(skin)
-                        if skin.sex == 0 then
-                            TriggerEvent('skinchanger:loadSkin', {
-                                sex      = 0,
-                                tshirt_1 = 15,
-                                tshirt_2 = 0,
-                                arms     = 15,
-                                arms_2   = 0,
-                                torso_1  = 15,
-                                torso_2  = 0
-                            })
-                        elseif skin.sex == 1 then
-                            TriggerEvent('skinchanger:loadSkin', {
-                                sex      = 1,
-                                tshirt_1 = 15,
-                                tshirt_2 = 0,
-                                arms     = 15,
-                                arms_2   = 0,
-                                torso_1  = 15,
-                                torso_2  = 0
-                            })
-                        elseif skin.sex >= 2 then
-                        end
-                    end)
+                    if skin.sex == 0 then
+                        TriggerEvent('skinchanger:loadSkin', {
+                            sex      = 0,
+                            tshirt_1 = 15,
+                            tshirt_2 = 0,
+                            arms     = 15,
+                            arms_2   = 0,
+                            torso_1  = 15,
+                            torso_2  = 0
+                        })
+                    elseif skin.sex == 1 then
+                        TriggerEvent('skinchanger:loadSkin', {
+                            sex      = 1,
+                            tshirt_1 = 15,
+                            tshirt_2 = 0,
+                            arms     = 15,
+                            arms_2   = 0,
+                            torso_1  = 15,
+                            torso_2  = 0
+                        })
+                    elseif skin.sex >= 2 then
+                        -- Gérer le cas pour d'autres sexes si nécessaire
+                    end
+                    save()
                 end
-                save()
             end)
-
+        
         elseif data.item.type == "item_kevlar" then
-
             TriggerEvent('skinchanger:getSkin', function(skin)
-
-            if tonumber(skin.bproof_1) ~= tonumber((data.item.skins).bproof_1) then
-                if IsPedInAnyVehicle(GetPlayerPed(-1), false) then
-                    if math.ceil(GetEntitySpeed(GetVehiclePedIsIn(GetPlayerPed(-1), false)) * 3.6) <= 20.0 then
-                        TriggerEvent('skinchanger:loadClothes', skin, {["bproof_1"] = data.item.skins["bproof_1"], ["bproof_2"] = data.item.skins["bproof_2"]})
+                if tonumber(skin.bproof_1) ~= tonumber((data.item.skins).bproof_1) then
+                    if IsPedInAnyVehicle(GetPlayerPed(-1), false) then
+                        if math.ceil(GetEntitySpeed(GetVehiclePedIsIn(GetPlayerPed(-1), false)) * 3.6) <= 20.0 then
+                            TriggerEvent('skinchanger:loadClothes', skin, {
+                                ["bproof_1"] = data.item.skins["bproof_1"],
+                                ["bproof_2"] = data.item.skins["bproof_2"]
+                            })
+                            SetPedArmour(PlayerPedId(), data.item.vie)
+                            Kevlar.IdKev = data.item.id
+                            ESX.Notification("Vous avez équipé votre ~g~Gilet par balle~s~.")
+                            Wait(500)
+                            Kevlar.StartDegatKevlar = true
+                        else
+                            ESX.ShowNotification("~r~Impossible de mettre son kevlar en conduisant.")
+                        end
+                    else
+                        TriggerEvent('skinchanger:loadClothes', skin, {
+                            ["bproof_1"] = data.item.skins["bproof_1"],
+                            ["bproof_2"] = data.item.skins["bproof_2"]
+                        })
                         SetPedArmour(PlayerPedId(), data.item.vie)
                         Kevlar.IdKev = data.item.id
                         ESX.Notification("Vous avez équipé votre ~g~Gilet par balle~s~.")
                         Wait(500)
                         Kevlar.StartDegatKevlar = true
-                    else
-                        ESX.ShowNotification("~r~Impossible de mettre son kevlar en conduisant.")
                     end
                 else
-                    TriggerEvent('skinchanger:loadClothes', skin, {["bproof_1"] = data.item.skins["bproof_1"], ["bproof_2"] = data.item.skins["bproof_2"]})
-                    SetPedArmour(PlayerPedId(), data.item.vie)
-                    Kevlar.IdKev = data.item.id
-                    ESX.Notification("Vous avez équipé votre ~g~Gilet par balle~s~.")
-                    Wait(500)
-                    Kevlar.StartDegatKevlar = true
-                end
-            else
-                TriggerEvent('skinchanger:getSkin', function(skin)
                     if skin.sex == 0 then
                         TriggerEvent('skinchanger:loadSkin', {
                             sex      = 0,
@@ -978,19 +989,20 @@ RegisterNUICallback("UseItem", function(data, cb)
                             bproof_2  = 0
                         })
                     elseif skin.sex >= 2 then
+                        -- Gérer le cas pour d'autres sexes si nécessaire
                     end
-                end)
-                ESX.Notification("Vous avez retiré votre ~g~Gilet par balle~s~.")
-                TriggerServerEvent('UpdateVieKevlar', Kevlar.IdKev, GetPedArmour(PlayerPedId()))
-                Wait(150)
-                SetPedArmour(PlayerPedId(), 0)
-                TriggerServerEvent('RefreshPlayerHealthArmour', GetEntityHealth(PlayerPedId()), GetPedArmour(PlayerPedId()))
-                Kevlar.StartDegatKevlar = false
-            end
-            save()
-        end)
-
+                    ESX.Notification("Vous avez retiré votre ~g~Gilet par balle~s~.")
+                    TriggerServerEvent('UpdateVieKevlar', Kevlar.IdKev, GetPedArmour(PlayerPedId()))
+                    Wait(150)
+                    SetPedArmour(PlayerPedId(), 0)
+                    TriggerServerEvent('RefreshPlayerHealthArmour', GetEntityHealth(PlayerPedId()), GetPedArmour(PlayerPedId()))
+                    Kevlar.StartDegatKevlar = false
+                    save()
+                end
+            end)
+        
         elseif data.item.type == "item_tenue" then
+
             
             TriggerEvent('skinchanger:getSkin', function(skin)
 
@@ -2484,7 +2496,7 @@ RegisterNUICallback("PutIntoFast", function(data, cb)
 		    Inv.FastWeapons[data.item.slot] = nil
 	    end
 	    Inv.FastWeapons[data.slot] = data.item.name
-        SetFieldValueFromNameEncode('Offline', {name = Inv.FastWeapons})
+        SetFieldValueFromNameEncode('offline', {name = Inv.FastWeapons})
 	    loadPlayerInventory(currentMenu)
 	    cb("ok")
     end
@@ -2492,7 +2504,7 @@ end)
 
 RegisterNUICallback("TakeFromFast", function(data, cb)
 	Inv.FastWeapons[data.item.slot] = nil
-    SetFieldValueFromNameEncode('Offline', {name = Inv.FastWeapons})
+    SetFieldValueFromNameEncode('offline', {name = Inv.FastWeapons})
 	loadPlayerInventory(currentMenu)
 	cb("ok")
 end)
@@ -2501,6 +2513,8 @@ RegisterKeyMapping('+ouvririnventaire', 'Ouverture inventaire', 'keyboard', 'TAB
 RegisterKeyMapping('+keybind1', 'Slot d\'arme 1', 'keyboard', '1')
 RegisterKeyMapping('+keybind2', 'Slot d\'arme 2', 'keyboard', '2')
 RegisterKeyMapping('+keybind3', 'Slot d\'arme 3', 'keyboard', '3')
+RegisterKeyMapping('+keybind4', 'Slot d\'arme 4', 'keyboard', '4')
+RegisterKeyMapping('+keybind5', 'Slot d\'arme 5', 'keyboard', '5')
 
 RegisterCommand('+ouvririnventaire', function()
     if not isInInventory then
@@ -2520,6 +2534,14 @@ end)
 
 RegisterCommand('+keybind3', function()
     useitem(3)
+end)
+
+RegisterCommand('+keybind4', function()
+    useitem(4)
+end)
+
+RegisterCommand('+keybind5', function()
+    useitem(5)
 end)
 
 function useitem(num)
@@ -2614,71 +2636,128 @@ RegisterKeyMapping("-bind8", "Jouer l'animation n°8", "keyboard", "NUMPAD8")
 RegisterKeyMapping("-bind9", "Jouer l'animation n°9", "keyboard", "NUMPAD9")
 
 RegisterCommand("-bind0", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind0")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind0")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
     end
 end)
 
 RegisterCommand("-bind1", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind1")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind1")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
     end
 end)
 
 RegisterCommand("-bind2", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind2")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind2")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
     end
 end)
 
 RegisterCommand("-bind3", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind3")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind3")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
     end
 end)
 
 RegisterCommand("-bind4", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind4")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind4")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
     end
 end)
 
 RegisterCommand("-bind5", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind5")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind5")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
     end
 end)
 
 RegisterCommand("-bind6", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind6")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind6")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
     end
 end)
 
 RegisterCommand("-bind7", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind7")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind7")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
     end
 end)
 
 RegisterCommand("-bind8", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind8")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind8")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
     end
 end)
 
 RegisterCommand("-bind9", function()
-    local AnimBind = ESX.GetFieldValueFromName("OfflineBind9")
+    local AnimBind = ESX.GetFieldValueFromName("offlineBind9")
     if json.encode(AnimBind) ~= "[]" then
         PlayAnimBind(AnimBind.name, AnimBind.anim, AnimBind.mouv)
+    end
+end)
+
+RegisterNetEvent('UseKevlarItem')
+AddEventHandler('UseKevlarItem', function(kevlarItem)
+    if kevlarItem.type == "item_kevlar" then
+        TriggerEvent('skinchanger:getSkin', function(skin)
+            if tonumber(skin.bproof_1) ~= tonumber(kevlarItem.skins.bproof_1) then
+                if IsPedInAnyVehicle(PlayerPedId(), false) then
+                    if math.ceil(GetEntitySpeed(GetVehiclePedIsIn(PlayerPedId(), false)) * 3.6) <= 20.0 then
+                        TriggerEvent('skinchanger:loadClothes', skin, {
+                            ["bproof_1"] = kevlarItem.skins.bproof_1,
+                            ["bproof_2"] = kevlarItem.skins.bproof_2
+                        })
+                        SetPedArmour(PlayerPedId(), kevlarItem.vie)
+                        Kevlar.IdKev = kevlarItem.id
+                        ESX.Notification("Vous avez équipé votre ~g~Gilet par balle~s~.")
+                        Wait(500)
+                        Kevlar.StartDegatKevlar = true
+                    else
+                        ESX.ShowNotification("~r~Impossible de mettre son kevlar en conduisant.")
+                    end
+                else
+                    TriggerEvent('skinchanger:loadClothes', skin, {
+                        ["bproof_1"] = kevlarItem.skins.bproof_1,
+                        ["bproof_2"] = kevlarItem.skins.bproof_2
+                    })
+                    SetPedArmour(PlayerPedId(), kevlarItem.vie)
+                    Kevlar.IdKev = kevlarItem.id
+                    ESX.Notification("Vous avez équipé votre ~g~Gilet par balle~s~.")
+                    Wait(500)
+                    Kevlar.StartDegatKevlar = true
+                end
+            else
+                if skin.sex == 0 then
+                    TriggerEvent('skinchanger:loadSkin', {
+                        sex = 0,
+                        bproof_1 = 0,
+                        bproof_2 = 0
+                    })
+                elseif skin.sex == 1 then
+                    TriggerEvent('skinchanger:loadSkin', {
+                        sex = 1,
+                        bproof_1 = 0,
+                        bproof_2 = 0
+                    })
+                elseif skin.sex >= 2 then
+                    -- Gérer le cas pour d'autres sexes si nécessaire
+                end
+                ESX.Notification("Vous avez retiré votre ~g~Gilet par balle~s~.")
+                TriggerServerEvent('UpdateVieKevlar', Kevlar.IdKev, GetPedArmour(PlayerPedId()))
+                Wait(150)
+                SetPedArmour(PlayerPedId(), 0)
+                TriggerServerEvent('RefreshPlayerHealthArmour', GetEntityHealth(PlayerPedId()), GetPedArmour(PlayerPedId()))
+                Kevlar.StartDegatKevlar = false
+            end
+        end)
     end
 end)

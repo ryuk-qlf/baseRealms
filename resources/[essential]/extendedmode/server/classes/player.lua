@@ -318,7 +318,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 					end
 				end
 			end
-			sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..self.getIdentity().."**\nsID: "..self.source.."\n[DiscordId: "..discord.."]\nAction : a add l'item "..item.label.."x"..count, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+			sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..self.getIdentity().."**\nsID: "..self.source.."\n[DiscordId: "..discord.."]\nAction : a add l'item "..item.label.."x"..count, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
 		end
 	end
 
@@ -343,7 +343,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 						end
 					end
 				end
-				sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..self.getIdentity().."**\nsID: "..self.source.."\n[DiscordId: "..discord.."]\nAction : a remove l'item "..item.label.."x"..count, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+				sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..self.getIdentity().."**\nsID: "..self.source.."\n[DiscordId: "..discord.."]\nAction : a remove l'item "..item.label.."x"..count, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
 			end
 		end
 	end

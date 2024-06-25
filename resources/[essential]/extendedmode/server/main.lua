@@ -441,7 +441,7 @@ AddEventHandler('esx:removeInventoryItemClothe', function(type, itemName, itemCo
 					end
 				end
 			end
-			sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : a jeté son vêtement "..itemName, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+			sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : a jeté son vêtement "..itemName, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
 		end
 	end
 end)
@@ -472,7 +472,7 @@ AddEventHandler('esx:removeInventoryItemCards', function(type, infos, itemCount,
 					end
 				end
 			end
-			sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..xPlayer.getIdentity().."\nsID: "..xPlayer.source.."\ns[DiscordId: "..discord.."]\nAction : a jeté sa carte banquaire associé au compte "..infos, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+			sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..xPlayer.getIdentity().."\nsID: "..xPlayer.source.."\ns[DiscordId: "..discord.."]\nAction : a jeté sa carte banquaire associé au compte "..infos, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
 		end
 	end
 end)

@@ -12511,7 +12511,7 @@ exports.ER_AGGREGATE_ORDER_FOR_UNION                                            
 exports.ER_AGGREGATE_ORDER_NON_AGG_QUERY                                                 = 3029;
 exports.ER_SLAVE_WORKER_STOPPED_PREVIOUS_THD_ERROR                                       = 3030;
 exports.ER_DONT_SUPPORT_SLAVE_PRESERVE_COMMIT_ORDER                                      = 3031;
-exports.ER_SERVER_OFFLINE_MODE                                                           = 3032;
+exports.ER_SERVER_offline_MODE                                                           = 3032;
 exports.ER_GIS_DIFFERENT_SRIDS                                                           = 3033;
 exports.ER_GIS_UNSUPPORTED_ARGUMENT                                                      = 3034;
 exports.ER_GIS_UNKNOWN_ERROR                                                             = 3035;
@@ -13746,7 +13746,7 @@ exports[3028] = 'ER_AGGREGATE_ORDER_FOR_UNION';
 exports[3029] = 'ER_AGGREGATE_ORDER_NON_AGG_QUERY';
 exports[3030] = 'ER_SLAVE_WORKER_STOPPED_PREVIOUS_THD_ERROR';
 exports[3031] = 'ER_DONT_SUPPORT_SLAVE_PRESERVE_COMMIT_ORDER';
-exports[3032] = 'ER_SERVER_OFFLINE_MODE';
+exports[3032] = 'ER_SERVER_offline_MODE';
 exports[3033] = 'ER_GIS_DIFFERENT_SRIDS';
 exports[3034] = 'ER_GIS_UNSUPPORTED_ARGUMENT';
 exports[3035] = 'ER_GIS_UNKNOWN_ERROR';
@@ -15220,7 +15220,7 @@ PoolCluster.prototype._decreaseErrorCount = function _decreaseErrorCount(node) {
   }
 };
 
-PoolCluster.prototype._findNodeIds = function _findNodeIds(pattern, includeOffline) {
+PoolCluster.prototype._findNodeIds = function _findNodeIds(pattern, includeoffline) {
   var currentTime  = 0;
   var foundNodeIds = this._findCaches[pattern];
 
@@ -15235,7 +15235,7 @@ PoolCluster.prototype._findNodeIds = function _findNodeIds(pattern, includeOffli
     this._findCaches[pattern] = foundNodeIds;
   }
 
-  if (includeOffline) {
+  if (includeoffline) {
     return foundNodeIds;
   }
 

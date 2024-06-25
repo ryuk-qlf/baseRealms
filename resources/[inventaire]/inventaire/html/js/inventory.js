@@ -94,7 +94,7 @@ function inventorySetup(items, fastItems, crMenu, image) {
     if (crMenu == 'item') {
         $("#drop").html(invLocale.dropItem);
         var i;
-        for (i = 1; i < 4; i++) {
+        for (i = 1; i < 6; i++) {
             $("#playerInventoryFastItems").append('<div class="slotFast"><div id="itemFast-' + i + '" class="item" >' + '<div class="keybind">' + i + '</div><div class="item-count"></div> <div class="item-name"></div> </div ><div class="item-name-bg"></div></div>');
         }
         $.each(fastItems, function(index, item) {
@@ -154,6 +154,34 @@ function makeDraggables() {
                 $.post("http://inventaire/PutIntoFast", JSON.stringify({
                     item: itemData,
                     slot: 3
+                }));
+            }
+        }
+    });
+    $('#itemFast-4').droppable({
+        drop: function(event, ui) {
+            itemData = ui.draggable.data("item");
+            itemInventory = ui.draggable.data("inventory");
+
+            if (type === "normal" && (itemInventory === "main" || itemInventory === "fast")) {
+                disableInventory(500);
+                $.post("http://inventaire/PutIntoFast", JSON.stringify({
+                    item: itemData,
+                    slot: 4
+                }));
+            }
+        }
+    });
+    $('#itemFast-5').droppable({
+        drop: function(event, ui) {
+            itemData = ui.draggable.data("item");
+            itemInventory = ui.draggable.data("inventory");
+
+            if (type === "normal" && (itemInventory === "main" || itemInventory === "fast")) {
+                disableInventory(500);
+                $.post("http://inventaire/PutIntoFast", JSON.stringify({
+                    item: itemData,
+                    slot: 5
                 }));
             }
         }

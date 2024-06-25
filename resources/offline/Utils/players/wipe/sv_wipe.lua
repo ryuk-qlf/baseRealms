@@ -6,7 +6,7 @@ RegisterNetEvent('InfoPerso')
 AddEventHandler('InfoPerso', function()
     local xPlayer = ESX.GetPlayerFromId(source)
 
-    TriggerClientEvent("chat:addMessage", xPlayer.source, "[^1Offline^0] Identité : "..xPlayer.getIdentity().." ID : "..xPlayer.getIdPerso())  
+    TriggerClientEvent("chat:addMessage", xPlayer.source, "[^1offline^0] Identité : "..xPlayer.getIdentity().." ID : "..xPlayer.getIdPerso())  
 end)
 
 RegisterNetEvent('WipePersoAdmin')
@@ -22,7 +22,7 @@ AddEventHandler('WipePersoAdmin', function(target)
                 local xTarget = ESX.GetPlayerFromIdentifier(identifier)
 
                 if xTarget.source then
-                    DropPlayer(xTarget.source, "OFFLINE : Vous venez d'être wipe !")
+                    DropPlayer(xTarget.source, "offline : Vous venez d'être wipe !")
                 end
 
                 MySQL.Async.execute('DELETE FROM users WHERE identifier = @identifier', {
@@ -75,7 +75,7 @@ AddEventHandler('WipePerso', function(args)
                     ["@date"] = json.encode(date),
                     ["@identifier"] = xPlayer.identifier
                 })
-                DropPlayer(xPlayer.source, "OFFLINE : Vous venez d'être wipe !")
+                DropPlayer(xPlayer.source, "offline : Vous venez d'être wipe !")
                 MySQL.Async.execute('DELETE FROM users WHERE identifier = @identifier', {
                     ['@identifier'] = xPlayer.identifier
                 })
@@ -113,7 +113,7 @@ AddEventHandler('WipePerso', function(args)
                 local test = os.difftime(os.time(), os.time{year = TimeStart.year, month = TimeStart.month, day = TimeStart.day, hour = TimeStart.hour, min = TimeStart.min, sec = TimeStart.sec}) / 60
 
                 if (10080-math.floor(test)) <= 0 then
-                    DropPlayer(xPlayer.source, "OFFLINE : Vous venez d'être wipe !")
+                    DropPlayer(xPlayer.source, "offline : Vous venez d'être wipe !")
                     MySQL.Async.execute('DELETE FROM users WHERE identifier = @identifier', {
                         ['@identifier'] = xPlayer.identifier
                     })

@@ -15,6 +15,8 @@ Robbery.shops = {
     {coords = vector3(-1486.51, -377.51, 40.16), heading = 133.0, packet = {10, 12}, ped = 0x1AF6542C, rbs = false},
 }
 
+local cooldowns = {}
+
 local TableBraquage = {}
 local CountMoneyBraquage = {}
 
@@ -61,4 +63,45 @@ AddEventHandler('addsale', function()
 			end
 		end
 	end
+end)
+
+ESX.RegisterServerCallback('atmRobbery:hasTablet', function(source, cb)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local tabletCount = xPlayer.getInventoryItem('tablette').count
+
+    if tabletCount > 0 then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
+ESX.RegisterServerCallback('atmRobbery:canRob', function(source, cb)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local identifier = xPlayer.identifier
+
+    if cooldowns[identifier] and cooldowns[identifier] > os.time() then
+        local remainingTime = cooldowns[identifier] - os.time()
+        local remainingMinutes = math.ceil(remainingTime / 60)
+        cb(false, remainingMinutes)
+    else
+        cb(true, 0) -- 0 minutes restantes, peut braquer immédiatement
+    end
+end)
+
+RegisterServerEvent('atmRobbery:useTablet')
+AddEventHandler('atmRobbery:useTablet', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    xPlayer.removeInventoryItem('tablette', 1)
+end)
+
+RegisterServerEvent('atmRobbery:reward')
+AddEventHandler('atmRobbery:reward', function()
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local dirtyMoney = math.random(1000, 2000)
+    xPlayer.addAccountMoney('black_money', dirtyMoney)
+    TriggerClientEvent('esx:showNotification', source, '~g~Vous avez reçu ' .. dirtyMoney .. ' $ en argent sale')
+
+    local identifier = xPlayer.identifier
+    cooldowns[identifier] = os.time() + 3 * 60 * 60 -- 3 heures en secondes
 end)

@@ -6,10 +6,10 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 	end
 
-    AddTextEntry('FE_THDR_GTAO', '~b~Offline~s~ - ID '..GetPlayerServerId(PlayerId()))
+    AddTextEntry('FE_THDR_GTAO', '~b~offline~s~ - ID '..GetPlayerServerId(PlayerId()))
     AddTextEntry('PM_PANE_LEAVE', 'Retourner à l\'acceuil')
     AddTextEntry('PM_PANE_QUIT', 'Quitter FiveM')
-    AddTextEntry('PM_PANE_CFX', 'Offline')
+    AddTextEntry('PM_PANE_CFX', 'offline')
 
     while true do
         DisablePlayerVehicleRewards(PlayerId()) -- Pas de drop d'arme véhicule
@@ -458,7 +458,7 @@ RegisterKeyMapping('accroupie', "S'accroupir", 'keyboard', 'X')
 
 RegisterCommand('accroupie', function()
     local plyPed = PlayerPedId()
-    local DemarcheBind = ESX.GetFieldValueFromName("OfflineDemarche")
+    local DemarcheBind = ESX.GetFieldValueFromName("offlineDemarche")
     
     if not IsPedInAnyVehicle(GetPlayerPed(-1), false) and DoesEntityExist(plyPed) and not IsEntityDead(plyPed) then 
         DisableControlAction(1, 104, true)

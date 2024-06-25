@@ -664,10 +664,10 @@ function openInteractionMenu()
                                             Citizen.Wait(100)
                                         end
                                         SetPedMovementClipset(PlayerPedId(), Dict, 0)
-                                        ESX.SetFieldValueFromNameEncode("OfflineDemarche", Dict)
+                                        ESX.SetFieldValueFromNameEncode("offlineDemarche", Dict)
                                     else
                                         ResetPedMovementClipset(PlayerPedId(), 0)
-                                        ESX.SetFieldValueFromNameEncode("OfflineDemarche", nil)
+                                        ESX.SetFieldValueFromNameEncode("offlineDemarche", nil)
                                     end
                                 end
                             })
@@ -683,10 +683,10 @@ function openInteractionMenu()
                                     ESX.Notification("Vous avez choisi ~b~"..ListeHumeurs[i].name.."~s~ comme humeur par défaut.")
                                     if Dict then
                                         SetFacialIdleAnimOverride(PlayerPedId(), Dict, 0)
-                                        ESX.SetFieldValueFromNameEncode("OfflineHumeur", Dict)
+                                        ESX.SetFieldValueFromNameEncode("offlineHumeur", Dict)
                                     else
                                         ResetPedMovementClipset(PlayerPedId(), 0)
-                                        ESX.SetFieldValueFromNameEncode("OfflineHumeur", nil)
+                                        ESX.SetFieldValueFromNameEncode("offlineHumeur", nil)
                                     end
                                 end
                             })
@@ -744,7 +744,7 @@ function openInteractionMenu()
 
                                 onSelected = function(Index)
                                     local BindAnim = {name = DictAnim, anim = PlayAnim, mouv = MouvAnim}
-                                    ESX.SetFieldValueFromNameEncode("OfflineBind"..Index-1, BindAnim)
+                                    ESX.SetFieldValueFromNameEncode("offlineBind"..Index-1, BindAnim)
                                     ESX.ShowNotification("Vous avez bind l'animation ~b~"..LabelAnim.."~s~ sur la Touche ~b~"..(Index-1).."~s~.")
                                 end,
                             })
@@ -754,7 +754,7 @@ function openInteractionMenu()
                                 end,
 
                                 onSelected = function(Index)
-                                    ESX.SetFieldValueFromNameEncode("OfflineBind"..Index-1, nil)
+                                    ESX.SetFieldValueFromNameEncode("offlineBind"..Index-1, nil)
                                     ESX.ShowNotification("Vous avez supprimer l'animation de la touche ~b~"..(Index-1).."~s~.")
                                 end,
                             })

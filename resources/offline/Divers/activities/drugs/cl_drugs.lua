@@ -62,7 +62,7 @@ AddEventHandler('esx:addInventoryItem', function(item, count)
                 if v.name == item then
                     if v.count > 0 then
                         ESX.TriggerServerCallback('JobInService', function(count)
-                            if count >= 3 then
+                            if count >= 0 then
                                 SellActived = true
                                 selldrugs()
                             else

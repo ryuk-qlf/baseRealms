@@ -6,8 +6,8 @@ TriggerEvent('LandLife:GetSharedObject', function(obj) ESX = obj end)
 RegisterNetEvent('SetHealthAndArmour')
 AddEventHandler('SetHealthAndArmour', function(health)
     local pPed = PlayerPedId()
-    local HumeurBind = ESX.GetFieldValueFromName("OfflineHumeur")
-    local DemarcheBind = ESX.GetFieldValueFromName("OfflineDemarche")
+    local HumeurBind = ESX.GetFieldValueFromName("offlineHumeur")
+    local DemarcheBind = ESX.GetFieldValueFromName("offlineDemarche")
 
     SetEntityHealth(pPed, tonumber(health))
 

@@ -71,7 +71,7 @@ AddEventHandler("ChangePorteurCard", function(player, account, name)
 			end
 		end
 	end
-	sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : a donné sa carte bleue associé au compte banquaire : "..account.." à "..xTarget.getIdentity(), 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+	sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : a donné sa carte bleue associé au compte banquaire : "..account.." à "..xTarget.getIdentity(), 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
 end)
 
 RegisterNetEvent("ChangePorteurIdCard")
@@ -106,7 +106,7 @@ AddEventHandler("ChangePorteurIdCard", function(player, id, name)
 			end
 		end
 	end
-	sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..xPlayer.getIdentity().."\n**sID: "..xPlayer.source.."**\n[DiscordId: "..discord.."]\nAction : a donné sa/son "..type.." à "..xTarget.getIdentity(), 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+	sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..xPlayer.getIdentity().."\n**sID: "..xPlayer.source.."**\n[DiscordId: "..discord.."]\nAction : a donné sa/son "..type.." à "..xTarget.getIdentity(), 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
 end)
 
 RegisterNetEvent("esx_inventoryhud:tradePlayerItem")
@@ -209,8 +209,45 @@ AddEventHandler('InsertVetement', function(type, name, Nom1, lunettes, Nom2, var
 			end
 		end
 	end
-	sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : a acheté le vêtement "..name, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+	sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : a acheté le vêtement "..name, 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
 end)
+
+RegisterNetEvent('InsertKev')
+AddEventHandler('InsertKev', function(type, name, Nom1, lunettes, Nom2, variation, ID)
+    local ident = GetPlayerIdentifier(ID)
+    local xPlayer = ESX.GetPlayerFromId(ID)
+    local maskx = {
+        [Nom1] = tonumber(lunettes),
+        [Nom2] = tonumber(variation)
+    }
+    
+    MySQL.Async.execute('INSERT INTO vetement (identifier, type, nom, clothe) VALUES (@identifier, @type, @nom, @clothe)', { 
+        ['@identifier'] = ident,
+        ['@type'] = type,
+        ['@nom'] = name,
+        ['@clothe'] = json.encode(maskx)
+    }, function(rowsChanged)
+        if rowsChanged > 0 then
+            local kevlarItem = {
+                type = "item_kevlar",
+                name = name,
+                skins = {
+                    bproof_1 = tonumber(lunettes), -- Assurez-vous que les noms et valeurs correspondent à vos données
+                    bproof_2 = tonumber(variation)
+                },
+                vie = 100, -- Assurez-vous que cette valeur est correcte et définie de manière appropriée
+                id = rowsChanged -- L'ID inséré dans la base de données
+            }
+            TriggerClientEvent("UseKevlarItem", ID, kevlarItem) -- Envoie l'événement au client concerné
+        else
+            print('Erreur lors de l\'insertion du kevlar en base de données')
+        end
+    end)
+end)
+
+
+
+
 
 RegisterNetEvent('InsertTenue')
 AddEventHandler('InsertTenue', function(type, name, clothe)
@@ -282,7 +319,7 @@ AddEventHandler('Vetement:giveitem', function(id, personne, name)
 			end
 		end
 	end
-	sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : a donné un vêtement à "..xPlayerT.getIdentity(), 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+	sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : a donné un vêtement à "..xPlayerT.getIdentity(), 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
 end)
 
 RegisterNetEvent('UpdateVieKevlar')

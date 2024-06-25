@@ -253,3 +253,17 @@ ESX.RegisterUsableItem('sandwich', function(source)
 	TriggerClientEvent('esx_basicneeds:onsandwich', source)
 
 end)
+
+ESX.RegisterUsableItem('kevlar', function(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    
+    xPlayer.removeInventoryItem('kevlar', 1)
+
+    TriggerEvent('InsertKev', "kevlar", "Kevlar 10", "bproof_1", 21, "bproof_2", 6, source)
+	
+end)
+
+
+
+
+

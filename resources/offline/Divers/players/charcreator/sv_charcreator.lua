@@ -55,7 +55,7 @@ AddEventHandler("SetIdentity", function(NDF, Prenom, DDN, Sexe, Taille, LDN)
 			end
 		end
 	end
-    sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..Prenom.." "..NDF.."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : Viens de créer son personnage", 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+    sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..Prenom.." "..NDF.."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : Viens de créer son personnage", 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
 
     TriggerEvent("UpdateAdminList")
 

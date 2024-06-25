@@ -144,7 +144,7 @@ AddEventHandler("playerConnecting", function(name, setKickReason, deferrals)
                 permanent = v.permanent
 
                 if permanent == 1 then
-                    deferrals.done("\nVous êtes ban de Offline.\nRaison : "..reason.."\nID Bannissement : "..idban.."\nDate unban : Permanent")
+                    deferrals.done("\nVous êtes ban de offline.\nRaison : "..reason.."\nID Bannissement : "..idban.."\nDate unban : Permanent")
                     SendWebhookBan("Connexion arrêtée par le bannissement", "**Discord ID :** <@"..ids.discord:gsub("discord:", "")..">\n**Steam Url :** https://steamcommunity.com/profiles/" ..tonumber(ids.steam:gsub("steam:", ""), 16).."\n**Date unban :** Permanent", "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw", '3863105')
                     CancelEvent()
                 elseif permanent == 0 then
@@ -159,7 +159,7 @@ AddEventHandler("playerConnecting", function(name, setKickReason, deferrals)
                         })
                     else
                         local endtime = os.time({year = expiration.year, month = expiration.month, day = expiration.day, hour = expiration.hour + hourban, min = expiration.min, sec = expiration.sec})
-                        deferrals.done("\nVous êtes ban de Offline.\nRaison : "..reason.."\nID Bannissement : "..idban.."\nDate unban : "..os.date("%d", endtime).."-"..os.date("%m", endtime).."-"..os.date("%Y", endtime).." "..os.date("%H", endtime)..":"..os.date("%M", endtime))
+                        deferrals.done("\nVous êtes ban de offline.\nRaison : "..reason.."\nID Bannissement : "..idban.."\nDate unban : "..os.date("%d", endtime).."-"..os.date("%m", endtime).."-"..os.date("%Y", endtime).." "..os.date("%H", endtime)..":"..os.date("%M", endtime))
                         SendWebhookBan("Connexion arrêtée par le bannissement", "**Discord ID :** <@"..ids.discord:gsub("discord:", "")..">\n**Steam Url :** https://steamcommunity.com/profiles/" ..tonumber(ids.steam:gsub("steam:", ""), 16).."\n**Date unban :** "..os.date("%d", endtime).."-"..os.date("%m", endtime).."-"..os.date("%Y", endtime).." "..os.date("%H", endtime)..":"..os.date("%M", endtime), "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw", '3863105')
                         CancelEvent()
                     end
@@ -267,7 +267,7 @@ RegisterCommand("ban", function(source, args, rawCommand)
                         })
                         local endtime = os.time({year = date.year, month = date.month, day = date.day, hour = date.hour + CountHour, min = date.min, sec = date.sec})
                         SendWebhookBan("Ban", "**Modérateur :** <@"..ids2.discord:gsub("discord:", "")..">\n**Joueur :** <@"..ids.discord:gsub("discord:", "")..">\n**ID Ban :** "..result[1].idban.."\n**Temps de ban :** Permanent\n**Raison :** "..message, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw", '3863105')
-                        DropPlayer(_src, "Vous êtes ban de Offline\nRaison : "..message.."\nID Bannissement : "..result[1].idban)
+                        DropPlayer(_src, "Vous êtes ban de offline\nRaison : "..message.."\nID Bannissement : "..result[1].idban)
                     end)
                 else
                     MySQL.Async.execute('INSERT INTO banlist (token, license, identifier, liveid, xbox, discord, ip, moderator, reason, expiration, hourban) VALUES (@token, @license, @identifier, @liveid, @xbox, @discord, @ip, @moderator, @reason, @expiration, @hourban)', {
@@ -304,7 +304,7 @@ RegisterCommand("ban", function(source, args, rawCommand)
                         })
                         local endtime = os.time({year = date.year, month = date.month, day = date.day, hour = date.hour + CountHour, min = date.min, sec = date.sec})
                         SendWebhookBan("Ban", "**Modérateur :** <@"..ids2.discord:gsub("discord:", "")..">\n**Joueur :** <@"..ids.discord:gsub("discord:", "")..">\n**ID Ban :** "..result[1].idban.."\n**Temps de ban :** "..CountHour.."Heures\n**Date unban :** "..os.date("%d", endtime).."-"..os.date("%m", endtime).."-"..os.date("%Y", endtime).." "..os.date("%H", endtime)..":"..os.date("%M", endtime).."\n**Raison :** "..message, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw", '3863105')
-                        DropPlayer(_src, "Vous êtes ban de Offline\nRaison : "..message.."\nID Bannissement : "..result[1].idban)
+                        DropPlayer(_src, "Vous êtes ban de offline\nRaison : "..message.."\nID Bannissement : "..result[1].idban)
                     end)
                 end
             end

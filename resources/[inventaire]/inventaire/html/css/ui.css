@@ -20,36 +20,51 @@ body {
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(255, 255, 255, .185);
+    background-color: rgba(3, 3, 3, 0.678);
     display: none;
     z-index: 0
 }
 
 .raccours {
     position: relative;
-    top: 19.45%;
+    top: 16.35%;
     right: -3.5%;
-    width: 170px;
+    width: 70px;
     display: table;
+    color: red; /* Couleur du texte en rouge vif */
+    background-color: rgba(226, 10, 10, 0.25);
+    border-radius: 10px; /* Coins arrondis */
+    padding: 10px; /* Ajout d'un peu de padding pour l'espace intérieur */
 }
 
 .raccours1,
 .raccours11 {
-    width: 290px;
+    width: 100px;
     display: table-cell;
+    color: rgb(245, 245, 245); /* Couleur du texte en rouge vif */
+    /* background-color: rgba(226, 10, 10, 0.25); */
+    border-radius: 0.1px; /* Coins arrondis */
+    padding: 1dvb; /* Ajout d'un peu de padding pour l'espace intérieur */
+    transition: transform 0.3s ease-in-out;
 }
 
 .raccours2 {
     display: table-cell;
+    color: rgb(255, 255, 255); /* Couleur du texte en rouge vif */
+    /* background-color: rgba(226, 10, 10, 0.25); */
+    border-radius: 0.1px; /* Coins arrondis */
+    padding: 10.5px; /* Ajout d'un peu de padding pour l'espace intérieur */
+    transition: opacity 0.3s ease-in-out; /* Transition douce pour l'opacité */
 }
 
 .raccours1:hover {
-    opacity: 0.7
+    transform: scale(1.10);
 }
 
 .raccours2:hover {
-    opacity: 0.7
+    transform: scale(1.10);
 }
+
 
 .inventory {
     position: absolute;
@@ -58,7 +73,7 @@ body {
     transform: translate(-50%, -50%);
     width: 1800px;
     height: 650px;
-    color: rgba(255, 255, 255, .5);
+    color: rgba(63, 5, 5, 0.993);
     border-radius: 20px
 }
 
@@ -138,7 +153,10 @@ input[type=number] {
 }
 
 .slot:hover {
-    opacity: 0.8;
+    /* opacity: 0.8; */
+    
+    background-color: rgba(226, 10, 10, 0.25);
+    color: #b90606;
 }
 
 .slotFast {
@@ -155,7 +173,8 @@ input[type=number] {
 }
 
 .slotFast:hover {
-    opacity: 0.8;
+    background-color: rgba(226, 10, 10, 0.25);
+    color: #b90606;
 }
 
 .item,
@@ -257,21 +276,28 @@ input[type=number] {
 .control {
     width: 200px;
     height: 40px;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(136, 3, 3, 0.4);
     border-radius: 13px;
     margin: 40px;
     text-align: center;
     font-size: 16px;
     vertical-align: middle;
     line-height: 40px;
+    transition: transform 0.3s ease-in-out;
 }
 
-.control.disabled {
-    background-color: rgba(36, 36, 36, 0.479);
-}
+/* .control.disabled {
+    background-color: rgba(36, 36, 36, 0.603);
+} */
 
 .hoverControl {
     background-color: rgba(36, 36, 36, 0.479);
+    transform: scale(1.15);
+}
+
+.control:hover {
+    background-color: rgba(36, 36, 36, 0.603);
+    transform: scale(1.15);
 }
 
 .used-item-slot {
@@ -342,7 +368,7 @@ input[type=number] {
     text-decoration: none;
     padding: 2px;
     color: rgba(255, 255, 255, .85);
-    background-color: rgba(49, 49, 49, 0.274);
+    background-color: rgba(241, 1, 1, 0.274);
     border-radius: 90px;
     text-shadow: none;
     font-size: 14px!important;
@@ -354,7 +380,7 @@ input[type=number] {
 }
 
 .nearbyPlayerButton:hover {
-    background-color: rgba(36, 36, 36, 0.2)
+    background-color: rgb(78, 78, 78)
 }
 
 #noSecondInventoryMessage {

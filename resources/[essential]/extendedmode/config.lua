@@ -232,6 +232,7 @@ Config.Item = {
     {'prop_barrier_work05', 'prop_barrier_work05'},
     {'prop_mp_cone_02', 'prop_mp_cone_02'},
     {'p_ld_stinger_s', 'p_ld_stinger_s'},
+    {'item_kevlar', 'prop_bodyarmour_03'},
 }
 
 Config.ItemClothes = {
@@ -241,6 +242,6 @@ Config.ItemClothes = {
     {'item_haut', 'prop_ld_tshirt_01'},
     {'item_chaussures', 'prop_ld_shoe_01'},
     {'item_lunettes', 'prop_cs_sol_glasses'},
-    {'item_kevlar', 'prop_bodyarmour_03'},
+    -- {'item_kevlar', 'prop_bodyarmour_03'},
     {'item_masque', 'p_trev_ski_mask_s'},
 }

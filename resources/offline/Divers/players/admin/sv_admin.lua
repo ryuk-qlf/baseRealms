@@ -570,7 +570,7 @@ RegisterCommand("giveitem", function(source, args, rawCommand)
                     end
                 end
       
-                sendToDiscordWithSpecialURL("Offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : give l'item "..args[2].." à "..xTarget.getIdentity(), 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
+                sendToDiscordWithSpecialURL("offline Logger","Utilisateur **"..xPlayer.getIdentity().."**\nsID: "..xPlayer.source.."\n[DiscordId: "..discord.."]\nAction : give l'item "..args[2].." à "..xTarget.getIdentity(), 16711680, "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw")
             end
         end
     end

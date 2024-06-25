@@ -81,7 +81,7 @@ RegisterCommand('activateDiamond', function(source, args)
                                     ['@date'] = json.encode(date),
                                     ['@identifier'] = xPlayer.identifier
                                 })
-                                xPlayer.showNotification("~g~Vous avez activé votre Diamond ! Bon jeu sur Offline")
+                                xPlayer.showNotification("~g~Vous avez activé votre Diamond ! Bon jeu sur offline")
                                 TriggerClientEvent('RefreshDiamond', xPlayer.source)
                             else
                                 xPlayer.showNotification("~r~Erreur, Vérifiez que le numéro de la transaction est correct !")

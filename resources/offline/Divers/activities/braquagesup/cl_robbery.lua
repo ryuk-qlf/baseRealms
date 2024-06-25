@@ -31,6 +31,17 @@ Robbery.shops = {
     {coords = vector3(-1486.51, -377.51, 40.16), heading = 133.0, packet = {10, 12}, ped = 0x1AF6542C, rbs = false},
 }
 
+local ATMs = {
+    {coords = vector3(147.92, -1035.56, 29.34)},
+    {coords = vector3(1171.92, 2702.13, 38.18)},
+    {coords = vector3(311.16, -284.49, 54.16)},
+    {coords = vector3(-56.96, -1752.07, 29.43)},
+    {coords = vector3(-203.85, -861.40, 30.26)}
+    -- Ajoutez plus d'ATMs ici
+}
+
+local hacking = false
+
 local objeto = {}
 local objetos = {}
 local holdup = false
@@ -122,6 +133,44 @@ Citizen.CreateThread(function()
     end 
 end)
 
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(0)
+        local playerPed = PlayerPedId()
+        local playerCoords = GetEntityCoords(playerPed)
+
+        for _, atm in pairs(ATMs) do
+            local distance = #(playerCoords - atm.coords)
+            if distance < 1.5 then
+                ESX.ShowHelpNotification("Appuyez sur ~INPUT_CONTEXT~ pour utiliser une tablette et hacker l'ATM")
+
+                if IsControlJustPressed(0, 38) and not hacking then
+                    ESX.TriggerServerCallback('atmRobbery:canRob', function(canRob, remainingMinutes)
+                        if canRob then
+                            ESX.TriggerServerCallback('atmRobbery:hasTablet', function(hasTablet)
+                                if hasTablet then
+                                    ESX.ShowHelpNotification("Braquage en cours")
+                                    StartHacking(atm.coords)
+                                else
+                                    ESX.ShowNotification("~r~Vous n'avez pas de tablette.")
+                                end
+                            end)
+                        else
+                            if remainingMinutes > 0 then
+                                ESX.ShowNotification("~r~Vous devez attendre encore " .. remainingMinutes .. " minutes avant de braquer à nouveau un ATM.")
+                            else
+                                ESX.ShowNotification("~r~Vous devez attendre avant de braquer un autre ATM.")
+                            end
+                        end
+                    end)
+                end
+            end
+        end
+    end
+end)
+
+
+
 function StartBraquage(result)
     if not holdup then
         ESX.TriggerServerCallback('JobInService', function(count)
@@ -211,4 +260,18 @@ function spawnmoneypack(result)
     AttachEntityToEntity(objeto, peds[result], GetPedBoneIndex(peds[result],  28422), 0.0, -0.03, 0.0, 90.0, 0.0, 0.0, 1, 1, 0, 1, 0, 1)
     Wait(1500)
     DetachEntity(objeto, true, false)
+end
+
+
+function StartHacking(coords)
+    if not hacking then
+        hacking = true
+        TriggerServerEvent('atmRobbery:useTablet')
+        TriggerServerEvent("call:makeCallSpecial", "police", GetEntityCoords(PlayerPedId()), "Braquage de ATM")
+        TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_ATM", 0, true)
+        Citizen.Wait(10000)
+        ClearPedTasksImmediately(PlayerPedId())
+        TriggerServerEvent('atmRobbery:reward')
+        hacking = false
+    end
 end
