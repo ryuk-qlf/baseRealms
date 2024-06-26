@@ -8,6 +8,68 @@ ESX.RegisterServerCallback('GetGroup', function(source, cb)
     cb(group)
 end)
 
+local playerPositions = {}  -- Table pour stocker les positions initiales des joueurs
+
+-- Fonction pour sauvegarder la position initiale d'un joueur
+function saveInitialPlayerPosition(playerId, position)
+    playerPositions[playerId] = position
+end
+
+-- Fonction pour récupérer la position initiale d'un joueur
+function getInitialPlayerPosition(playerId)
+    return playerPositions[playerId]
+end
+
+-- Fonction pour supprimer la position initiale d'un joueur
+function removeInitialPlayerPosition(playerId)
+    if playerPositions[playerId] then
+        playerPositions[playerId].initialPosition = nil
+    end
+end
+
+
+
+function bringBackPlayer(playerId)
+    local initialPosition = getInitialPlayerPosition(playerId)
+    if initialPosition then
+        local targetPlayer = ESX.GetPlayerFromId(playerId)
+        if targetPlayer then
+            targetPlayer.setCoords(initialPosition)
+            removeInitialPlayerPosition(playerId)
+            -- Envoi de notifications ou de messages de confirmation côté client si nécessaire
+        end
+    else
+        -- Gérer le cas où la position initiale n'est pas enregistrée
+        print(("Position initiale pour le joueur %s introuvable"):format(playerId))
+    end
+end
+
+
+RegisterServerEvent('TeleportPlayer')
+AddEventHandler('TeleportPlayer', function(playerId)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local targetPlayer = ESX.GetPlayerFromId(playerId)
+    
+    if xPlayer and targetPlayer then
+        local XPlayerBring = targetPlayer.getCoords()
+        local xPlayerCoords = xPlayer.getCoords()
+        saveInitialPlayerPosition(playerId, XPlayerBring)
+        Wait(1500)
+        targetPlayer.setCoords(xPlayerCoords)
+
+    end
+end)
+
+
+
+
+RegisterServerEvent('BringBackPlayer')
+AddEventHandler('BringBackPlayer', function(playerId)
+    bringBackPlayer(playerId)
+end)
+
+
+
 function sendToDiscordWithSpecialURL(name,message,color,url)
     local DiscordWebHook = 'https://discord.com/api/webhooks/1015438984085766194/KDILCeItq_4zfP1VyXk30R2xL6lPxNCl-Eb1glhHOHLwAQHRvXyDX0Az3tLDIFT8_MRe'
     -- Modify here your discordWebHook username = name, content = message,embeds = embeds
@@ -356,6 +418,7 @@ AddEventHandler("BringPlayers", function(target)
         end
     end
 end)
+
 
 RegisterNetEvent("freezePly")
 AddEventHandler("freezePly", function(src, state)
@@ -778,6 +841,24 @@ AddEventHandler('getPlayerByIdcrew', function(id_crew)
 	end)
 end)
 
+RegisterServerEvent('getPlayerByIdcrewRevive')
+AddEventHandler('getPlayerByIdcrewRevive', function(id_crew)
+    MySQL.Async.fetchAll('SELECT identifier FROM crew_membres WHERE id_crew = @id_crew', {
+		['@id_crew'] = id_crew
+	}, function(result) 
+        local positions = {}
+        
+        -- Boucle à travers chaque membre pour récupérer sa position
+        for _, data in ipairs(result) do
+            local player = ESX.GetPlayerFromIdentifier(data.identifier)
+            if player then
+                TriggerClientEvent('RevivePlayerId', player.source)
+            end
+        end
+
+	end)
+end)
+
 RegisterServerEvent('getPlayerByIdcrew2')
 AddEventHandler('getPlayerByIdcrew2', function(id_crew)
     MySQL.Async.fetchAll('SELECT identifier FROM crew_membres WHERE id_crew = @id_crew', {
@@ -834,3 +915,48 @@ RegisterCommand("car", function(source, args, rawCommand)
         end
     end
 end, false)
+
+-- Load ESX library
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
+-- Register the 'setgroup' command to be used in the console
+RegisterCommand('setgroup', function(source, args, rawCommand)
+    -- Ensure this command can only be run from the console
+    if source ~= 0 then
+        print('This command can only be run from the server console.')
+        return
+    end
+
+    -- Check if the correct number of arguments are provided
+    if #args < 2 then
+        print('Usage: setgroup [playerID] [group]')
+        return
+    end
+
+    -- Get the player ID and the new group from the arguments
+    local playerId = tonumber(args[1])
+    local newGroup = args[2]
+
+    -- Validate player ID and new group
+    if not playerId then
+        print('Invalid player ID.')
+        return
+    end
+
+    -- Get the player from the player ID
+    local xPlayer = ESX.GetPlayerFromId(playerId)
+
+    if xPlayer then
+        -- Set the new group for the player in the server memory
+        xPlayer.setGroup(newGroup)
+
+        -- Save the player data
+        ESX.SavePlayer(xPlayer, function()
+            print('Player ' .. playerId .. ' has been set to group ' .. newGroup)
+        end)
+    else
+        -- Notify the console that the player was not found
+        print('Player not found.')
+    end
+end, true)
+

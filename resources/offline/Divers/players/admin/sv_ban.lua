@@ -120,7 +120,9 @@ AddEventHandler("playerConnecting", function(name, setKickReason, deferrals)
 
     deferrals.defer()
 
-    if steam == "" or steam == nil and license == "" or license == nil then
+    Citizen.Wait(0) -- Ajout d'une petite pause pour s'assurer que la deferral est initialisée correctement
+
+    if (steam == "" or steam == nil) and (license == "" or license == nil) then
         deferrals.done("Votre identifiant est introuvable. Veuillez revenir plus tard ou signaler ce problème à l'équipe d'administration du serveur.")
         CancelEvent()
         return
@@ -133,43 +135,46 @@ AddEventHandler("playerConnecting", function(name, setKickReason, deferrals)
     end
 
     if json.encode(BanList) ~= "[]" then
-
         for k, v in pairs(BanList) do
             if tostring(v.token) == token or tostring(v.steam) == tostring(steam) or tostring(v.ip) == tostring(ip) or tostring(v.discord) == tostring(discord) or tostring(v.license) == tostring(license) or tostring(v.xbl) == tostring(xbl) or tostring(v.live) == tostring(live) then
-                reason = v.reason
-                moderator = v.moderator
-                idban = v.idban
-                expiration = json.decode(v.expiration)
-                hourban = v.hourban
-                permanent = v.permanent
+                local reason = v.reason
+                local moderator = v.moderator
+                local idban = v.idban
+                local expiration = json.decode(v.expiration)
+                local hourban = v.hourban
+                local permanent = v.permanent
 
                 if permanent == 1 then
                     deferrals.done("\nVous êtes ban de offline.\nRaison : "..reason.."\nID Bannissement : "..idban.."\nDate unban : Permanent")
                     SendWebhookBan("Connexion arrêtée par le bannissement", "**Discord ID :** <@"..ids.discord:gsub("discord:", "")..">\n**Steam Url :** https://steamcommunity.com/profiles/" ..tonumber(ids.steam:gsub("steam:", ""), 16).."\n**Date unban :** Permanent", "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw", '3863105')
                     CancelEvent()
+                    return
                 elseif permanent == 0 then
                     local difftime = os.difftime(os.time(), os.time{year = expiration.year, month = expiration.month, day = expiration.day, hour = expiration.hour, min = expiration.min, sec = expiration.sec}) / 3600
 
                     if (hourban-math.floor(difftime)) <= 0 then
-                        deferrals.done()
-
                         table.remove(BanList, k)
                         MySQL.Async.execute("DELETE FROM `banlist` WHERE `idban` = @idban", {
                             ["@idban"] = idban,
-                        })
+                        }, function(affectedRows)
+                            deferrals.done() -- La deferral se termine ici après suppression de la banlist
+                        end)
+                        return
                     else
                         local endtime = os.time({year = expiration.year, month = expiration.month, day = expiration.day, hour = expiration.hour + hourban, min = expiration.min, sec = expiration.sec})
                         deferrals.done("\nVous êtes ban de offline.\nRaison : "..reason.."\nID Bannissement : "..idban.."\nDate unban : "..os.date("%d", endtime).."-"..os.date("%m", endtime).."-"..os.date("%Y", endtime).." "..os.date("%H", endtime)..":"..os.date("%M", endtime))
                         SendWebhookBan("Connexion arrêtée par le bannissement", "**Discord ID :** <@"..ids.discord:gsub("discord:", "")..">\n**Steam Url :** https://steamcommunity.com/profiles/" ..tonumber(ids.steam:gsub("steam:", ""), 16).."\n**Date unban :** "..os.date("%d", endtime).."-"..os.date("%m", endtime).."-"..os.date("%Y", endtime).." "..os.date("%H", endtime)..":"..os.date("%M", endtime), "https://discord.com/api/webhooks/968616814517055518/E6J4phA7AAWoeY7taV-WgrwE4Q1lsH5_Y2nfRedw5bmBwstwOpU8ARP4tYectKnypGGw", '3863105')
                         CancelEvent()
+                        return
                     end
                 end
-            else
-                deferrals.done()
             end
         end
     end
+
+    deferrals.done()
 end)
+
 
 AddEventHandler("playerDropped", function(reason)
     local _src = source

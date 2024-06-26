@@ -8,6 +8,7 @@ ExampleItems2 = {
     -- {Label = "Ciseaux", Price = 170, Id = "ciseaux", List = {"1","2","3","4","5","6","7","8","9","10"}, Index = 1},
     {Label = "Canne à pêche", Id = "cannepeche", Price = 350, List = {"1","2","3","4","5","6","7","8","9","10"}, Index = 1},
     {Label = "Jumelles", Price = 350, Id = "jumelle", List = {"1","2","3","4","5","6","7","8","9","10"}, Index = 1},
+    {Label = "Tablette", Price = 300, Id = "tablette", List = {"1","2","3","4","5","6","7","8","9","10"}, Index = 1},
 }
 
 Shop = {}

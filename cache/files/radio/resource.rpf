@@ -187,7 +187,7 @@ RegisterNUICallback('requestFreq', function(data, cb)
             ESX.ShowNotification("Vous avez ~g~connecté~s~ votre ~g~radio~s~ à la fréquence ~g~"..frequence.."Hz")
             exports["pma-voice"]:setVoiceProperty("radioEnabled", true)
             exports["pma-voice"]:SetRadioChannel(frequence)
-            ESX.SetFieldValueFromNameEncode("OfflineFreqRadio", frequence)
+            ESX.SetFieldValueFromNameEncode("offlineFreqRadio", frequence)
             radioFreq = 1
             RadioMute = true
             SetNuiFocus(true, true)
@@ -227,8 +227,8 @@ RegisterNUICallback('offRadio', function()
         SendNUIMessage({
             type = "showIconsRadioOn"
         })
-        if json.encode(ESX.GetFieldValueFromName("OfflineFreqRadio")) ~= "[]" then
-            local freq = ESX.GetFieldValueFromName("OfflineFreqRadio")
+        if json.encode(ESX.GetFieldValueFromName("offlineFreqRadio")) ~= "[]" then
+            local freq = ESX.GetFieldValueFromName("offlineFreqRadio")
 
             for k, v in pairs(FrequenceJob) do           
                 if tonumber(freq) == v.freq and PlayerData.job.name ~= v.job then
@@ -244,7 +244,7 @@ RegisterNUICallback('offRadio', function()
             ESX.ShowNotification("Vous avez ~g~connecté~s~ votre ~g~radio~s~ à la fréquence ~g~"..freq.."Hz")
             exports["pma-voice"]:setVoiceProperty("radioEnabled", true)
             exports["pma-voice"]:SetRadioChannel(freq)
-            ESX.SetFieldValueFromNameEncode("OfflineFreqRadio", freq)
+            ESX.SetFieldValueFromNameEncode("offlineFreqRadio", freq)
             radioFreq = 1
             RadioMute = true
             SetNuiFocus(true, true)

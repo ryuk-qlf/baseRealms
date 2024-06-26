@@ -17,6 +17,26 @@ Citizen.CreateThread(function()
 	end
 end)
 
+
+local colors = {
+    ["Noir"] = {0, 0, 0},
+    ["Marron"] = {139, 69, 19},
+    ["Bleu"] = {0, 0, 255},
+    ["Bleu ciel"] = {135, 206, 250},
+    ["Vert"] = {0, 128, 0},
+    ["Jaune"] = {255, 255, 0},
+    ["Rouge"] = {255, 0, 0},
+    ["Orange"] = {255, 165, 0},
+    ["Rose"] = {255, 192, 203},
+    ["Violet"] = {138, 43, 226}
+}
+
+local selectedColorIndex = 1
+local colorNames = {}
+for colorName, _ in pairs(colors) do
+    table.insert(colorNames, colorName)
+end
+
 local reports = {}
 local listCVC = {}
 local CVCSelected = nil
@@ -874,6 +894,7 @@ Administration.report1:AcceptFilter(true)
 Administration.report:AcceptFilter(true)
 
 function MenuAdministration()
+    getplayers()
     FetchReportsFromServer()
     if Perm.PlyGroup == 'superadmin' or Perm.PlyGroup == 'admin' or Perm.PlyGroup == 'moderator' then
         if not RageUI.GetInMenu() then
@@ -913,7 +934,9 @@ function MenuAdministration()
                         end
                         RageUI.Button("Autres options", nil, {RightLabel = "→"}, true, {}, Administration.subMenu11)
                         RageUI.Button("Report", nil, {RightLabel = "→"}, true, {}, Administration.report)
-                        RageUI.Button("CVC", nil, {RightLabel = "→"}, true, {}, Administration.cvc)
+                        if Perm.PlyGroup == 'superadmin' then
+                            RageUI.Button("CVC", nil, {RightLabel = "→"}, true, {}, Administration.cvc)
+                        end
                     end)
 
                     RageUI.IsVisible(Administration.subMenu12, function()
@@ -1125,10 +1148,20 @@ function MenuAdministration()
                             })
                             RageUI.Button("Téléporter le joueur", nil, {}, true, {
                                 onSelected = function()
-                                    local selectedReport = GetReportById(idReport)
+                                    local selectedReport = GetReportById(idReport)  -- Supposons que tu as une fonction pour obtenir un rapport par son ID
                                     if selectedReport then
-                                        TriggerServerEvent('BringPlayers', selectedReport.playerId)
-                                        -- Ici, 'GotoPlayer' est un événement serveur que vous devez définir
+                                        TriggerServerEvent('TeleportPlayer', selectedReport.playerId)
+                                    else
+                                        ESX.ShowNotification("Rapport sélectionné introuvable")
+                                    end
+                                end
+                            })
+                            
+                            RageUI.Button("BringBack le joueur", nil, {}, true, {
+                                onSelected = function()
+                                    local selectedReport = GetReportById(idReport)  -- Supposons que tu as une fonction pour obtenir un rapport par son ID
+                                    if selectedReport then
+                                        TriggerServerEvent('BringBackPlayer', selectedReport.playerId)
                                     else
                                         ESX.ShowNotification("Rapport sélectionné introuvable")
                                     end
@@ -1198,24 +1231,153 @@ function MenuAdministration()
 
                     RageUI.IsVisible(Administration.cvc3, function()
                         if CVCSelected then
-                            RageUI.Button("Se Téléporter sur l'équipe 1 (ID: " .. CVCSelected.equipe1 .. ")", nil, {}, true, {
+                            RageUI.Button("Revive équipe 1 (ID: " .. CVCSelected.equipe1 .. ")", nil, {}, true, {
                                 onSelected = function()
-                                    TriggerServerEvent('getPlayerByIdcrew', CVCSelected.equipe1)
-                                    -- TriggerServerEvent('GotoPlayers', CVCSelected.equipe1)
+                                    TriggerServerEvent('getPlayerByIdcrewRevive', CVCSelected.equipe1)
                                     -- Ici, 'GotoPlayers' est un événement serveur que vous devez définir
+                                end
+                            })
+                            RageUI.Button("Revive équipe 2 (ID: " .. CVCSelected.equipe2 .. ")", nil, {}, true, {
+                                onSelected = function()
+                                    TriggerServerEvent('getPlayerByIdcrewRevive', CVCSelected.equipe2)
+                                    -- Ici, 'GotoPlayers' est un événement serveur que vous devez définir
+                                end
+                            })
+                            RageUI.List("Spawn Convoi Gang", colorNames, selectedColorIndex, nil, {}, true, {
+                                onListChange = function(Index, Item)
+                                    selectedColorIndex = Index
+                                end,
+                                onSelected = function(Index, Item)
+                                    spawnConvoi(colorNames[selectedColorIndex])
                                 end
                             })
                     
-                            RageUI.Button("Se Téléporter sur l'équipe 2 (ID: " .. CVCSelected.equipe2 .. ")", nil, {}, true, {
-                                onSelected = function()
-                                    TriggerServerEvent('getPlayerByIdcrew2', CVCSelected.equipe2)
-                                    -- Ici, 'GotoPlayers' est un événement serveur que vous devez définir
+                            RageUI.List("Spawn Convoi Orga", colorNames, selectedColorIndex, nil, {}, true, {
+                                onListChange = function(Index, Item)
+                                    selectedColorIndex = Index
+                                end,
+                                onSelected = function(Index, Item)
+                                    spawnConvoi2(colorNames[selectedColorIndex])
                                 end
                             })
+
                         else
                             ESX.ShowNotification("Aucun CVC sélectionné")
                         end
                     end)
+
+                    function spawnConvoi(color)
+                        local playerPed = PlayerPedId()
+                        local playerPos = GetEntityCoords(playerPed)
+                        local playerHeading = GetEntityHeading(playerPed)
+                        
+                        local vehicleModels = {"minivan", "scharmann", "gresley", "buffalo2", "glendale2", "primo2", "ellie", "manchez3"}
+                        local spawnWidth = 10.0  -- Largeur du rectangle de spawn
+                        local spawnLength = 10.0  -- Longueur du rectangle de spawn
+                    
+                         -- Calcul des vecteurs de direction basés sur l'angle du joueur
+                        local forwardVector = vector3(math.cos(math.rad(playerHeading)), math.sin(math.rad(playerHeading)), 0.0)
+                        local rightVector = vector3(-math.sin(math.rad(playerHeading)), math.cos(math.rad(playerHeading)), 0.0)
+
+                        -- Tableau de positions relatives pour chaque véhicule
+                        local spawnOffsets = {
+                            rightVector * (spawnWidth / 2) + forwardVector * (spawnLength / 2),
+                            -rightVector * (spawnWidth / 2) + forwardVector * (spawnLength / 2),
+                            rightVector * (spawnWidth / 2) - forwardVector * (spawnLength / 2),
+                            -rightVector * (spawnWidth / 2) - forwardVector * (spawnLength / 2),
+                            forwardVector * (spawnLength / 2),
+                            -forwardVector * (spawnLength / 2),
+                            rightVector * (spawnWidth / 2),
+                            -rightVector * (spawnWidth / 2),
+                            vector3(0.0, 0.0, 0.0)  -- Centre pour un nombre impair de véhicules
+                        }
+
+                        for i, model in ipairs(vehicleModels) do
+                            local vehicleHash = GetHashKey(model)
+
+                            RequestModel(vehicleHash)
+                            while not HasModelLoaded(vehicleHash) do
+                                Wait(1)
+                            end
+
+                            local spawnOffset = spawnOffsets[i]
+                            local spawnPos = playerPos + spawnOffset
+
+                            local vehicle = CreateVehicle(vehicleHash, spawnPos.x, spawnPos.y, spawnPos.z, playerHeading, true, false)
+
+                            -- Appliquer des configurations full custom au véhicule
+                            SetVehicleModKit(vehicle, 0)  -- Sélectionner le mod kit (0 = mod kit standard)
+                            SetVehicleMod(vehicle, 11, 3, false)  -- Moteur max (mod type 11)
+                            SetVehicleMod(vehicle, 12, 2, false)  -- Transmission de course (mod type 12)
+                            SetVehicleMod(vehicle, 13, 3, false)  -- Freins de course (mod type 13)
+                            SetVehicleMod(vehicle, 15, 3, false)  -- Suspension abaissée (mod type 15)
+                            ToggleVehicleMod(vehicle, 18, true)  -- Turbo (mod type 18)
+
+                            -- Définir la couleur du véhicule
+                            local colorRGB = colors[color]
+                            SetVehicleCustomPrimaryColour(vehicle, colorRGB[1], colorRGB[2], colorRGB[3])
+                            SetVehicleCustomSecondaryColour(vehicle, colorRGB[1], colorRGB[2], colorRGB[3])
+
+                            SetModelAsNoLongerNeeded(vehicleHash)
+                        end
+                    end
+                    
+
+                    function spawnConvoi2(color)
+                        local playerPed = PlayerPedId()
+                        local playerPos = GetEntityCoords(playerPed)
+                        local playerHeading = GetEntityHeading(playerPed)
+                        
+                        local vehicleModels = {"rebla", "jackal", "jubilee", "revolter", "buffalo4", "komoda", "vectre", "cliffhanger"}
+                        local spawnWidth = 10.0  -- Largeur du rectangle de spawn
+                        local spawnLength = 10.0  -- Longueur du rectangle de spawn
+                    
+                         -- Calcul des vecteurs de direction basés sur l'angle du joueur
+                        local forwardVector = vector3(math.cos(math.rad(playerHeading)), math.sin(math.rad(playerHeading)), 0.0)
+                        local rightVector = vector3(-math.sin(math.rad(playerHeading)), math.cos(math.rad(playerHeading)), 0.0)
+
+                        -- Tableau de positions relatives pour chaque véhicule
+                        local spawnOffsets = {
+                            rightVector * (spawnWidth / 2) + forwardVector * (spawnLength / 2),
+                            -rightVector * (spawnWidth / 2) + forwardVector * (spawnLength / 2),
+                            rightVector * (spawnWidth / 2) - forwardVector * (spawnLength / 2),
+                            -rightVector * (spawnWidth / 2) - forwardVector * (spawnLength / 2),
+                            forwardVector * (spawnLength / 2),
+                            -forwardVector * (spawnLength / 2),
+                            rightVector * (spawnWidth / 2),
+                            -rightVector * (spawnWidth / 2),
+                            vector3(0.0, 0.0, 0.0)  -- Centre pour un nombre impair de véhicules
+                        }
+
+                        for i, model in ipairs(vehicleModels) do
+                            local vehicleHash = GetHashKey(model)
+
+                            RequestModel(vehicleHash)
+                            while not HasModelLoaded(vehicleHash) do
+                                Wait(1)
+                            end
+
+                            local spawnOffset = spawnOffsets[i]
+                            local spawnPos = playerPos + spawnOffset
+
+                            local vehicle = CreateVehicle(vehicleHash, spawnPos.x, spawnPos.y, spawnPos.z, playerHeading, true, false)
+
+                            -- Appliquer des configurations full custom au véhicule
+                            SetVehicleModKit(vehicle, 0)  -- Sélectionner le mod kit (0 = mod kit standard)
+                            SetVehicleMod(vehicle, 11, 3, false)  -- Moteur max (mod type 11)
+                            SetVehicleMod(vehicle, 12, 2, false)  -- Transmission de course (mod type 12)
+                            SetVehicleMod(vehicle, 13, 3, false)  -- Freins de course (mod type 13)
+                            SetVehicleMod(vehicle, 15, 3, false)  -- Suspension abaissée (mod type 15)
+                            ToggleVehicleMod(vehicle, 18, true)  -- Turbo (mod type 18)
+
+                            -- Définir la couleur du véhicule
+                            local colorRGB = colors[color]
+                            SetVehicleCustomPrimaryColour(vehicle, colorRGB[1], colorRGB[2], colorRGB[3])
+                            SetVehicleCustomSecondaryColour(vehicle, colorRGB[1], colorRGB[2], colorRGB[3])
+
+                            SetModelAsNoLongerNeeded(vehicleHash)
+                        end
+                    end
 
                     -- Fonction pour calculer la position moyenne
                     local function calculateAveragePosition(positions)
@@ -1352,12 +1514,12 @@ function MenuAdministration()
                     end)
 
                     RageUI.IsVisible(Administration.subMenu, function()
+                        getplayers()
                         for k,v in pairs(Administration.AllPlayers) do
                             RageUI.Button("("..v.id..") - "..v.name, nil, {RightLabel = "→"}, true, {
                                 onSelected = function()
                                     IdSelected = v.id
                                     IdPersonnage = v.idperso
-                                    discordName = v.discordname
                                     NameSelected = v.name
                                     DiamondSelected = v.diamond
                                     LieuNaissance = v.ldn
@@ -1396,37 +1558,34 @@ function MenuAdministration()
                             end
                         })
 
-                        RageUI.List("Informations", {{Name = "Discord"}, {Name = "ID Perso"}, {Name = "Diamond"}, {Name = "Lieu de naissance"}, {Name = "Date de naissance"}, {Name = "Steam(hex)"}, {Name = "ID Discord"}, {Name = "Tout"}}, Administration.ListInfos, nil, {}, true, {
+                        RageUI.List("Informations", {{Name = "ID Perso"}, {Name = "Diamond"}, {Name = "Lieu de naissance"}, {Name = "Date de naissance"}, {Name = "Steam(hex)"}, {Name = "Tout"}}, Administration.ListInfos, nil, {}, true, {
                             onListChange = function(Index)
                                 Administration.ListInfos = Index;
                             end,
                             onSelected = function(Index)
                                 if Index == 1 then 
-                                    ESX.Notification("~g~Discord~s~\n"..discordName)
-                                end
-                                if Index == 2 then 
                                     ESX.Notification("~b~ID Personnage~s~\n"..IdPersonnage)
                                 end
-                                if Index == 3 then 
+                                if Index == 2 then 
                                     if DiamondSelected then
                                         ESX.Notification("~b~Diamond~s~\n"..NameSelected.." possède le ~g~diamond~s~.")
                                     else
                                         ESX.Notification("~o~Diamond~s~\n"..NameSelected.." possède pas le ~r~diamond~s~.")
                                     end
                                 end
-                                if Index == 4 then 
+                                if Index == 3 then 
                                     ESX.Notification("Lieu de naissance~b~\n"..LieuNaissance..".")
                                 end
-                                if Index == 5 then 
+                                if Index == 4 then 
                                     ESX.Notification("Date de naissance~p~\n"..DateDeNaissance..".")
                                 end
-                                if Index == 6 then
+                                if Index == 5 then
                                     TriggerServerEvent("GetInfosPlayers", IdSelected, 'Steamhex')
                                 end
-                                if Index == 7 then 
+                                if Index == 6 then 
                                     TriggerServerEvent("GetInfosPlayers", IdSelected, 'Discord')
                                 end
-                                if Index == 8 then 
+                                if Index == 7 then 
                                     if Perm.PlyGroup == 'superadmin' then
                                         TriggerServerEvent("GetInfosPlayers", IdSelected, 'Tout')
                                     else
@@ -1612,4 +1771,8 @@ end)
 
 Citizen.CreateThread(function()
 	TriggerEvent('chat:addSuggestion', '/report', "demander de l'aide au adminstrateur", {{ name="raison", help="Veuillez écrire une raison détaillée"}})
+end)
+
+Citizen.CreateThread(function()
+	TriggerEvent('chat:addSuggestion', '/giveitem', "give un item à un joueur", {{ name="ID", help="ID du joueur"}, { name="Nom", help="Nom de l'item"}, { name="nombre", help="Nombre d'item à give."}})
 end)
